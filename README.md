@@ -6,10 +6,17 @@
 
 # PAY2U Frontend Group 6
 
-The developed product offers a leading solution for user interaction with subscription services and provides clients with additional value through the following features:
-One subscription in one place. There's no longer a need to bind a card to various services (and this is safer than having to re-enter card details). It's much simpler to unsubscribe. Turning on and off any subscriptions can be done in one action, and on one screen.
-If you use services regularly, you can connect your accounts and receive cashback from every payment.
-You have the ability to compare the costs of various services that offer similar or nearby content and choose what’s most relevant to you.
+## Overview
+
+Our product revolutionizes the way users interact with subscription-based services by offering a centralized platform for easy and secure management of all subscriptions. It ensures simplicity, enhances security, and adds unmatched convenience to the subscription management process.
+
+## Key Features
+
+- **Centralized Subscription Management**: Manage all your subscriptions in one place. Forget about the hassle of binding and rebinding your credit card across various platforms. With our solution, you ensure greater safety and simplicity. Activate or deactivate any subscription with a single click, all from one unified interface.
+
+- **Continuous Cashback Rewards**: For those who regularly utilize subscription services, our product offers a continuous cashback feature. Connect your accounts once and start earning rewards on every transaction you make.
+
+- **Cost Comparison and Content Curation**: Make informed decisions by comparing costs across a range of services. Our platform presents options that cater to your preferences, allowing you to access content that aligns with your interests and budget. Choose wisely and save by selecting services that truly cater to your needs.
 
 ## Technologies and Solutions Used
 
