@@ -127,7 +127,14 @@ Adhering to these guidelines ensures code quality and consistency across our pro
 - TypeScript: `^5.2.2`
 - Vite: `^5.1.4`
 
-## Author👤 **Гоар Варданян** => -GitHub: [@Annebula77](https://github.com/Annebula77)
+## Author 👩
+
+- Gohar Vardanyan - [![GitHub][github-shield]][github-url]
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[github-shield]: https://img.shields.io/badge/GitHub--brightgreen?style=social&logo=Github
+[github-url]: https://github.com/Annebula77
+
 
 # React + TypeScript + Vite
 
