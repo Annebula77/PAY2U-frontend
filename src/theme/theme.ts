@@ -3,13 +3,13 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: 'rgba(255, 255, 255, 1)', // White
+      main: 'rgba(66, 119, 202, 1)', // White
       light: 'rgba(66, 119, 202, 1)', // Light blue
       dark: 'rgba(4, 78, 196, 1)', // Dark blue
     },
     secondary: {
       main: 'rgba(229, 229, 229, 1)', // White
-      contrastText: 'rgba(229, 229, 229, 1)#4979f0', // For text on secondary color, use primary
+      contrastText: 'rgba(229, 229, 229, 1)', // For text on secondary color, use primary
     },
     error: {
       main: 'rgba(255, 75, 107, 1)', // Assuming Alert is for errors red
@@ -66,6 +66,28 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: '12px',
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: '12px', // Устанавливаем borderRadius для всех карточек
+        },
+      },
+    },
+    // Кастомизация бумажного фона
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          borderRadius: '12px', // Устанавливаем borderRadius для всех Paper компонентов
+        },
+      },
+    },
     MuiTypography: {
       styleOverrides: {
         root: {
@@ -77,7 +99,7 @@ const theme = createTheme({
             lineHeight: 'normal'
           },
           '&.textSmallRegular': {
-            fontSize: '12px',
+            fontSize: '13px',
             color: 'rgba(40, 43, 46, 1)',
             fontStyle: 'normal',
             fontWeight: 400,
