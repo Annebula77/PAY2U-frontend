@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   html, body {
-  max-width: 576px; 
+  max-width: 375px; 
   height: 100%;
   margin: 0 auto;
   font-size: 16px;

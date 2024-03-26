@@ -1,4 +1,3 @@
-import React from 'react';
 import '@mui/material/styles';
 
 declare module '@mui/material/styles' {
