@@ -16,7 +16,7 @@ const StyledDiv = styled.div`
 `;
 
 const StyledLinkDiv = styled.div`
-  margin: 22px 0 0;
+  margin: 14px 0 0;
   padding: 0;
   box-sizing: border-box;
   display: flex;
@@ -26,7 +26,6 @@ const StyledLinkDiv = styled.div`
 
 const StyledCardContent = styled(CardContent)`
   position: relative;
-  width: 343px;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -61,11 +60,11 @@ const StyledParagraph = styled.p`
 `;
 
 const TitleShield = () => (
-  <Card >
+  <Card sx={{ width: '343px', height: '132px' }}>
     <StyledCardContent>
       <StyledDiv>
         <Typography className="textCardH1">Мои подписки</Typography>
-        <Typography className="textSmallRegular" sx={{ color: 'rgba(167, 177, 186, 1)' }}>Управление подписками, контроль списаний, кешбэк
+        <Typography className="textSmallRegular" color="text.secondary">Управление подписками, контроль списаний, кешбэк
           с автоплатежей</Typography>
         <Link to="/onboarding1" style={{ textDecoration: 'none' }}>
           <StyledLinkDiv>

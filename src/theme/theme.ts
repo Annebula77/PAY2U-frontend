@@ -3,8 +3,8 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: 'rgba(66, 119, 202, 1)', // White
-      light: 'rgba(66, 119, 202, 1)', // Light blue
+      main: 'rgba(66, 119, 202, 1)', // Light blue
+      light: 'rgba(255, 255, 255, 1)', // White
       dark: 'rgba(4, 78, 196, 1)', // Dark blue
     },
     secondary: {
@@ -27,7 +27,7 @@ const theme = createTheme({
     },
     text: {
       primary: 'rgba(40, 43, 46, 1)',
-      secondary: 'gba(142, 142, 142, 1)',
+      secondary: 'rgba(142, 142, 142, 1)',
 
     }
   },
@@ -38,28 +38,24 @@ const theme = createTheme({
     fontFamily: 'Inter, Arial, sans-serif',
     h1: {
       fontSize: '22px',
-      color: 'rgba(40, 43, 46, 1)',
       fontStyle: 'normal',
       fontWeight: 700,
       lineHeight: 'normal'
     },
     h2: {
       fontSize: '20px',
-      color: 'rgba(40, 43, 46, 1)',
       fontStyle: 'normal',
       fontWeight: 600,
       lineHeight: 'normal'
     },
     h3: {
       fontSize: '18px',
-      color: 'rgba(40, 43, 46, 1)',
       fontStyle: 'normal',
       fontWeight: 600,
       lineHeight: 'normal'
     },
     h4: {
       fontSize: '16px',
-      color: 'rgba(40, 43, 46, 1)',
       fontStyle: 'normal',
       fontWeight: 600,
       lineHeight: 'normal'
@@ -91,51 +87,48 @@ const theme = createTheme({
     MuiTypography: {
       styleOverrides: {
         root: {
+          padding: 0,
+          margin: 0,
           '&.textRegular': {
             fontSize: '16px',
-            color: 'rgba(40, 43, 46, 1)',
             fontStyle: 'normal',
             fontWeight: 400,
             lineHeight: 'normal'
           },
           '&.textSmallRegular': {
-            fontSize: '13px',
-            color: 'rgba(40, 43, 46, 1)',
+            fontSize: '12px',
             fontStyle: 'normal',
             fontWeight: 400,
             lineHeight: 'normal'
           },
           '&.textSmallBold': {
             fontSize: '12px',
-            color: 'rgba(40, 43, 46, 1)',
             fontStyle: 'normal',
             fontWeight: 700,
             lineHeight: 'normal'
           },
           '&.textSmallMedium': {
             fontSize: '12px',
-            color: 'rgba(40, 43, 46, 1)',
             fontStyle: 'normal',
             fontWeight: 500,
             lineHeight: 'normal'
           },
           '&.textCardH1': {
             fontSize: '15px',
-            color: 'rgba(40, 43, 46, 1)',
             fontStyle: 'normal',
             fontWeight: 600,
-            lineHeight: 1.2
+            lineHeight: 1.2,
+            margin: 0,
+            padding: 0,
           },
           '&.priceCard': {
             fontSize: '18px',
-            color: 'rgba(40, 43, 46, 1)',
             fontStyle: 'normal',
             fontWeight: 600,
             lineHeight: 'normal'
           },
           '&.textCard': {
             fontSize: '14px',
-            color: 'rgba(40, 43, 46, 1)',
             fontStyle: 'normal',
             fontWeight: 400,
             lineHeight: 'normal'
