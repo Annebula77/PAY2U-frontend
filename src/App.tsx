@@ -4,6 +4,7 @@ import ShieldInApp from './pages/ShieldInApp';
 import OnboardingOne from './pages/OnboardingOne';
 import OnboardingTwo from './pages/OnboardingTwo';
 import OnboardingThree from './pages/OnboardingThree';
+import HomePage from './pages/HomePage';
 
 
 
@@ -22,7 +23,7 @@ const App = () => (
       <Route path="/onboarding1" element={<OnboardingOne />} />
       <Route path="/onboarding2" element={<OnboardingTwo />} />
       <Route path="/onboarding3" element={<OnboardingThree />} />
-      {/* <Route path="/main" element={<HomePage />} /> */}
+      <Route path="/main" element={<HomePage />} />
 
     </Routes>
   </StyledSection>
