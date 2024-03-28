@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import cake from '../../assets/cake.png';
 import ArrowRight from "../icons/ArrowRight";
+import { resetBox } from "../../styles/mixIns";
 
 const StyledDiv = styled.div`
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  ${resetBox()};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -26,9 +25,7 @@ const StyledLinkDiv = styled.div`
 
 const StyledCardContent = styled(CardContent)`
   position: relative;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  ${resetBox()};
   display: flex;
   height: 100%;
   width: 100%;
@@ -47,9 +44,7 @@ const BackgroundImage = styled.img`
 `;
 
 const StyledParagraph = styled.p`
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+ ${resetBox()};
   width: 50%;
   font-size: 13px;
   font-style: normal;

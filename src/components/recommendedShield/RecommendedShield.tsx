@@ -3,6 +3,7 @@ import { Card, Typography } from "@mui/material";
 import styled from "styled-components";
 import MockLogo from "../../assets/mockIcon.png";
 import { Link } from "react-router-dom";
+import { resetBox } from "../../styles/mixIns";
 
 
 interface ShieldProps {
@@ -34,9 +35,7 @@ const Logo = styled.img`
   width: 88px;
   height: 88px;
   display: block;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  ${resetBox()};
   border-radius: 12px;
 `;
 

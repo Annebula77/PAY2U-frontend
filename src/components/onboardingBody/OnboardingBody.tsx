@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { ContainedButton } from '../buttons/containedButton/ContainedButton';
 import { OutlinedButton } from '../buttons/outlinedButton/OutlinedButton';
 import { Link } from 'react-router-dom';
+import { resetBox } from '../../styles/mixIns';
 
 interface Props extends PropsWithChildren {
   toNext: string;
@@ -32,9 +33,7 @@ const ButtonContainer = styled.div`
 
 const ContentContainer = styled.article`
   width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  padding:0;
+  ${resetBox()};
   display: flex;
   flex-direction: column;
   align-items: center;

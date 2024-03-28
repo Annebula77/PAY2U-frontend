@@ -1,17 +1,16 @@
 import { type FC, ReactNode } from 'react';
 import styled from 'styled-components';
+import { resetBox } from '../../styles/mixIns';
 
 
 interface MainProps {
   children: ReactNode;
 }
 
-const StyledMain = styled.main<MainProps>`
-  box-sizing: border-box;
+const StyledMain = styled.main<MainProps>`  
   display: flex;
   flex-direction: column;  
-  padding: 0;
-  margin: 0;
+  ${resetBox()};
  
 `;
 

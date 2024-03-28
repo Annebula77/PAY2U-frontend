@@ -1,10 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
+import { resetBox } from './styles/mixIns';
 
 
 const GlobalStyle = createGlobalStyle`
    body {
-    margin: 0;
-    padding: 0;   
+    ${resetBox()};  
     height: 100vh; 
     overflow-y: auto; 
     -webkit-overflow-scrolling: touch; 

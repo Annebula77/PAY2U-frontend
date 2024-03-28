@@ -3,6 +3,7 @@ import { Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import MockLogo from "../../assets/mockIcon.png";
+import { resetBox } from "../../styles/mixIns";
 
 interface CatalogueShieldProps {
   img: string;
@@ -13,9 +14,7 @@ interface CatalogueShieldProps {
 }
 
 const StyledDiv = styled.div`
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+ ${resetBox()};
   display: flex;
   flex-direction: column;
   align-content: flex-end;
@@ -24,9 +23,7 @@ const StyledDiv = styled.div`
 `;
 
 const UpperTextBox = styled.div`
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+ ${resetBox()};
   display: flex;
   flex-direction: column;
   align-content: flex-end;
@@ -35,9 +32,7 @@ const UpperTextBox = styled.div`
 
 const LogoContainer = styled.div` 
   width: 60%;  
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  ${resetBox()};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -53,9 +48,7 @@ const Logo = styled.img`
 `;
 
 const CashBackBox = styled.div`
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+ ${resetBox()};
   display: flex;
   justify-content: flex-end;
 `;

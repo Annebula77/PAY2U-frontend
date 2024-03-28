@@ -3,6 +3,7 @@ import React, { useRef, ReactNode } from 'react';
 import { register } from 'swiper/element/bundle';
 import styled from "styled-components";
 import ForwardArrowIcon from '../icons/ForwardArrowIcon';
+import { resetBox } from '../../styles/mixIns';
 // Регистрируем веб-компоненты Swiper
 register();
 
@@ -17,15 +18,11 @@ interface SliderProps {
 
 const SwiperContainer = styled.div`
   width: 100%;
-  box-sizing: border-box; 
-  margin: 0;
-  padding: 0; 
+  ${resetBox()};
 `;
 
 const NavContainer = styled.div`
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  ${resetBox()};
   display: flex;
   flex-direction: row;
   justify-content: space-between;
