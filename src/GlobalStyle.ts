@@ -4,13 +4,20 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
    body {
     margin: 0;
-    padding: 0;
-    overflow-x: hidden; 
-    overflow-y: scroll; 
-    -webkit-overflow-scrolling: touch;
-    font-family: 'Inter', sans-serif; 
+    padding: 0;   
+    height: 100vh; 
+    overflow-y: auto; 
+    -webkit-overflow-scrolling: touch; 
+    font-family: 'Inter', sans-serif;
+
+    /* Для Firefox */
+    scrollbar-width: none; 
+
+    /* Для IE и Edge */
+    -ms-overflow-style: none;
   }
 
+  /* Скрываем скроллбары в WebKit-браузерах (Chrome, Safari) */
   ::-webkit-scrollbar {
     display: none;
   }

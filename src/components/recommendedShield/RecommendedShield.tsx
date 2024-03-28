@@ -46,7 +46,7 @@ const RecommendedShield: FC<ShieldProps> = ({ img, title, cashback, route }) => 
       <Card sx={{
         width: '88px',
         height: '126px',
-        margin: 0,
+        margin: '10px 0 0',
         backgroundColor: "transparent",
         outline: 'none',
         boxShadow: 'none',

@@ -11,6 +11,7 @@ interface SliderProps {
   showNextButton?: boolean;
   title?: string;
   slidePerView: string;
+  spaceBetween?: string;
 }
 
 
@@ -41,7 +42,7 @@ cursor: pointer;
 `;
 
 
-const Slider: React.FC<SliderProps> = ({ slides, showNextButton = false, title, slidePerView }) => {
+const Slider: React.FC<SliderProps> = ({ slides, showNextButton = false, title, slidePerView, spaceBetween }) => {
   const swiperElRef = useRef<HTMLElement>(null);
 
   const scrollNext = () => {
@@ -52,7 +53,7 @@ const Slider: React.FC<SliderProps> = ({ slides, showNextButton = false, title, 
   return (
     <SwiperContainer>
       <NavContainer>
-        <Typography variant="h2" align="left" sx={{ marginBottom: '20px' }}>{title}</Typography>
+        <Typography variant="h2" align="left" sx={{ marginBottom: '10px' }}>{title}</Typography>
         {showNextButton && <NextButton type="button" onClick={scrollNext}>
           <ForwardArrowIcon fill='rgba(0, 0, 0, 1)' />
         </NextButton>}
@@ -60,7 +61,7 @@ const Slider: React.FC<SliderProps> = ({ slides, showNextButton = false, title, 
       <swiper-container
         ref={swiperElRef}
         slides-per-view={slidePerView}
-        space-between="1"
+        space-between={spaceBetween}
       >
         {slides.map((slide, index) => (
           <swiper-slide key={index}>{slide}</swiper-slide>

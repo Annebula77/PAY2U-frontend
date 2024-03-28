@@ -63,7 +63,7 @@ const CashBackBox = styled.div`
 
 const CatalogueShield: FC<CatalogueShieldProps> = ({ img, name, price, cashback, route }) => {
   return (
-    <Card sx={{ width: '160px', height: '104px', margin: 0 }} >
+    <Card sx={{ width: '160px', height: '104px', margin: '10px' }} >
       <Link to={route} style={{ textDecoration: 'none', width: '100%', margin: 0, padding: 0 }}>
         <CardContent
           sx={{

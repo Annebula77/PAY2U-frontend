@@ -62,6 +62,29 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiTab: {
+      styleOverrides: {
+
+        root: {
+          textTransform: 'none',
+          fontWeight: 400,
+          fontSize: '16px',
+          color: 'rgba(40, 43, 46, 1)',
+          '&.Mui-selected': {
+            color: 'rgba(40, 43, 46, 1)',
+            fontWeight: 600,
+          },
+        },
+      },
+    },
+    MuiTabs: {
+      styleOverrides: {
+        indicator: {
+          transform: 'translateY(-8px)',
+          color: 'rgba(66, 119, 202, 1)'
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
