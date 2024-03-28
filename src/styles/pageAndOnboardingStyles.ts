@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { resetBox } from './mixIns';
 export const StyledSection = styled.section`
   width: 100%;
   box-sizing: border-box;
@@ -14,9 +15,7 @@ export const ScreenShot = styled.img`
 `;
 
 export const TextDiv = styled.div`
-  margin: 0; 
-  padding: 0;
-  box-sizing: border-box;
+  ${resetBox()};
   width: 100%;
   display: flex;
   flex-direction: column;  

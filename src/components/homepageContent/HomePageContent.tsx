@@ -4,11 +4,10 @@ import Header from "../header/Header";
 import Main from "../main/Main";
 import MainPageTabs from "../mainPageTabs/MainPageTabs";
 import styled from "styled-components";
+import { resetBox } from "../../styles/mixIns";
 
 const TabsWrapper = styled.div`
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+ ${resetBox()};
   `;
 
 const HomePageContent = () => {

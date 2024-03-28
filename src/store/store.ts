@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import cookiesReducer from './slices/cookiesSlice';
 
 
 export const store = configureStore({
   reducer: {
+    cookies: cookiesReducer,
   },
 });
 

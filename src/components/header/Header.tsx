@@ -7,6 +7,7 @@ import RecommendedShield from "../recommendedShield/RecommendedShield";
 import NoSubsShield from "../noSubsShield/NoSubsShield";
 import HasSubsShield from "../hasSubsShield/HasSubsShield";
 import { Link } from "react-router-dom";
+import { resetBox } from "../../styles/mixIns";
 
 const HeaderWrapper = styled.div`
   width: 100%; 
@@ -33,18 +34,14 @@ const ControlsContainer = styled.nav`
 `;
 const SearchContainer = styled.div`
   width: 55%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  ${resetBox()};
   display: flex;
   justify-content: flex-end;
 `;
 
 const MySubsContainer = styled.article`
   width: 100%; 
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  ${resetBox()};
   display: flex;
   flex-direction: column;
   gap: 20px;  
@@ -52,9 +49,7 @@ const MySubsContainer = styled.article`
 
 const SubsRow = styled.div`
   width: 100%; 
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  ${resetBox()};
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -62,9 +57,7 @@ const SubsRow = styled.div`
 `;
 
 const TextButton = styled.button`
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+${resetBox()};
 outline: none;
 border: none;
 background-color: transparent;

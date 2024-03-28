@@ -5,6 +5,7 @@ import OnboardingOne from './pages/OnboardingOne';
 import OnboardingTwo from './pages/OnboardingTwo';
 import OnboardingThree from './pages/OnboardingThree';
 import HomePage from './pages/HomePage';
+import CookiesPage from './pages/CookiesPage';
 
 
 
@@ -24,7 +25,7 @@ const App = () => (
       <Route path="/onboarding2" element={<OnboardingTwo />} />
       <Route path="/onboarding3" element={<OnboardingThree />} />
       <Route path="/main" element={<HomePage />} />
-
+      <Route path="/cookies" element={<CookiesPage />} />
     </Routes>
   </StyledSection>
 );
