@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { resetBox } from './mixIns';
+
 export const StyledSection = styled.section`
-  width: 100%;
+  width: 375px;
   box-sizing: border-box;
   margin: 0 auto;
   padding: 0;

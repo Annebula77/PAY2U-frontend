@@ -1,9 +1,8 @@
 import { type FC } from "react";
 import { createPortal } from "react-dom";
-import { ContainedButton } from "../components/buttons/containedButton/ContainedButton";
+import { ContainedButton } from "../buttons/containedButton/ContainedButton";
 import { Card, CardContent, Typography } from "@mui/material";
 import styled from "styled-components";
-import { resetBox } from "../styles/mixIns";
 import { Link } from "react-router-dom";
 
 
@@ -12,13 +11,12 @@ interface CookiesProp {
 }
 
 const CookiesContainer = styled.section`
-  ${resetBox()}
-  position: fixed; 
+
+  position: sticky; 
   left: 0;
   right: 0;
   bottom: 199px; 
-  width: 375px;
-  margin: 0 auto; 
+  width: 375px;  
   display: flex;   
   flex-direction: column;
   z-index: 10;
