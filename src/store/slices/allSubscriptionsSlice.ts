@@ -1,21 +1,24 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../store';
 import fetchData from '../../utils/fetchData';
 import { allSubscriptionsResponseSchema, type AllSubscriptionsResponseModel } from '../../models/allSubscriptionsSchema';
 import { BASE_URL } from '../../utils/variables';
 import { type SingleSubScriptionModel } from '../../models/singleSubscriptionSchema';
 
+
 interface FetchSubscriptionsParams {
   recommended?: boolean;
 }
 
-export const fetchSubscriptions = createAsyncThunk<AllSubscriptionsResponseModel, FetchSubscriptionsParams, { rejectValue: string }>(
+export const fetchSubscriptions = createAsyncThunk<AllSubscriptionsResponseModel, FetchSubscriptionsParams, { rejectValue: string, state: RootState }>(
   'subscriptions/fetchAll',
-  async ({ recommended }, { rejectWithValue }) => {
+  async ({ recommended }, { rejectWithValue, getState }) => {
+    const token = getState().token.access_token;
     let url = `${BASE_URL}subscriptions/list`;
     if (recommended) {
       url += '?is_recommended=true';
     }
-    return fetchData(url, allSubscriptionsResponseSchema, rejectWithValue);
+    return fetchData(url, allSubscriptionsResponseSchema, rejectWithValue, token);
   }
 );
 

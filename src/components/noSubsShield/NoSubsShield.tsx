@@ -11,13 +11,14 @@ interface NoSubsShieldProps {
 const NoSubsShield: FC<NoSubsShieldProps> = ({ title, text }) => {
   return (
     <Card sx={{
-      margin: 0,
       flexGrow: '1',
       flexBasis: 'calc(50% - 8px)',
       maxWidth: '100%'
     }} >
       <CardContent
         sx={{
+          margin: 0,
+          padding: '16px 12px 16px',
           width: '100%',
           boxSizing: 'border-box',
           display: 'flex',
@@ -35,7 +36,11 @@ const NoSubsShield: FC<NoSubsShieldProps> = ({ title, text }) => {
         <Typography
           className="textSmallRegular"
           color="text.secondary"
-          align="center">
+          align="center"
+          sx={{
+            width: '100%'
+          }}
+        >
           {text}
         </Typography>
       </CardContent>

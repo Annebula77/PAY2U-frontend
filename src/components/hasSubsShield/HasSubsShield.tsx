@@ -1,20 +1,18 @@
 import { type FC } from "react";
 import { Card, CardContent, Typography } from "@mui/material";
-import { format } from 'date-fns';
-import { ru } from 'date-fns/locale';
 
 
 interface HasSubsShieldProps {
-  stats: number | 0;
+  stats: number;
   name: string;
-  date?: Date | null;
+  date?: string | null;
   showCurrencySymbol?: boolean;
 }
 
 
 
 const HasSubsShield: FC<HasSubsShieldProps> = ({ stats, name, date, showCurrencySymbol }) => {
-  const formattedDate = date ? format(date, 'd MMMM', { locale: ru }) : '';
+
   return (
     <Card sx={{
       margin: 0,
@@ -49,7 +47,7 @@ const HasSubsShield: FC<HasSubsShieldProps> = ({ stats, name, date, showCurrency
           className="textSmallRegular"
           color="text.secondary"
           align="center">
-          {formattedDate}
+          {date}
         </Typography>
       </CardContent>
     </Card >
