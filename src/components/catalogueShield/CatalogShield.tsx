@@ -18,7 +18,7 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-content: flex-end;
-  width: 60%;
+  width: 62%;
   gap: 40px;
 `;
 
@@ -48,9 +48,10 @@ const Logo = styled.img`
 `;
 
 const CashBackBox = styled.div`
- ${resetBox()};
+  ${resetBox()};
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end;  
 `;
 
 
@@ -92,7 +93,8 @@ const CatalogueShield: FC<CatalogueShieldProps> = ({ img, name, price, cashback,
               <Typography
                 className="textSmallMedium"
                 color="primary.main"
-                align="right">{`кешбэк ${cashback ? cashback : '10'}%`}</Typography>
+                align="center"
+              >{`кешбэк ${cashback ? cashback : '10'}%`}</Typography>
             </CashBackBox>
           </StyledDiv>
         </CardContent>

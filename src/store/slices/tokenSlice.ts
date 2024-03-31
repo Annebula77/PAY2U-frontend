@@ -47,7 +47,12 @@ const initialState: TokenProps = {
 export const tokenSlice = createSlice({
   name: 'getToken',
   initialState,
-  reducers: {},
+  reducers: {
+    setTokens: (state, action) => {
+      state.access_token = action.payload.access_token;
+      state.refresh_token = action.payload.refresh_token;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchToken.pending, (state) => {
@@ -58,15 +63,21 @@ export const tokenSlice = createSlice({
         state.isLoading = false;
         state.access_token = action.payload.access_token;
         state.refresh_token = action.payload.refresh_token;
+
+        localStorage.setItem('access_token', action.payload.access_token);
+        localStorage.setItem('refresh_token', action.payload.refresh_token);
       })
       .addCase(fetchToken.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.errorMessage = action.payload as string;
+
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
       });
   },
 });
 
-
+export const { setTokens } = tokenSlice.actions;
 
 export default tokenSlice.reducer;

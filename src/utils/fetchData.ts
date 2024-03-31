@@ -5,10 +5,20 @@ const fetchData = async <T>(
   url: string,
   schema: ZodSchema<T>,
   rejectWithValue: (message: string) => void,
+  token?: string,
 ): Promise<T> => {
   try {
-    const response = await axios.get(url);
-    return schema.parse(response.data);
+    const config = token ? {
+      headers: { Authorization: `Bearer ${token}` }
+    } : undefined;
+    const response = await axios.get(url, config);
+    // NOTE: убрать консоль-логи
+    // console.log("страница:", url);
+    // console.log("Данные от сервера:", response.data);
+    // return schema.parse(response.data);
+    const parsedData = schema.parse(response.data);
+    console.log("Данные после валидации Zod:", parsedData);
+    return parsedData;
   } catch (err) {
     if (err instanceof ZodError) {
       console.error('Parsing errors', err.errors);

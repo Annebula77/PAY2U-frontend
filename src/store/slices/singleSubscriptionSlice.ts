@@ -1,14 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../store';
 import fetchData from '../../utils/fetchData';
 import { BASE_URL } from '../../utils/variables';
 import { type SingleSubScriptionModel, singleSubscriptionSchema } from '../../models/singleSubscriptionSchema';
 
 
-export const fetchSingleSubscription = createAsyncThunk<SingleSubScriptionModel, number, { rejectValue: string }>(
+export const fetchSingleSubscription = createAsyncThunk<SingleSubScriptionModel, number, { rejectValue: string, state: RootState }>(
   'subscription/fetchSingle',
-  async (subscription_id, { rejectWithValue }) => {
+  async (subscription_id, { rejectWithValue, getState }) => {
+    const token = getState().token.access_token;
     const url = `${BASE_URL}/subscriptions/${subscription_id}`;
-    return fetchData(url, singleSubscriptionSchema, rejectWithValue);
+    return fetchData(url, singleSubscriptionSchema, rejectWithValue, token);
   }
 );
 

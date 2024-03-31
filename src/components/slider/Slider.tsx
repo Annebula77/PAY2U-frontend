@@ -50,7 +50,7 @@ const Slider: React.FC<SliderProps> = ({ slides, showNextButton = false, title, 
   return (
     <SwiperContainer>
       <NavContainer>
-        <Typography variant="h2" align="left" sx={{ marginBottom: '10px' }}>{title}</Typography>
+        <Typography variant="h2" align="left" sx={{ marginBottom: '10px', marginLeft: '8px' }}>{title}</Typography>
         {showNextButton && <NextButton type="button" onClick={scrollNext}>
           <ForwardArrowIcon fill='rgba(0, 0, 0, 1)' />
         </NextButton>}

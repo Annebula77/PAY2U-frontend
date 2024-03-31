@@ -1,14 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../store';
 import fetchData from '../../utils/fetchData';
 import { BASE_URL } from '../../utils/variables';
 import { categoryListSchema, type CategoryListModel, type CategoryModel } from '../../models/categorySchema';
 
 
-export const fetchCategoryList = createAsyncThunk<CategoryListModel, void, { rejectValue: string }>(
+
+export const fetchCategoryList = createAsyncThunk<CategoryListModel, void, { rejectValue: string, state: RootState }>(
   'categories/fetchCategories',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
+    const token = getState().token.access_token;
     const url = `${BASE_URL}/subscriptions/categories/`;
-    return fetchData(url, categoryListSchema, rejectWithValue);
+    return fetchData(url, categoryListSchema, rejectWithValue, token);
   }
 );
 

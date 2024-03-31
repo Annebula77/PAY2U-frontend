@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { Typography } from "@mui/material";
 import BackArrowIcon from "../icons/BackArrowIcon";
 import styled from "styled-components";
@@ -11,6 +13,9 @@ import { Link } from "react-router-dom";
 import { resetBox } from "../../styles/mixIns";
 import { useState } from "react";
 import HowItWorksContent from "../howItWorksContent/HowItWorksContent";
+import { fetchSubscriptions } from "../../store/slices/allSubscriptionsSlice";
+import { fetchClientById } from "../../store/slices/clientByIdSlice";
+import { fetchClientSubscriptions } from "../../store/slices/clientSubscriptionsSlice";
 
 const HeaderWrapper = styled.div`
   position: relative;
@@ -68,13 +73,48 @@ background-color: transparent;
 cursor: pointer;
 `;
 
-// NOTE: mock data, needs to be replaced
-const mockSubscriptions = { countSub: 3, cashbackMonth: 150, notificationDate: new Date(), toPay: 400 };
-// const mockSubscriptions = { countSub: 0, cashbackMonth: 0, notificationDate: null, toPay: 0 };
 
 const Header = () => {
 
+  const dispatch = useAppDispatch();
+  const { data: client } = useAppSelector(state => state.client);
+  const { data: subscriptions } = useAppSelector(state => state.allSubscriptions);
+  const { data: clientSubscriptions } = useAppSelector(state => state.clientSubscriptions);
+
+  useEffect(() => {
+    const isLiked = false;
+    const isActive = true;
+    // NOTE: хардкод, так как авторизация не реализовывалась.
+    dispatch(fetchClientById(1));
+    dispatch(fetchSubscriptions({ recommended: true }));
+    dispatch(fetchClientSubscriptions({ clientId: 1, isActive, isLiked }))
+  }, [dispatch]);
   const [showModal, setShowModal] = useState(false);
+
+  // NOTE: перенести функцию в utils
+  const activeSubscriptions = clientSubscriptions?.results
+    .filter(sub => sub.is_active)
+    .sort((a, b) => new Date(a.expiration_date).getTime() - new Date(b.expiration_date).getTime());
+
+  if (!activeSubscriptions) {
+    return 0;
+  }
+
+  const nextSubscription = activeSubscriptions[0];
+
+  if (!nextSubscription) {
+    return;
+  }
+  const expirationDate = new Date(nextSubscription?.expiration_date);
+  if (isNaN(expirationDate.getTime())) {
+    console.error('Невалидная дата:', nextSubscription?.expiration_date);
+    return;
+  }
+
+  // ***/
+
+  const formattedDate = expirationDate.toLocaleString('ru-RU', { day: 'numeric', month: 'long' });
+  const amount = nextSubscription?.tariff.amount;
 
   return (
     <HeaderWrapper>
@@ -90,9 +130,14 @@ const Header = () => {
         </SearchContainer>
       </ControlsContainer>
       <Slider
-        // NOTE: временное решение для демонстрации MVP
-        slides={Array.from({ length: 10 }, (_, index) => (
-          <RecommendedShield key={index} img="" title='' cashback='' route="/" />
+        slides={subscriptions.map((subscription) => (
+          <RecommendedShield
+            key={subscription.id}
+            img={subscription.image_preview}
+            title={subscription.name}
+            cashback={`${subscription.cashback.amount}`}
+            route={`/subscriptions/${subscription.id}`}
+          />
         ))}
         title="Рекомендации"
         slidePerView='3.5'
@@ -101,9 +146,9 @@ const Header = () => {
         <Typography variant="h1" color="text.primary" align="left">Мои подписки</Typography>
         <SubsRow>
           <Link to='' style={{ textDecoration: 'none', width: '48.5%', margin: 0, padding: 0 }}>
-            {mockSubscriptions.countSub !== 0 ? (
+            {client?.subscriptions_count ? (
               <HasSubsShield
-                stats={mockSubscriptions.countSub}
+                stats={client?.subscriptions_count}
                 name="Активных"
               />) : (
               <NoSubsShield
@@ -113,9 +158,9 @@ const Header = () => {
               />)}
           </Link>
           <Link to='' style={{ textDecoration: 'none', width: '48.5%', margin: 0, padding: 0 }}>
-            {mockSubscriptions.cashbackMonth !== 0 ? (
+            {client?.month_cashback ? (
               <HasSubsShield
-                stats={mockSubscriptions.cashbackMonth}
+                stats={client?.month_cashback}
                 name="Кешбэк "
                 showCurrencySymbol
 
@@ -127,12 +172,12 @@ const Header = () => {
               />)}
           </Link>
           <Link to='' style={{ textDecoration: 'none', width: '100%', margin: 0, padding: 0 }}>
-            {mockSubscriptions.notificationDate !== null && mockSubscriptions.toPay !== 0 ? (
+            {nextSubscription ? (
               <HasSubsShield
-                stats={mockSubscriptions.toPay}
+                stats={amount}
                 name="Ближайшее списание"
                 showCurrencySymbol
-                date={mockSubscriptions.notificationDate}
+                date={formattedDate}
               />) : (
               <NoSubsShield
                 title="Ближайшее списание"
