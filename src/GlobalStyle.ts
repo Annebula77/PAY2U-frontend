@@ -4,6 +4,7 @@ import { resetBox } from './styles/mixIns';
 
 const GlobalStyle = createGlobalStyle`
    body {
+    position: relative;
     ${resetBox()};  
     height: 100vh; 
     overflow-y: auto; 

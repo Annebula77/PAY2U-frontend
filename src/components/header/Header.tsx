@@ -6,10 +6,14 @@ import Slider from "../slider/Slider";
 import RecommendedShield from "../recommendedShield/RecommendedShield";
 import NoSubsShield from "../noSubsShield/NoSubsShield";
 import HasSubsShield from "../hasSubsShield/HasSubsShield";
+import { GeneralModal } from "../generalModal/GeneralModa";
 import { Link } from "react-router-dom";
 import { resetBox } from "../../styles/mixIns";
+import { useState } from "react";
+import HowItWorksContent from "../howItWorksContent/HowItWorksContent";
 
 const HeaderWrapper = styled.div`
+  position: relative;
   width: 100%; 
   margin: 0;
   background: ${({ theme }) => theme.custom.header};
@@ -69,6 +73,9 @@ const mockSubscriptions = { countSub: 3, cashbackMonth: 150, notificationDate: n
 // const mockSubscriptions = { countSub: 0, cashbackMonth: 0, notificationDate: null, toPay: 0 };
 
 const Header = () => {
+
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <HeaderWrapper>
       <ControlsContainer>
@@ -133,7 +140,7 @@ const Header = () => {
               />)}
           </Link>
         </SubsRow>
-        <TextButton type="button">
+        <TextButton type="button" onClick={() => setShowModal(true)}>
           <Typography
             className="textRegular"
             color="primary.main"
@@ -146,8 +153,11 @@ const Header = () => {
             Как работает?
           </Typography>
         </TextButton>
-
       </MySubsContainer >
+      {showModal && <GeneralModal onClose={() => { setShowModal(false) }} showCloseButton>
+        <HowItWorksContent />
+      </GeneralModal>
+      }
     </HeaderWrapper >
   );
 }

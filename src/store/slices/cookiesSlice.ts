@@ -1,4 +1,3 @@
-// features/cookieConsent/cookieConsentSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CookieConsentState {
@@ -9,7 +8,7 @@ const initialState: CookieConsentState = {
   consentGiven: false,
 };
 
-export const cookieConsentSlice = createSlice({
+const cookieConsentSlice = createSlice({
   name: 'cookieConsent',
   initialState,
   reducers: {
