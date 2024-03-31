@@ -1,10 +1,23 @@
 import { configureStore } from '@reduxjs/toolkit';
 import cookiesReducer from './slices/cookiesSlice';
+import tokenReducer from './slices/tokenSlice';
+import allSubscriptionsReducer from './slices/allSubscriptionsSlice';
+import singleSubscriptionReducer from './slices/singleSubscriptionSlice';
+import categoriesReducer from './slices/categoriesSlice';
+import clientByIdReducer from './slices/clientByIdSlice';
+import clientSubscriptionsReducer from './slices/clientSubscriptionsSlice';
+
 
 
 export const store = configureStore({
   reducer: {
     cookies: cookiesReducer,
+    token: tokenReducer,
+    allSubscriptions: allSubscriptionsReducer,
+    subscription: singleSubscriptionReducer,
+    categories: categoriesReducer,
+    client: clientByIdReducer,
+    clientSubscriptions: clientSubscriptionsReducer
   },
 });
 

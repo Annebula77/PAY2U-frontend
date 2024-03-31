@@ -1,9 +1,12 @@
 import { Card, CardContent, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../store/hooks";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import cake from '../../assets/cake.png';
 import ArrowRight from "../icons/ArrowRight";
 import { resetBox } from "../../styles/mixIns";
+import { fetchToken } from "../../store/slices/tokenSlice";
+import { type SyntheticEvent } from "react";
 
 const StyledDiv = styled.div`
   ${resetBox()};
@@ -54,23 +57,51 @@ const StyledParagraph = styled.p`
   color: rgba(234, 65, 127, 1);
 `;
 
-const TitleShield = () => (
-  <Card sx={{ width: '343px', height: '132px' }}>
-    <StyledCardContent>
-      <StyledDiv>
-        <Typography className="textCardH1">Мои подписки</Typography>
-        <Typography className="textSmallRegular" color="text.secondary">Управление подписками, контроль списаний, кешбэк
-          с автоплатежей</Typography>
-        <Link to="/onboarding1" style={{ textDecoration: 'none' }}>
-          <StyledLinkDiv>
-            <ArrowRight />
-            <StyledParagraph>Подробнее</StyledParagraph>
-          </StyledLinkDiv>
-        </Link>
-      </StyledDiv>
-      <BackgroundImage src={cake} alt="Фон" />
-    </StyledCardContent>
-  </Card>
-);
+const NextButton = styled.button`
+ ${resetBox()};
+ display: flex;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
+const TitleShield = () => {
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleLinkClick = async (evt: SyntheticEvent) => {
+    evt.preventDefault();
+    const id = 1;
+    try {
+      await dispatch(fetchToken(id)).unwrap();
+      console.log(fetchToken.fulfilled);
+      navigate("/onboarding1");
+    } catch (error) {
+      console.error("Ошибка при получении токена", error);
+    }
+  };
+
+
+  return (
+    <Card sx={{ width: '343px', height: '132px' }}>
+      <StyledCardContent>
+        <StyledDiv>
+          <Typography className="textCardH1">Мои подписки</Typography>
+          <Typography className="textSmallRegular" color="text.secondary">Управление подписками, контроль списаний, кешбэк
+            с автоплатежей</Typography>
+          <NextButton onClick={handleLinkClick}>
+            <StyledLinkDiv>
+              <ArrowRight />
+              <StyledParagraph>Подробнее</StyledParagraph>
+            </StyledLinkDiv>
+          </NextButton>
+        </StyledDiv>
+        <BackgroundImage src={cake} alt="Фон" />
+      </StyledCardContent>
+    </Card>
+  );
+}
 
 export default TitleShield;
