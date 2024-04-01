@@ -18,8 +18,6 @@ const cookieConsentSlice = createSlice({
   },
 });
 
-
 export const { setCookieConsent } = cookieConsentSlice.actions;
-
 
 export default cookieConsentSlice.reducer;

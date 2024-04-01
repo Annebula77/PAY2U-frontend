@@ -1,9 +1,9 @@
 import { type FC, type PropsWithChildren } from 'react';
 import styled from 'styled-components';
-import { ContainedButton } from '../buttons/containedButton/ContainedButton';
-import { OutlinedButton } from '../buttons/outlinedButton/OutlinedButton';
+import { ContainedButton } from '../buttons/ContainedButton/ContainedButton';
+import { OutlinedButton } from '../buttons/OutlinedButton/OutlinedButton';
 import { Link } from 'react-router-dom';
-import { resetBox } from '../../styles/mixIns';
+import { resetBox } from 'src/styles/mixIns';
 
 interface Props extends PropsWithChildren {
   toNext: string;
@@ -40,24 +40,20 @@ const ContentContainer = styled.article`
   gap: 16px;
 `;
 
-
 const OnboardingBody: FC<Props> = ({ toNext, out, children }) => {
-
   return (
     <StyledSection>
       <ContentContainer>{children}</ContentContainer>
       <ButtonContainer>
         <Link to={toNext} style={{ textDecoration: 'none', width: '100%' }}>
-          <ContainedButton
-            variant='contained'>Далее</ContainedButton>
+          <ContainedButton variant="contained">Далее</ContainedButton>
         </Link>
         <Link to={out} style={{ textDecoration: 'none', width: '100%' }}>
-          <OutlinedButton variant='outlined'>Пропустить</OutlinedButton>
+          <OutlinedButton variant="outlined">Пропустить</OutlinedButton>
         </Link>
       </ButtonContainer>
     </StyledSection>
-  )
-
-}
+  );
+};
 
 export default OnboardingBody;

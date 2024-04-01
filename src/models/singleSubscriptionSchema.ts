@@ -1,7 +1,6 @@
 import { z } from 'zod';
 import { categorySchema } from './categorySchema';
 
-
 const cashbackSchema = z.object({
   id: z.number(),
   amount: z.number(),
@@ -14,6 +13,8 @@ export const tariffSchema = z.object({
   amount: z.number(),
   description: z.string(),
 });
+
+export type TariffModel = z.infer<typeof tariffSchema>;
 
 const subscriptionBenefitSchema = z.object({
   id: z.number(),

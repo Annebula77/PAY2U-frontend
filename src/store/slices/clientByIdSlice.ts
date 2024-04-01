@@ -1,12 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import fetchData from '../../utils/fetchData';
-import { BASE_URL } from '../../utils/variables';
-import { type ClientByIdModel, clientByIdSchema } from '../../models/clientByIdSchema';
+import fetchData from 'src/utils/fetchData';
+import { BASE_URL } from 'src/utils/variables';
+import {
+  type ClientByIdModel,
+  clientByIdSchema,
+} from 'src/models/clientByIdSchema';
 
-
-
-export const fetchClientById = createAsyncThunk<ClientByIdModel, number, { rejectValue: string, state: RootState }>(
+export const fetchClientById = createAsyncThunk<
+  ClientByIdModel,
+  number,
+  { rejectValue: string; state: RootState }
+>(
   'client/fetchClientById',
   async (client_id, { rejectWithValue, getState }) => {
     const token = getState().token.access_token;
@@ -14,7 +19,6 @@ export const fetchClientById = createAsyncThunk<ClientByIdModel, number, { rejec
     return fetchData(url, clientByIdSchema, rejectWithValue, token);
   }
 );
-
 
 interface ClientByIdProps {
   data: ClientByIdModel | null;
@@ -32,9 +36,9 @@ const clientByIdSlice = createSlice({
   name: 'subscription',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchClientById.pending, (state) => {
+      .addCase(fetchClientById.pending, state => {
         state.loading = true;
         state.error = null;
       })

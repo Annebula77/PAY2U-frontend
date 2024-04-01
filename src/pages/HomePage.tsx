@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import HomePageContent from "../components/homepageContent/HomePageContent";
+import HomePageContent from '../components/HomepageContent/HomePageContent';
 import { useLocation } from 'react-router-dom';
-import CookiesModal from '../components/cookiesModal/CookiesModal';
-import { StyledSection } from "../styles/pageAndOnboardingStyles";
+import CookiesModal from '../components/CookiesModal/CookiesModal';
+import { StyledSection } from '../styles/pageAndOnboardingStyles';
 import { setCookieConsent } from '../store/slices/cookiesSlice';
-
-
 
 const HomePage = () => {
   const dispatch = useAppDispatch();
-  const consentGiven = useAppSelector((state) => state.cookies.consentGiven);
+  const consentGiven = useAppSelector(state => state.cookies.consentGiven);
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
 
@@ -25,10 +23,11 @@ const HomePage = () => {
 
   useEffect(() => {
     const consentString = localStorage.getItem('cookieConsent');
-    const consent = consentString ? JSON.parse(consentString).consentGiven : false;
+    const consent = consentString
+      ? JSON.parse(consentString).consentGiven
+      : false;
     dispatch(setCookieConsent(consent));
   }, [dispatch]);
-
 
   const handleAccept = () => {
     const consentInfo = {
@@ -46,7 +45,6 @@ const HomePage = () => {
       {showModal && <CookiesModal onClick={handleAccept} />}
     </StyledSection>
   );
-
-}
+};
 
 export default HomePage;

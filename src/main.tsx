@@ -21,5 +21,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </Provider>
       </StyledThemeProvider>
     </MuiThemeProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

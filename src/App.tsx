@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useAppDispatch } from "./store/hooks";
+import { useAppDispatch } from './store/hooks';
 import styled from 'styled-components';
 import ShieldInApp from './pages/ShieldInApp';
 import OnboardingOne from './pages/OnboardingOne';
@@ -9,16 +9,13 @@ import OnboardingThree from './pages/OnboardingThree';
 import HomePage from './pages/HomePage';
 import CookiesPage from './pages/CookiesPage';
 import { setTokens } from './store/slices/tokenSlice';
-
-
-
-
+import SubscriptionPage from './pages/SubscriptionPage';
 
 const StyledSection = styled.section`
   width: 100%;
   box-sizing: border-box;
   margin: 0;
-  padding: 0;  
+  padding: 0;
 `;
 
 const App = () => {
@@ -41,9 +38,13 @@ const App = () => {
         <Route path="/onboarding3" element={<OnboardingThree />} />
         <Route path="/main" element={<HomePage />} />
         <Route path="/cookies" element={<CookiesPage />} />
+        <Route
+          path="/subscriptions/:subscription_id"
+          element={<SubscriptionPage />}
+        />
       </Routes>
     </StyledSection>
   );
-}
+};
 
 export default App;

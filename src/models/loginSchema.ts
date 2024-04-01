@@ -7,6 +7,6 @@ export type LoginRequestModel = z.infer<typeof loginRequestSchema>;
 
 export const loginResponseSchema = z.object({
   access_token: z.string(),
-  refresh_token: z.string()
-})
+  refresh_token: z.string(),
+});
 export type LoginResponseModel = z.infer<typeof loginResponseSchema>;

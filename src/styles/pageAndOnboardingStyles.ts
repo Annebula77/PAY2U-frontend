@@ -19,16 +19,16 @@ export const TextDiv = styled.div`
   ${resetBox()};
   width: 100%;
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   gap: 8px;
 `;
 
 export const TextDivLong = styled.div`
-  margin:0 0 40px; 
+  margin: 0 0 40px;
   padding: 0;
   box-sizing: border-box;
   width: 100%;
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   gap: 8px;
 `;

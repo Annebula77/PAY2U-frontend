@@ -1,6 +1,5 @@
-import { type FC } from "react";
-import { Card, CardContent, Typography } from "@mui/material";
-
+import { type FC } from 'react';
+import { Card, CardContent, Typography } from '@mui/material';
 
 interface HasSubsShieldProps {
   stats: number;
@@ -9,17 +8,21 @@ interface HasSubsShieldProps {
   showCurrencySymbol?: boolean;
 }
 
-
-
-const HasSubsShield: FC<HasSubsShieldProps> = ({ stats, name, date, showCurrencySymbol }) => {
-
+const HasSubsShield: FC<HasSubsShieldProps> = ({
+  stats,
+  name,
+  date,
+  showCurrencySymbol,
+}) => {
   return (
-    <Card sx={{
-      margin: 0,
-      flexGrow: '1',
-      flexBasis: 'calc(50% - 8px)',
-      maxWidth: '100%'
-    }} >
+    <Card
+      sx={{
+        margin: 0,
+        flexGrow: '1',
+        flexBasis: 'calc(50% - 8px)',
+        maxWidth: '100%',
+      }}
+    >
       <CardContent
         sx={{
           width: '100%',
@@ -29,28 +32,21 @@ const HasSubsShield: FC<HasSubsShieldProps> = ({ stats, name, date, showCurrency
           gap: '4px',
         }}
       >
-        <Typography
-          variant="h4"
-          color="primary.main"
-          align="center"
-        >
-          {`${stats}${showCurrencySymbol ? '₽' : ''}`}
+        <Typography variant="h4" color="primary.main" align="center">
+          {`${stats}${showCurrencySymbol ? ' ₽' : ''}`}
         </Typography>
-        <Typography
-          className="textRegular"
-          color="text.primary"
-          align="center"
-        >
+        <Typography className="textRegular" color="text.primary" align="center">
           {name}
         </Typography>
         <Typography
           className="textSmallRegular"
           color="text.secondary"
-          align="center">
+          align="center"
+        >
           {date}
         </Typography>
       </CardContent>
-    </Card >
+    </Card>
   );
-}
+};
 export default HasSubsShield;

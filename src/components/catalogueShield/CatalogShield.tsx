@@ -1,9 +1,8 @@
-import { type FC } from "react";
-import { Card, CardContent, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import MockLogo from "../../assets/mockIcon.png";
-import { resetBox } from "../../styles/mixIns";
+import { type FC } from 'react';
+import { Card, CardContent, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { resetBox } from 'src/styles/mixIns';
 
 interface CatalogueShieldProps {
   img: string;
@@ -14,7 +13,7 @@ interface CatalogueShieldProps {
 }
 
 const StyledDiv = styled.div`
- ${resetBox()};
+  ${resetBox()};
   display: flex;
   flex-direction: column;
   align-content: flex-end;
@@ -23,15 +22,15 @@ const StyledDiv = styled.div`
 `;
 
 const UpperTextBox = styled.div`
- ${resetBox()};
+  ${resetBox()};
   display: flex;
   flex-direction: column;
   align-content: flex-end;
-  justify-content: flex-start; 
+  justify-content: flex-start;
 `;
 
-const LogoContainer = styled.div` 
-  width: 60%;  
+const LogoContainer = styled.div`
+  width: 60%;
   ${resetBox()};
   display: flex;
   flex-direction: column;
@@ -42,23 +41,31 @@ const LogoContainer = styled.div`
 const Logo = styled.img`
   display: inline-block;
   width: 40px;
-  height: 40px;  
+  height: 40px;
   padding: 0;
-  margin: 0;  
+  margin: 0;
 `;
 
 const CashBackBox = styled.div`
   ${resetBox()};
   width: 100%;
   display: flex;
-  justify-content: flex-end;  
+  justify-content: flex-end;
 `;
 
-
-const CatalogueShield: FC<CatalogueShieldProps> = ({ img, name, price, cashback, route }) => {
+const CatalogueShield: FC<CatalogueShieldProps> = ({
+  img,
+  name,
+  price,
+  cashback,
+  route,
+}) => {
   return (
-    <Card sx={{ width: '160px', height: '104px', margin: '10px' }} >
-      <Link to={route} style={{ textDecoration: 'none', width: '100%', margin: 0, padding: 0 }}>
+    <Card sx={{ width: '160px', height: '104px', margin: '10px' }}>
+      <Link
+        to={route}
+        style={{ textDecoration: 'none', width: '100%', margin: 0, padding: 0 }}
+      >
         <CardContent
           sx={{
             width: '160px',
@@ -72,35 +79,41 @@ const CatalogueShield: FC<CatalogueShieldProps> = ({ img, name, price, cashback,
           }}
         >
           <LogoContainer>
-            <Logo src={img ? img : MockLogo} alt="service image" />
+            <Logo src={img} alt="service image" />
             <Typography
               className="textSmallBold"
               color="text.primary"
-              align="left">{name ? name : 'КРУТО-ТВ'}</Typography>
+              align="left"
+            >
+              {name}
+            </Typography>
           </LogoContainer>
           <StyledDiv>
             <UpperTextBox>
               <Typography
                 className="textCard"
                 color="text.primary"
-                align="right">{`От ${price ? price : '279'}₽`}</Typography>
+                align="right"
+              >{`От ${price} ₽`}</Typography>
               <Typography
                 className="textSmallRegular"
                 color="text.secondary"
-                align="right">в месяц</Typography>
+                align="right"
+              >
+                в месяц
+              </Typography>
             </UpperTextBox>
             <CashBackBox>
               <Typography
                 className="textSmallMedium"
                 color="primary.main"
                 align="center"
-              >{`кешбэк ${cashback ? cashback : '10'}%`}</Typography>
+              >{`кешбэк ${cashback}%`}</Typography>
             </CashBackBox>
           </StyledDiv>
         </CardContent>
       </Link>
-    </Card >
-
+    </Card>
   );
-}
+};
 export default CatalogueShield;

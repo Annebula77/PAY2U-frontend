@@ -1,8 +1,8 @@
-import { FC, ReactNode } from "react";
-import { createPortal } from "react-dom";
-import styled from "styled-components";
-import { resetBox } from "../../styles/mixIns";
-import CloseIcon from "../icons/CloseIcon";
+import { FC, ReactNode } from 'react';
+import { createPortal } from 'react-dom';
+import styled from 'styled-components';
+import { resetBox } from 'src/styles/mixIns';
+import CloseIcon from '../icons/CloseIcon';
 
 interface ModalProps {
   onClose?: () => void;
@@ -16,11 +16,11 @@ const ModalOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3); 
+  background: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9; 
+  z-index: 9;
 `;
 
 const ModalWindow = styled.div`
@@ -45,10 +45,14 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-export const GeneralModal: FC<ModalProps> = ({ onClose, children, showCloseButton }) => {
+export const GeneralModal: FC<ModalProps> = ({
+  onClose,
+  children,
+  showCloseButton,
+}) => {
   return createPortal(
     <ModalOverlay onClick={onClose}>
-      <ModalWindow onClick={e => e.stopPropagation()}>
+      <ModalWindow onClick={evt => evt.stopPropagation()}>
         {showCloseButton && onClose && (
           <CloseButton onClick={onClose}>
             <CloseIcon />
@@ -56,6 +60,7 @@ export const GeneralModal: FC<ModalProps> = ({ onClose, children, showCloseButto
         )}
         {children}
       </ModalWindow>
-    </ModalOverlay>, document.body
+    </ModalOverlay>,
+    document.body
   );
 };

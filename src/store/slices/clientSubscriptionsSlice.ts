@@ -1,29 +1,35 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import fetchData from '../../utils/fetchData';
-import { BASE_URL } from '../../utils/variables';
-import { clientSubscriptionsSchema, type ClientSubscriptionsModal } from '../../models/clientsSubscriptionsSchema';
-
-
+import fetchData from 'src/utils/fetchData';
+import { BASE_URL } from 'src/utils/variables';
+import {
+  clientSubscriptionsSchema,
+  type ClientSubscriptionsModal,
+} from 'src/models/clientsSubscriptionsSchema';
 
 interface FetchSubscriptionsParams {
   clientId: number;
-  isLiked?: boolean;
+  // isLiked?: boolean;
   isActive?: boolean;
 }
 
-export const fetchClientSubscriptions = createAsyncThunk<ClientSubscriptionsModal, FetchSubscriptionsParams, { rejectValue: string, state: RootState }>(
+export const fetchClientSubscriptions = createAsyncThunk<
+  ClientSubscriptionsModal,
+  FetchSubscriptionsParams,
+  { rejectValue: string; state: RootState }
+>(
   'subscriptions/fetchClient',
-  async ({ clientId, isLiked, isActive }, { rejectWithValue, getState }) => {
+  async ({ clientId, isActive }, { rejectWithValue, getState }) => {
     const token = getState().token.access_token;
     const queryParams = new URLSearchParams();
-    if (isLiked !== undefined) queryParams.append('is_liked', isLiked.toString());
-    if (isActive !== undefined) queryParams.append('is_active', isActive.toString());
+    // if (isLiked !== undefined)
+    //   queryParams.append('is_liked', isLiked.toString());
+    if (isActive !== undefined)
+      queryParams.append('is_active', isActive.toString());
     const url = `${BASE_URL}clients/${clientId}/subscriptions/?${queryParams.toString()}`;
     return fetchData(url, clientSubscriptionsSchema, rejectWithValue, token);
   }
 );
-
 
 interface ClientSubscriptionsProps {
   data: ClientSubscriptionsModal | null;
@@ -41,9 +47,9 @@ const clientSubscriptionsSlice = createSlice({
   name: 'subscription',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchClientSubscriptions.pending, (state) => {
+      .addCase(fetchClientSubscriptions.pending, state => {
         state.loading = true;
         state.error = null;
       })

@@ -1,5 +1,5 @@
-import OnboardingTwoContent from "../components/onboardingTwoContent/OnboardingTwoContent";
-import { StyledSection } from "../styles/pageAndOnboardingStyles";
+import OnboardingTwoContent from '../components/OnboardingTwoContent/OnboardingTwoContent';
+import { StyledSection } from '../styles/pageAndOnboardingStyles';
 
 const OnboardingTwo = () => (
   <StyledSection>

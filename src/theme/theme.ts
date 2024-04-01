@@ -23,16 +23,14 @@ const theme = createTheme({
     background: {
       default: 'rgba(255, 255, 255, 1)', // white background
       paper: 'rgba(255, 255, 255, 1)', // For elements like cards, dialogues
-
     },
     text: {
       primary: 'rgba(40, 43, 46, 1)',
       secondary: 'rgba(142, 142, 142, 1)',
-
-    }
+    },
   },
   custom: {
-    header: 'linear-gradient(158deg, #C9D8F0 0.65%, #FAF5F5 111.4%)'
+    header: 'linear-gradient(158deg, #C9D8F0 0.65%, #FAF5F5 111.4%)',
   },
   typography: {
     fontFamily: 'Inter, Arial, sans-serif',
@@ -40,31 +38,30 @@ const theme = createTheme({
       fontSize: '22px',
       fontStyle: 'normal',
       fontWeight: 700,
-      lineHeight: 'normal'
+      lineHeight: 'normal',
     },
     h2: {
       fontSize: '20px',
       fontStyle: 'normal',
       fontWeight: 600,
-      lineHeight: 'normal'
+      lineHeight: 'normal',
     },
     h3: {
       fontSize: '18px',
       fontStyle: 'normal',
       fontWeight: 600,
-      lineHeight: 'normal'
+      lineHeight: 'normal',
     },
     h4: {
       fontSize: '16px',
       fontStyle: 'normal',
       fontWeight: 600,
-      lineHeight: 'normal'
+      lineHeight: 'normal',
     },
   },
   components: {
     MuiTab: {
       styleOverrides: {
-
         root: {
           textTransform: 'none',
           fontWeight: 400,
@@ -81,7 +78,7 @@ const theme = createTheme({
       styleOverrides: {
         indicator: {
           transform: 'translateY(-8px)',
-          color: 'rgba(66, 119, 202, 1)'
+          color: 'rgba(66, 119, 202, 1)',
         },
       },
     },
@@ -96,6 +93,20 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: '12px', // Устанавливаем borderRadius для всех карточек
+        },
+      },
+    },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none',
+          border: 'none',
+          '&:before': {
+            display: 'none',
+          },
+          '&.Mui-expanded': {
+            margin: 'auto',
+          },
         },
       },
     },
@@ -116,25 +127,25 @@ const theme = createTheme({
             fontSize: '16px',
             fontStyle: 'normal',
             fontWeight: 400,
-            lineHeight: 'normal'
+            lineHeight: 'normal',
           },
           '&.textSmallRegular': {
             fontSize: '12px',
             fontStyle: 'normal',
             fontWeight: 400,
-            lineHeight: 'normal'
+            lineHeight: 'normal',
           },
           '&.textSmallBold': {
             fontSize: '12px',
             fontStyle: 'normal',
             fontWeight: 700,
-            lineHeight: 'normal'
+            lineHeight: 'normal',
           },
           '&.textSmallMedium': {
             fontSize: '12px',
             fontStyle: 'normal',
             fontWeight: 500,
-            lineHeight: 'normal'
+            lineHeight: 'normal',
           },
           '&.textCardH1': {
             fontSize: '15px',
@@ -148,13 +159,13 @@ const theme = createTheme({
             fontSize: '18px',
             fontStyle: 'normal',
             fontWeight: 600,
-            lineHeight: 'normal'
+            lineHeight: 'normal',
           },
           '&.textCard': {
             fontSize: '14px',
             fontStyle: 'normal',
             fontWeight: 400,
-            lineHeight: 'normal'
+            lineHeight: 'normal',
           },
         },
       },

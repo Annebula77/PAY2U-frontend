@@ -1,9 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { type LoginResponseModel, loginRequestSchema, loginResponseSchema } from '../../models/loginSchema';
+import {
+  type LoginResponseModel,
+  loginRequestSchema,
+  loginResponseSchema,
+} from 'src/models/loginSchema';
 import { BASE_URL } from '../../utils/variables';
-
 
 export const fetchToken = createAsyncThunk(
   'token/fetchToken',
@@ -14,7 +17,10 @@ export const fetchToken = createAsyncThunk(
         console.error('Parsing errors', validatedId.error);
         return rejectWithValue('Parsing errors');
       }
-      const response = await axios.post<LoginResponseModel>(`${BASE_URL}login/get-token/`, validatedId.data);
+      const response = await axios.post<LoginResponseModel>(
+        `${BASE_URL}login/get-token/`,
+        validatedId.data
+      );
 
       const validatedResponse = loginResponseSchema.safeParse(response.data);
       if (!validatedResponse.success) {
@@ -28,13 +34,11 @@ export const fetchToken = createAsyncThunk(
   }
 );
 
-
 interface TokenProps extends LoginResponseModel {
   isLoading: boolean;
   isError: boolean;
   errorMessage: string;
 }
-
 
 const initialState: TokenProps = {
   access_token: '',
@@ -53,9 +57,9 @@ export const tokenSlice = createSlice({
       state.refresh_token = action.payload.refresh_token;
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchToken.pending, (state) => {
+      .addCase(fetchToken.pending, state => {
         state.isLoading = true;
         state.isError = false;
       })
