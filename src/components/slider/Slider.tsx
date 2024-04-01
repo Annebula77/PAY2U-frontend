@@ -1,9 +1,9 @@
 import { Typography } from '@mui/material';
-import React, { useRef, ReactNode } from 'react';
+import { useRef, ReactNode } from 'react';
 import { register } from 'swiper/element/bundle';
-import styled from "styled-components";
+import styled from 'styled-components';
 import ForwardArrowIcon from '../icons/ForwardArrowIcon';
-import { resetBox } from '../../styles/mixIns';
+import { resetBox } from 'src/styles/mixIns';
 // Регистрируем веб-компоненты Swiper
 register();
 
@@ -14,7 +14,6 @@ interface SliderProps {
   slidePerView: string;
   spaceBetween?: string;
 }
-
 
 const SwiperContainer = styled.div`
   width: 100%;
@@ -29,17 +28,22 @@ const NavContainer = styled.div`
 `;
 
 const NextButton = styled.button`
-margin: 0 0 10px;
-padding: 0;
-box-sizing: border-box;
-outline: none;
-border: none;
-background-color: transparent;
-cursor: pointer;
+  margin: 0 0 10px;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 `;
 
-
-const Slider: React.FC<SliderProps> = ({ slides, showNextButton = false, title, slidePerView, spaceBetween }) => {
+const Slider: React.FC<SliderProps> = ({
+  slides,
+  showNextButton = false,
+  title,
+  slidePerView,
+  spaceBetween,
+}) => {
   const swiperElRef = useRef<HTMLElement>(null);
 
   const scrollNext = () => {
@@ -50,10 +54,18 @@ const Slider: React.FC<SliderProps> = ({ slides, showNextButton = false, title, 
   return (
     <SwiperContainer>
       <NavContainer>
-        <Typography variant="h2" align="left" sx={{ marginBottom: '10px', marginLeft: '8px' }}>{title}</Typography>
-        {showNextButton && <NextButton type="button" onClick={scrollNext}>
-          <ForwardArrowIcon fill='rgba(0, 0, 0, 1)' />
-        </NextButton>}
+        <Typography
+          variant="h2"
+          align="left"
+          sx={{ marginBottom: '10px', marginLeft: '8px' }}
+        >
+          {title}
+        </Typography>
+        {showNextButton && (
+          <NextButton type="button" onClick={scrollNext}>
+            <ForwardArrowIcon fill="rgba(0, 0, 0, 1)" />
+          </NextButton>
+        )}
       </NavContainer>
       <swiper-container
         ref={swiperElRef}

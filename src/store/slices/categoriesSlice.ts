@@ -1,20 +1,22 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import fetchData from '../../utils/fetchData';
-import { BASE_URL } from '../../utils/variables';
-import { categoryListSchema, type CategoryListModel, type CategoryModel } from '../../models/categorySchema';
+import fetchData from 'src/utils/fetchData';
+import { BASE_URL } from 'src/utils/variables';
+import {
+  categoryListSchema,
+  type CategoryListModel,
+  type CategoryModel,
+} from 'src/models/categorySchema';
 
-
-
-export const fetchCategoryList = createAsyncThunk<CategoryListModel, void, { rejectValue: string, state: RootState }>(
-  'categories/fetchCategories',
-  async (_, { rejectWithValue, getState }) => {
-    const token = getState().token.access_token;
-    const url = `${BASE_URL}/subscriptions/categories/`;
-    return fetchData(url, categoryListSchema, rejectWithValue, token);
-  }
-);
-
+export const fetchCategoryList = createAsyncThunk<
+  CategoryListModel,
+  void,
+  { rejectValue: string; state: RootState }
+>('categories/fetchCategories', async (_, { rejectWithValue, getState }) => {
+  const token = getState().token.access_token;
+  const url = `${BASE_URL}/subscriptions/categories/`;
+  return fetchData(url, categoryListSchema, rejectWithValue, token);
+});
 
 interface CategoriesProps {
   data: CategoryModel[];
@@ -34,9 +36,9 @@ const categoriesSlice = createSlice({
   name: 'categories',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchCategoryList.pending, (state) => {
+      .addCase(fetchCategoryList.pending, state => {
         state.loading = true;
         state.error = null;
       })

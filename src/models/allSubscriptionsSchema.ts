@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { singleSubscriptionSchema } from './singleSubscriptionSchema';
+import { singleSubscriptionSchema } from './singleSubscriptionSchema.ts';
 
 export const allSubscriptionsResponseSchema = z.object({
   count: z.number(),
@@ -8,4 +8,6 @@ export const allSubscriptionsResponseSchema = z.object({
   results: z.array(singleSubscriptionSchema),
 });
 
-export type AllSubscriptionsResponseModel = z.infer<typeof allSubscriptionsResponseSchema>;
+export type AllSubscriptionsResponseModel = z.infer<
+  typeof allSubscriptionsResponseSchema
+>;

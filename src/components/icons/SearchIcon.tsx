@@ -10,9 +10,11 @@ const SearchIcon: FC<Props> = ({ className }) => (
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg">
+    xmlns="http://www.w3.org/2000/svg"
+  >
     className={className}
-    <path d="M21 21L15 15M3 10C3 10.9193 3.18106
+    <path
+      d="M21 21L15 15M3 10C3 10.9193 3.18106
      11.8295 3.53284 12.6788C3.88463 13.5281 4.40024 14.2997
       5.05025 14.9497C5.70026 15.5998 6.47194 16.1154 7.32122
        16.4672C8.1705 16.8189 9.08075 17 10 17C10.9193 17 11.8295
@@ -30,6 +32,5 @@ const SearchIcon: FC<Props> = ({ className }) => (
     />
   </svg>
 );
-
 
 export default SearchIcon;

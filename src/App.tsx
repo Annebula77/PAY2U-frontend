@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useAppDispatch } from "./store/hooks";
+import { useAppDispatch } from './store/hooks';
 import styled from 'styled-components';
 import ShieldInApp from './pages/ShieldInApp';
 import OnboardingOne from './pages/OnboardingOne';
@@ -10,15 +10,11 @@ import HomePage from './pages/HomePage';
 import CookiesPage from './pages/CookiesPage';
 import { setTokens } from './store/slices/tokenSlice';
 
-
-
-
-
 const StyledSection = styled.section`
   width: 100%;
   box-sizing: border-box;
   margin: 0;
-  padding: 0;  
+  padding: 0;
 `;
 
 const App = () => {
@@ -44,6 +40,6 @@ const App = () => {
       </Routes>
     </StyledSection>
   );
-}
+};
 
 export default App;

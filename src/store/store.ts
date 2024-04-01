@@ -7,8 +7,6 @@ import categoriesReducer from './slices/categoriesSlice';
 import clientByIdReducer from './slices/clientByIdSlice';
 import clientSubscriptionsReducer from './slices/clientSubscriptionsSlice';
 
-
-
 export const store = configureStore({
   reducer: {
     cookies: cookiesReducer,
@@ -17,7 +15,7 @@ export const store = configureStore({
     subscription: singleSubscriptionReducer,
     categories: categoriesReducer,
     client: clientByIdReducer,
-    clientSubscriptions: clientSubscriptionsReducer
+    clientSubscriptions: clientSubscriptionsReducer,
   },
 });
 

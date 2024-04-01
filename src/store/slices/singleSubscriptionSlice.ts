@@ -1,11 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import fetchData from '../../utils/fetchData';
-import { BASE_URL } from '../../utils/variables';
-import { type SingleSubScriptionModel, singleSubscriptionSchema } from '../../models/singleSubscriptionSchema';
+import fetchData from 'src/utils/fetchData';
+import { BASE_URL } from 'src/utils/variables';
+import {
+  type SingleSubScriptionModel,
+  singleSubscriptionSchema,
+} from 'src/models/singleSubscriptionSchema';
 
-
-export const fetchSingleSubscription = createAsyncThunk<SingleSubScriptionModel, number, { rejectValue: string, state: RootState }>(
+export const fetchSingleSubscription = createAsyncThunk<
+  SingleSubScriptionModel,
+  number,
+  { rejectValue: string; state: RootState }
+>(
   'subscription/fetchSingle',
   async (subscription_id, { rejectWithValue, getState }) => {
     const token = getState().token.access_token;
@@ -13,7 +19,6 @@ export const fetchSingleSubscription = createAsyncThunk<SingleSubScriptionModel,
     return fetchData(url, singleSubscriptionSchema, rejectWithValue, token);
   }
 );
-
 
 interface SingleSubscriptionSliceProps {
   data: SingleSubScriptionModel | null;
@@ -31,9 +36,9 @@ const singleSubscriptionSlice = createSlice({
   name: 'subscription',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchSingleSubscription.pending, (state) => {
+      .addCase(fetchSingleSubscription.pending, state => {
         state.loading = true;
         state.error = null;
       })

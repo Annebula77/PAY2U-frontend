@@ -1,16 +1,22 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import fetchData from '../../utils/fetchData';
-import { allSubscriptionsResponseSchema, type AllSubscriptionsResponseModel } from '../../models/allSubscriptionsSchema';
-import { BASE_URL } from '../../utils/variables';
-import { type SingleSubScriptionModel } from '../../models/singleSubscriptionSchema';
-
+import fetchData from 'src/utils/fetchData';
+import {
+  allSubscriptionsResponseSchema,
+  type AllSubscriptionsResponseModel,
+} from 'src/models/allSubscriptionsSchema';
+import { BASE_URL } from 'src/utils/variables';
+import { type SingleSubScriptionModel } from 'src/models/singleSubscriptionSchema';
 
 interface FetchSubscriptionsParams {
   recommended?: boolean;
 }
 
-export const fetchSubscriptions = createAsyncThunk<AllSubscriptionsResponseModel, FetchSubscriptionsParams, { rejectValue: string, state: RootState }>(
+export const fetchSubscriptions = createAsyncThunk<
+  AllSubscriptionsResponseModel,
+  FetchSubscriptionsParams,
+  { rejectValue: string; state: RootState }
+>(
   'subscriptions/fetchAll',
   async ({ recommended }, { rejectWithValue, getState }) => {
     const token = getState().token.access_token;
@@ -18,14 +24,18 @@ export const fetchSubscriptions = createAsyncThunk<AllSubscriptionsResponseModel
     if (recommended) {
       url += '?is_recommended=true';
     }
-    return fetchData(url, allSubscriptionsResponseSchema, rejectWithValue, token);
+    return fetchData(
+      url,
+      allSubscriptionsResponseSchema,
+      rejectWithValue,
+      token
+    );
   }
 );
 
-
 interface SubscriptionsStateProps {
   data: SingleSubScriptionModel[];
-  recommendedData: SingleSubScriptionModel[],
+  recommendedData: SingleSubScriptionModel[];
   count: number;
   loading: boolean;
   error: string | null;
@@ -43,9 +53,9 @@ const allSubscriptionsSlice = createSlice({
   name: 'subscriptions',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchSubscriptions.pending, (state) => {
+      .addCase(fetchSubscriptions.pending, state => {
         state.loading = true;
         state.error = null;
       })
