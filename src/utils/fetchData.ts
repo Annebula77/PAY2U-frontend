@@ -10,17 +10,11 @@ const fetchData = async <T>(
   try {
     const config = token
       ? {
-          headers: { Authorization: `Bearer ${token}` },
-        }
+        headers: { Authorization: `Bearer ${token}` },
+      }
       : undefined;
     const response = await axios.get(url, config);
-    // NOTE: убрать консоль-логи
-    // console.log("страница:", url);
-    // console.log("Данные от сервера:", response.data);
-    // return schema.parse(response.data);
-    const parsedData = schema.parse(response.data);
-    console.log('Данные после валидации Zod:', parsedData);
-    return parsedData;
+    return schema.parse(response.data);
   } catch (err) {
     if (err instanceof ZodError) {
       console.error('Parsing errors', err.errors);

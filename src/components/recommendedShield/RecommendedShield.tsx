@@ -1,7 +1,6 @@
 import { type FC } from 'react';
 import { Card, Typography } from '@mui/material';
 import styled from 'styled-components';
-import MockLogo from 'src/assets/mockIcon.png';
 import { Link } from 'react-router-dom';
 import { resetBox } from 'src/styles/mixIns';
 
@@ -26,7 +25,7 @@ const LogoWrapper = styled.div`
   width: 100%;
   box-sizing: border-box;
   border-radius: 12px;
-  margin: 0;
+  margin: 0 0 8px;
   padding: 0;
 `;
 const Logo = styled.img`
@@ -56,16 +55,16 @@ const RecommendedShield: FC<ShieldProps> = ({
         }}
       >
         <LogoWrapper>
-          <Logo src={img ? img : MockLogo} alt="service logo" />
+          <Logo src={img} alt="service logo" />
         </LogoWrapper>
         <TextContainer>
           <Typography className="textSmallBold" color="text.primary">
-            {title ? title : 'КРУТО-ТВ'}
+            {title}
           </Typography>
           <Typography
             className="textSmallRegular"
             color="text.primary"
-          >{`кешбэк ${cashback ? cashback : '99'}%`}</Typography>
+          >{`кешбэк ${cashback}%`}</Typography>
         </TextContainer>
       </Card>
     </Link>

@@ -96,6 +96,20 @@ const theme = createTheme({
         },
       },
     },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none',
+          border: 'none',
+          '&:before': {
+            display: 'none',
+          },
+          '&.Mui-expanded': {
+            margin: 'auto',
+          },
+        },
+      },
+    },
     // Кастомизация бумажного фона
     MuiPaper: {
       styleOverrides: {

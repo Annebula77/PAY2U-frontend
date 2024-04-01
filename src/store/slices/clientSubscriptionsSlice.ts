@@ -9,7 +9,7 @@ import {
 
 interface FetchSubscriptionsParams {
   clientId: number;
-  isLiked?: boolean;
+  // isLiked?: boolean;
   isActive?: boolean;
 }
 
@@ -19,11 +19,11 @@ export const fetchClientSubscriptions = createAsyncThunk<
   { rejectValue: string; state: RootState }
 >(
   'subscriptions/fetchClient',
-  async ({ clientId, isLiked, isActive }, { rejectWithValue, getState }) => {
+  async ({ clientId, isActive }, { rejectWithValue, getState }) => {
     const token = getState().token.access_token;
     const queryParams = new URLSearchParams();
-    if (isLiked !== undefined)
-      queryParams.append('is_liked', isLiked.toString());
+    // if (isLiked !== undefined)
+    //   queryParams.append('is_liked', isLiked.toString());
     if (isActive !== undefined)
       queryParams.append('is_active', isActive.toString());
     const url = `${BASE_URL}clients/${clientId}/subscriptions/?${queryParams.toString()}`;

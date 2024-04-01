@@ -33,7 +33,7 @@ const HasSubsShield: FC<HasSubsShieldProps> = ({
         }}
       >
         <Typography variant="h4" color="primary.main" align="center">
-          {`${stats}${showCurrencySymbol ? '₽' : ''}`}
+          {`${stats}${showCurrencySymbol ? ' ₽' : ''}`}
         </Typography>
         <Typography className="textRegular" color="text.primary" align="center">
           {name}

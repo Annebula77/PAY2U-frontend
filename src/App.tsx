@@ -9,6 +9,7 @@ import OnboardingThree from './pages/OnboardingThree';
 import HomePage from './pages/HomePage';
 import CookiesPage from './pages/CookiesPage';
 import { setTokens } from './store/slices/tokenSlice';
+import SubscriptionPage from './pages/SubscriptionPage';
 
 const StyledSection = styled.section`
   width: 100%;
@@ -37,6 +38,10 @@ const App = () => {
         <Route path="/onboarding3" element={<OnboardingThree />} />
         <Route path="/main" element={<HomePage />} />
         <Route path="/cookies" element={<CookiesPage />} />
+        <Route
+          path="/subscriptions/:subscription_id"
+          element={<SubscriptionPage />}
+        />
       </Routes>
     </StyledSection>
   );

@@ -6,17 +6,16 @@ import BackArrowIcon from '../components/icons/BackArrowIcon';
 import { StyledSection } from '../styles/pageAndOnboardingStyles';
 import { resetBox } from '../styles/mixIns';
 
-const ControlsContainer = styled.nav`
+export const ControlsContainer = styled.nav`
   width: 100%;
   margin: 0;
   padding: 60px 16px 0px;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
   gap: 10px;
 `;
-const SearchContainer = styled.div`
+export const SearchContainer = styled.div`
   width: 35%;
   ${resetBox()};
   display: flex;

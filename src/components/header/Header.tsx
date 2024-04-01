@@ -84,12 +84,11 @@ const Header = () => {
   );
 
   useEffect(() => {
-    const isLiked = false;
     const isActive = true;
     // NOTE: хардкод, так как авторизация не реализовывалась.
     dispatch(fetchClientById(1));
     dispatch(fetchSubscriptions({ recommended: true }));
-    dispatch(fetchClientSubscriptions({ clientId: 1, isActive, isLiked }));
+    dispatch(fetchClientSubscriptions({ clientId: 1, isActive }));
   }, [dispatch]);
   const [showModal, setShowModal] = useState(false);
 

@@ -6,6 +6,7 @@ import Slider from '../Slider/Slider';
 import CatalogueShield from '../CatalogueShield/CatalogShield';
 import { fetchCategoryList } from 'src/store/slices/categoriesSlice';
 import { fetchSubscriptions } from 'src/store/slices/allSubscriptionsSlice';
+import { type TariffModel } from 'src/models/singleSubscriptionSchema';
 
 const StyledTabSection = styled.div`
   box-sizing: border-box;
@@ -29,6 +30,25 @@ const CatalogueTab = () => {
     dispatch(fetchSubscriptions({}));
   }, [dispatch]);
 
+  const getLowestPriceTariffAmount = (tariffs: TariffModel[]) => {
+    if (tariffs.length === 0) return 0;
+    const lowestPriceTariff = tariffs.reduce((prev, current) =>
+      prev.amount < current.amount ? prev : current
+    );
+    return lowestPriceTariff.amount;
+  };
+
+  const preparedSlides = categories
+    .map(category => {
+      return subscriptions
+        .filter(sub => sub.category.id === category.id)
+        .map(subscription => ({
+          ...subscription,
+          lowestPrice: getLowestPriceTariffAmount(subscription.tariffs),
+        }));
+    })
+    .flat();
+
   return (
     <StyledTabSection>
       {categories.map(category => (
@@ -41,13 +61,13 @@ const CatalogueTab = () => {
           }}
         >
           <Slider
-            slides={subscriptions
+            slides={preparedSlides
               .filter(sub => sub.category.id === category.id)
               .map(subscription => (
                 <CatalogueShield
                   key={subscription.id}
                   img={subscription.image_preview}
-                  price={subscription.tariffs[0]?.amount || 0}
+                  price={subscription.lowestPrice}
                   cashback={`${subscription.cashback.amount}`}
                   route={`/subscriptions/${subscription.id}`}
                   name={subscription.name}

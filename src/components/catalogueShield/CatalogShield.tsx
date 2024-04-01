@@ -2,7 +2,6 @@ import { type FC } from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import MockLogo from 'src/assets/mockIcon.png';
 import { resetBox } from 'src/styles/mixIns';
 
 interface CatalogueShieldProps {
@@ -80,13 +79,13 @@ const CatalogueShield: FC<CatalogueShieldProps> = ({
           }}
         >
           <LogoContainer>
-            <Logo src={img ? img : MockLogo} alt="service image" />
+            <Logo src={img} alt="service image" />
             <Typography
               className="textSmallBold"
               color="text.primary"
               align="left"
             >
-              {name ? name : 'КРУТО-ТВ'}
+              {name}
             </Typography>
           </LogoContainer>
           <StyledDiv>
@@ -95,7 +94,7 @@ const CatalogueShield: FC<CatalogueShieldProps> = ({
                 className="textCard"
                 color="text.primary"
                 align="right"
-              >{`От ${price ? price : '279'}₽`}</Typography>
+              >{`От ${price} ₽`}</Typography>
               <Typography
                 className="textSmallRegular"
                 color="text.secondary"
@@ -109,7 +108,7 @@ const CatalogueShield: FC<CatalogueShieldProps> = ({
                 className="textSmallMedium"
                 color="primary.main"
                 align="center"
-              >{`кешбэк ${cashback ? cashback : '10'}%`}</Typography>
+              >{`кешбэк ${cashback}%`}</Typography>
             </CashBackBox>
           </StyledDiv>
         </CardContent>
