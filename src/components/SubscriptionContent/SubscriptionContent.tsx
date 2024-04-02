@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Typography } from '@mui/material';
 import Benefit from '../Benefits/Benefits';
 import { resetBox } from 'src/styles/mixIns';
-import ExpandableTextCard from 'src/ExpandableTextCard/ExpandableTextCard';
+import ExpandableTextCard from 'src/components/ExpandableTextCard/ExpandableTextCard';
 import SubscriptionAccordion from '../SubscriptionAccordion/SubscriptionAccordion';
 
 export interface SubscriptionContentProps {
