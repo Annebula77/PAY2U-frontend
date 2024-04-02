@@ -10,8 +10,8 @@ const fetchData = async <T>(
   try {
     const config = token
       ? {
-        headers: { Authorization: `Bearer ${token}` },
-      }
+          headers: { Authorization: `Bearer ${token}` },
+        }
       : undefined;
     const response = await axios.get(url, config);
     return schema.parse(response.data);

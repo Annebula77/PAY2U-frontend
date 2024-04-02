@@ -34,6 +34,7 @@ const LogoContainer = styled.div`
   ${resetBox()};
   display: flex;
   flex-direction: column;
+  border-radius: 12px;
   align-items: flex-start;
   gap: 4px;
 `;
@@ -44,6 +45,8 @@ const Logo = styled.img`
   height: 40px;
   padding: 0;
   margin: 0;
+  border-radius: 12px;
+  object-fit: contain;
 `;
 
 const CashBackBox = styled.div`

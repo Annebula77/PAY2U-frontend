@@ -6,7 +6,7 @@ import Slider from '../Slider/Slider';
 import CatalogueShield from '../CatalogueShield/CatalogShield';
 import { fetchCategoryList } from 'src/store/slices/categoriesSlice';
 import { fetchSubscriptions } from 'src/store/slices/allSubscriptionsSlice';
-import { type TariffModel } from 'src/models/singleSubscriptionSchema';
+import { getLowestPriceTariffAmount } from '../../utils/getLowestPriceTariffAmount';
 
 const StyledTabSection = styled.div`
   box-sizing: border-box;
@@ -29,14 +29,6 @@ const CatalogueTab = () => {
     dispatch(fetchCategoryList());
     dispatch(fetchSubscriptions({}));
   }, [dispatch]);
-
-  const getLowestPriceTariffAmount = (tariffs: TariffModel[]) => {
-    if (tariffs.length === 0) return 0;
-    const lowestPriceTariff = tariffs.reduce((prev, current) =>
-      prev.amount < current.amount ? prev : current
-    );
-    return lowestPriceTariff.amount;
-  };
 
   const preparedSlides = categories
     .map(category => {

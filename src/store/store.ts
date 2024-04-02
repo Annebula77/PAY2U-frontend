@@ -6,6 +6,8 @@ import singleSubscriptionReducer from './slices/singleSubscriptionSlice';
 import categoriesReducer from './slices/categoriesSlice';
 import clientByIdReducer from './slices/clientByIdSlice';
 import clientSubscriptionsReducer from './slices/clientSubscriptionsSlice';
+import favoriteSubscriptionsReducer from './slices/favoriteSubscriptionsSlice';
+import toggleLikesReducer from './slices/toggleLikesSlice';
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +18,8 @@ export const store = configureStore({
     categories: categoriesReducer,
     client: clientByIdReducer,
     clientSubscriptions: clientSubscriptionsReducer,
+    favorites: favoriteSubscriptionsReducer,
+    toggleLikes: toggleLikesReducer,
   },
 });
 

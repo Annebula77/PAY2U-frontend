@@ -151,15 +151,17 @@ const Header = () => {
         </SearchContainer>
       </ControlsContainer>
       <Slider
-        slides={subscriptions.map(subscription => (
-          <RecommendedShield
-            key={subscription.id}
-            img={subscription.image_preview}
-            title={subscription.name}
-            cashback={`${subscription.cashback.amount}`}
-            route={`/subscriptions/${subscription.id}`}
-          />
-        ))}
+        slides={subscriptions
+          .filter(subscription => subscription.is_recommended)
+          .map(subscription => (
+            <RecommendedShield
+              key={subscription.id}
+              img={subscription.image_preview}
+              title={subscription.name}
+              cashback={`${subscription.cashback.amount}`}
+              route={`/subscriptions/${subscription.id}`}
+            />
+          ))}
         title="Рекомендации"
         slidePerView="3.5"
       />

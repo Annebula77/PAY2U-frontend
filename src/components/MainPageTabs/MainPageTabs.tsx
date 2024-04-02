@@ -5,15 +5,20 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import CatalogueTab from '../CatalogueTab/CatalogueTab';
+import FavoritesTab from '../FavoritesTab/FavoritesTab';
 
-// Ваши компоненты для каждого таба
+// NOTE: Поправить стили и вид компонента
 const TabContentOne = () => (
   <div style={{ margin: 0, padding: 0, boxSizing: 'border-box' }}>
     <CatalogueTab />
   </div>
 );
-const TabContentTwo = () => <div>Content for Tab Two</div>;
-const TabContentThree = () => <div>Content for Tab Three</div>;
+const TabContentThree = () => (
+  <div style={{ margin: '0 0 0 -10px', padding: '0', boxSizing: 'border-box' }}>
+    <FavoritesTab />
+  </div>
+);
+const TabContentTwo = () => <div>Content for Tab Three</div>;
 
 const MainPageTabs = () => {
   const [value, setValue] = useState('1');

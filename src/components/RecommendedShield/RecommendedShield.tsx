@@ -25,6 +25,7 @@ const LogoWrapper = styled.div`
   width: 100%;
   box-sizing: border-box;
   border-radius: 12px;
+  background-color: ${({ theme }) => theme.palette.background.default};
   margin: 0 0 8px;
   padding: 0;
 `;
@@ -34,6 +35,7 @@ const Logo = styled.img`
   display: block;
   ${resetBox()};
   border-radius: 12px;
+  object-fit: contain;
 `;
 
 const RecommendedShield: FC<ShieldProps> = ({

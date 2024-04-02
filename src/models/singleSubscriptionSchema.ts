@@ -24,6 +24,7 @@ const subscriptionBenefitSchema = z.object({
 
 export const singleSubscriptionSchema = z.object({
   id: z.number(),
+  popularity: z.number(),
   name: z.string(),
   image_preview: z.string().url(),
   image_detail: z.string().url(),
@@ -33,5 +34,6 @@ export const singleSubscriptionSchema = z.object({
   cashback: cashbackSchema,
   tariffs: z.array(tariffSchema),
   subscription_benefits: z.array(subscriptionBenefitSchema),
+  is_liked: z.boolean(),
 });
 export type SingleSubScriptionModel = z.infer<typeof singleSubscriptionSchema>;
