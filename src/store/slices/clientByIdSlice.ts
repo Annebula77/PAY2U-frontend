@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import fetchData from 'src/utils/fetchData';
+import fetchData from 'src/utils/requests/fetchData';
 import { BASE_URL } from 'src/utils/variables';
 import {
   type ClientByIdModel,

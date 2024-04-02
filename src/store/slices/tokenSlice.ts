@@ -1,33 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import {
   type LoginResponseModel,
   loginRequestSchema,
   loginResponseSchema,
 } from 'src/models/loginSchema';
 import { BASE_URL } from '../../utils/variables';
+import postData from '../../utils/requests/postData';
 
 export const fetchToken = createAsyncThunk(
   'token/fetchToken',
   async (id: number, { rejectWithValue }) => {
     try {
-      const validatedId = loginRequestSchema.safeParse({ id });
-      if (!validatedId.success) {
-        console.error('Parsing errors', validatedId.error);
-        return rejectWithValue('Parsing errors');
-      }
-      const response = await axios.post<LoginResponseModel>(
+      const data = await postData(
         `${BASE_URL}login/get-token/`,
-        validatedId.data
+        loginResponseSchema,
+        loginRequestSchema,
+        { id },
+        null,
+        rejectWithValue
       );
 
-      const validatedResponse = loginResponseSchema.safeParse(response.data);
-      if (!validatedResponse.success) {
-        console.error('Parsing errors', validatedResponse.error);
-        return rejectWithValue('Parsing errors');
-      }
-      return validatedResponse.data;
+      return data;
     } catch (error) {
       return rejectWithValue('Произошла ошибка при получении токена');
     }

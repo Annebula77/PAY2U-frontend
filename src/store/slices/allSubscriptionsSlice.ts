@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import fetchData from 'src/utils/fetchData';
+import fetchData from 'src/utils/requests/fetchData';
 import {
   allSubscriptionsResponseSchema,
   type AllSubscriptionsResponseModel,
