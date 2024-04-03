@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 
 export const OutlinedButton = styled(Button)`
   width: 100%;
+  text-transform: none;
   ${({ theme }) => `
     color: ${theme.palette.primary.light};
     border-color: ${theme.palette.primary.light};

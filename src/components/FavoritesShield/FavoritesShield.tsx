@@ -71,7 +71,7 @@ const FavoritesShield: FC<FavoritesShieldProps> = ({
         <CardContent
           sx={{
             width: '343px',
-            height: '104px',
+            height: '94px',
             boxSizing: 'border-box',
             p: '12px',
             m: 0,

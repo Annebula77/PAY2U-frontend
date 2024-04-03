@@ -1,8 +1,12 @@
 import { type FC } from 'react';
 import { Card, CardContent, Chip, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { resetBox } from 'src/styles/mixIns';
+import {
+  LowerBox,
+  NameContainer,
+  StyledDiv,
+  UpperTextBox,
+} from './tariffShieldStyles';
 
 interface TariffShieldProps {
   name: string;
@@ -11,39 +15,6 @@ interface TariffShieldProps {
   period: number;
   route: string;
 }
-
-const NameContainer = styled.div`
-  width: 100%;
-  ${resetBox()};
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const StyledDiv = styled.div`
-  ${resetBox()};
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  width: 100%;
-`;
-
-const UpperTextBox = styled.div`
-  ${resetBox()};
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  gap: 4px;
-`;
-
-const LowerBox = styled.div`
-  box-sizing: border-box;
-  padding: 0;
-  margin: 4px 0 0;
-  display: flex;
-  justify-content: flex-start;
-`;
 
 const TariffShield: FC<TariffShieldProps> = ({
   name,

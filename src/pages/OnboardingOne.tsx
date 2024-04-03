@@ -1,4 +1,4 @@
-import { StyledSection } from '../styles/pageAndOnboardingStyles';
+import { StyledSection } from '../styles/reusableStyles';
 import OnboardingOneContent from '../components/OnboardingOneContent/OnboardingOneContent';
 
 const OnboardingOne = () => (

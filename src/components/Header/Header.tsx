@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { Typography } from '@mui/material';
 import BackArrowIcon from '../icons/BackArrowIcon';
-import styled from 'styled-components';
 import SearchIcon from '../icons/SearchIcon';
 import Slider from '../Slider/Slider';
 import RecommendedShield from '../RecommendedShield/RecommendedShield';
@@ -10,68 +9,19 @@ import NoSubsShield from '../NoSubsShield/NoSubsShield';
 import HasSubsShield from '../HasSubsShield/HasSubsShield';
 import { GeneralModal } from '../GeneralModal/GeneralModal';
 import { Link } from 'react-router-dom';
-import { resetBox } from 'src/styles/mixIns';
 import { useState } from 'react';
 import HowItWorksContent from '../HowItWorksContent/HowItWorksContent';
 import { fetchSubscriptions } from 'src/store/slices/allSubscriptionsSlice';
 import { fetchClientById } from 'src/store/slices/clientByIdSlice';
 import { fetchClientSubscriptions } from 'src/store/slices/clientSubscriptionsSlice';
-
-const HeaderWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  margin: 0;
-  background: ${({ theme }) => theme.custom.header};
-  padding: 60px 16px 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
-  gap: 20px;
-`;
-
-const ControlsContainer = styled.nav`
-  width: 100%;
-  margin: 0 0 24px;
-  padding: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 10px;
-`;
-const SearchContainer = styled.div`
-  width: 55%;
-  ${resetBox()};
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const MySubsContainer = styled.article`
-  width: 100%;
-  ${resetBox()};
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-const SubsRow = styled.div`
-  width: 100%;
-  ${resetBox()};
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 8px;
-`;
-
-const TextButton = styled.button`
-  ${resetBox()};
-  outline: none;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-`;
+import { getNearestPaymentDate } from 'src/utils/getNearestPaymentDate';
+import { GradientWrapper, InvisibleButton } from 'src/styles/reusableStyles';
+import {
+  ControlsContainer,
+  MySubsContainer,
+  SearchContainer,
+  SubsRow,
+} from './headerStyles';
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -92,40 +42,24 @@ const Header = () => {
   }, [dispatch]);
   const [showModal, setShowModal] = useState(false);
 
-  // NOTE: перенести функцию в utils
-  const activeSubscriptions = clientSubscriptions?.results
-    .filter(sub => sub.is_active)
-    .sort(
-      (a, b) =>
-        new Date(a.expiration_date).getTime() -
-        new Date(b.expiration_date).getTime()
-    );
+  const nextSubscription = getNearestPaymentDate(
+    clientSubscriptions?.results || []
+  );
 
-  if (!activeSubscriptions) {
-    return 0;
+  let formattedDate = '';
+  let amount = 0;
+
+  if (nextSubscription) {
+    const expirationDate = new Date(nextSubscription.expiration_date);
+    formattedDate = expirationDate.toLocaleString('ru-RU', {
+      day: 'numeric',
+      month: 'long',
+    });
+    amount = nextSubscription.tariff.amount;
   }
-
-  const nextSubscription = activeSubscriptions[0];
-
-  if (!nextSubscription) {
-    return;
-  }
-  const expirationDate = new Date(nextSubscription?.expiration_date);
-  if (isNaN(expirationDate.getTime())) {
-    console.error('Невалидная дата:', nextSubscription?.expiration_date);
-    return;
-  }
-
-  // ***/
-
-  const formattedDate = expirationDate.toLocaleString('ru-RU', {
-    day: 'numeric',
-    month: 'long',
-  });
-  const amount = nextSubscription?.tariff.amount;
 
   return (
-    <HeaderWrapper>
+    <GradientWrapper>
       <ControlsContainer>
         <Link
           to="/"
@@ -239,7 +173,7 @@ const Header = () => {
             )}
           </Link>
         </SubsRow>
-        <TextButton type="button" onClick={() => setShowModal(true)}>
+        <InvisibleButton type="button" onClick={() => setShowModal(true)}>
           <Typography
             className="textRegular"
             color="primary.main"
@@ -251,7 +185,7 @@ const Header = () => {
           >
             Как работает?
           </Typography>
-        </TextButton>
+        </InvisibleButton>
       </MySubsContainer>
       {showModal && (
         <GeneralModal
@@ -263,7 +197,7 @@ const Header = () => {
           <HowItWorksContent />
         </GeneralModal>
       )}
-    </HeaderWrapper>
+    </GradientWrapper>
   );
 };
 export default Header;

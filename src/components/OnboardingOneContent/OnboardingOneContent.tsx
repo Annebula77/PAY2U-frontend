@@ -1,7 +1,7 @@
 import OnboardingBody from '../OnboardingBody/OnboardingBody';
 import onboarding1 from 'src/assets/onboarding1.png';
 import { Typography } from '@mui/material';
-import { ScreenShot, TextDiv } from 'src/styles/pageAndOnboardingStyles';
+import { ScreenShot, TextDiv } from 'src/styles/reusableStyles';
 
 const OnboardingOneContent = () => (
   <>

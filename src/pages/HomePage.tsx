@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../store/hooks';
 import HomePageContent from '../components/HomepageContent/HomePageContent';
 import { useLocation } from 'react-router-dom';
 import CookiesModal from '../components/CookiesModal/CookiesModal';
-import { StyledSection } from '../styles/pageAndOnboardingStyles';
+import { StyledSection } from '../styles/reusableStyles';
 import { setCookieConsent } from '../store/slices/cookiesSlice';
 
 const HomePage = () => {

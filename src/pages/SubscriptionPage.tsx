@@ -2,9 +2,12 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import SubscriptionContent from 'src/components/SubscriptionContent/SubscriptionContent';
-import { StyledSection } from '../styles/pageAndOnboardingStyles';
+import {
+  ControlsContainer,
+  SearchContainer,
+  StyledSection,
+} from '../styles/reusableStyles';
 import { fetchSingleSubscription } from 'src/store/slices/singleSubscriptionSlice';
-import { ControlsContainer, SearchContainer } from './CookiesPage';
 import { Link } from 'react-router-dom';
 import BackArrowIcon from 'src/components/icons/BackArrowIcon';
 import { Typography } from '@mui/material';

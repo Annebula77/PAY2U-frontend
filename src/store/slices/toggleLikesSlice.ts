@@ -19,7 +19,7 @@ export const addFavorite = createAsyncThunk<
 >('favorites/add', async ({ subscription }, { getState, rejectWithValue }) => {
   const token = getState().token.access_token;
   const url = `${BASE_URL}subscriptions/favourites/add/`;
-  const body = { subscription };
+  const body = { subscription: subscription };
 
   try {
     return await postData<FavoriteSubscriptionModel, typeof body>(
@@ -45,7 +45,7 @@ export const removeFavorite = createAsyncThunk<
   async ({ subscription }, { getState, rejectWithValue }) => {
     const token = getState().token.access_token;
     const url = `${BASE_URL}subscriptions/favourites/delete/`;
-    const body = { subscription };
+    const body = { subscription: subscription };
     try {
       await deleteData<typeof body>(
         url,

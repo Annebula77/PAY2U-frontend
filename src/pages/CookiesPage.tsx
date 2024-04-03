@@ -3,24 +3,11 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import SearchIcon from '../components/icons/SearchIcon';
 import BackArrowIcon from '../components/icons/BackArrowIcon';
-import { StyledSection } from '../styles/pageAndOnboardingStyles';
-import { resetBox } from '../styles/mixIns';
-
-export const ControlsContainer = styled.nav`
-  width: 100%;
-  margin: 0;
-  padding: 60px 16px 0px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-`;
-export const SearchContainer = styled.div`
-  width: 35%;
-  ${resetBox()};
-  display: flex;
-  justify-content: flex-end;
-`;
+import {
+  ControlsContainer,
+  SearchContainer,
+  StyledSection,
+} from '../styles/reusableStyles';
 
 const TextContainer = styled.article`
   width: 100%;
