@@ -1,5 +1,5 @@
 import TitleShield from '../components/TitleShield/TitleShield';
-import { StyledSection } from '../styles/pageAndOnboardingStyles';
+import { StyledSection } from '../styles/reusableStyles';
 
 const ShieldInApp = () => (
   <>

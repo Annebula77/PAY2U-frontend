@@ -1,8 +1,13 @@
 import { type FC } from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { resetBox } from 'src/styles/mixIns';
+import {
+  CashBackBox,
+  Logo,
+  LogoContainer,
+  StyledDiv,
+  UpperTextBox,
+} from './CatalogueShieldStyles';
 
 interface CatalogueShieldProps {
   img: string;
@@ -11,50 +16,6 @@ interface CatalogueShieldProps {
   cashback: string;
   route: string;
 }
-
-const StyledDiv = styled.div`
-  ${resetBox()};
-  display: flex;
-  flex-direction: column;
-  align-content: flex-end;
-  width: 62%;
-  gap: 40px;
-`;
-
-const UpperTextBox = styled.div`
-  ${resetBox()};
-  display: flex;
-  flex-direction: column;
-  align-content: flex-end;
-  justify-content: flex-start;
-`;
-
-const LogoContainer = styled.div`
-  width: 60%;
-  ${resetBox()};
-  display: flex;
-  flex-direction: column;
-  border-radius: 12px;
-  align-items: flex-start;
-  gap: 4px;
-`;
-
-const Logo = styled.img`
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  margin: 0;
-  border-radius: 12px;
-  object-fit: contain;
-`;
-
-const CashBackBox = styled.div`
-  ${resetBox()};
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-`;
 
 const CatalogueShield: FC<CatalogueShieldProps> = ({
   img,

@@ -4,21 +4,11 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import CatalogueTab from '../CatalogueTab/CatalogueTab';
-import FavoritesTab from '../FavoritesTab/FavoritesTab';
-
-// NOTE: Поправить стили и вид компонента
-const TabContentOne = () => (
-  <div style={{ margin: 0, padding: 0, boxSizing: 'border-box' }}>
-    <CatalogueTab />
-  </div>
-);
-const TabContentThree = () => (
-  <div style={{ margin: '0 0 0 -10px', padding: '0', boxSizing: 'border-box' }}>
-    <FavoritesTab />
-  </div>
-);
-const TabContentTwo = () => <div>Content for Tab Three</div>;
+import {
+  TabContentOne,
+  TabContentThree,
+  TabContentTwo,
+} from './tabContentWrappings';
 
 const MainPageTabs = () => {
   const [value, setValue] = useState('1');
@@ -37,9 +27,9 @@ const MainPageTabs = () => {
             indicatorColor="primary"
             textColor="primary"
           >
-            <Tab label="Каталог" value="1" />
-            <Tab label="Мои подписки" value="2" />
-            <Tab label="Избранное" value="3" />
+            <Tab disableRipple label="Каталог" value="1" />
+            <Tab disableRipple label="Мои подписки" value="2" />
+            <Tab disableRipple label="Избранное" value="3" />
           </TabList>
         </Box>
         <TabPanel

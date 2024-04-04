@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import styled from 'styled-components';
 import FavoritesShield from '../FavoritesShield/FavoritesShield';
-import { getLowestPriceTariffAmount } from '../../utils/getLowestPriceTariffAmount';
-import { fetchFavoriteSubscriptions } from '../../store/slices/favoriteSubscriptionsSlice';
+import { getLowestPriceTariffAmount } from 'src/utils/getLowestPriceTariffAmount';
+import { fetchFavoriteSubscriptions } from 'src/store/slices/favoriteSubscriptionsSlice';
 import NoFavoritesTab from '../NoFavoritesTab/NoFavoritesTab';
 
 const StyledTabSection = styled.div`

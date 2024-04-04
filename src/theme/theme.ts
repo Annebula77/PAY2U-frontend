@@ -8,7 +8,7 @@ const theme = createTheme({
       dark: 'rgba(4, 78, 196, 1)', // Dark blue
     },
     secondary: {
-      main: 'rgba(229, 229, 229, 1)', // White
+      main: 'rgba(229, 229, 229, 1)', // grey
       contrastText: 'rgba(229, 229, 229, 1)', // For text on secondary color, use primary
     },
     error: {

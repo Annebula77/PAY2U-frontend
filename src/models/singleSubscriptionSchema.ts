@@ -26,8 +26,9 @@ export const singleSubscriptionSchema = z.object({
   id: z.number(),
   popularity: z.number(),
   name: z.string(),
-  image_preview: z.string().url(),
-  image_detail: z.string().url(),
+  // NOTE: убрала валидацию на url(с бека на моке приходит другой формат)
+  image_preview: z.string(),
+  image_detail: z.string(),
   description: z.string(),
   is_recommended: z.boolean(),
   category: categorySchema,

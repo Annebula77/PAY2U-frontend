@@ -8,7 +8,7 @@ export const clientByIdSchema = z.object({
   email: z.string().email(),
   phone: z.string(),
   subscriptions_count: z.number(),
-  month_cashback: z.number(),
+  month_cashback: z.number().nullable(),
 });
 
 export type ClientByIdModel = z.infer<typeof clientByIdSchema>;

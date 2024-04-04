@@ -5,8 +5,8 @@ import {
   loginRequestSchema,
   loginResponseSchema,
 } from 'src/models/loginSchema';
-import { BASE_URL } from '../../utils/variables';
-import postData from '../../utils/requests/postData';
+import { BASE_URL } from 'src/utils/variables';
+import postData from 'src/utils/requests/postData';
 
 export const fetchToken = createAsyncThunk(
   'token/fetchToken',

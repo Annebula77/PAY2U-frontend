@@ -1,15 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import postData from 'src/utils/requests/postData';
 import deleteData from 'src/utils/requests/deleteData';
-import { BASE_URL } from '../../utils/variables';
+import { BASE_URL } from 'src/utils/variables';
 import {
   type FavoriteSubscriptionModel,
   favoriteSubscriptionSchema,
-} from '../../models/favoriteSubscriptionSchema';
+} from 'src/models/favoriteSubscriptionSchema';
 import {
   toggleLikeSchema,
   type ToggleLikeModel,
-} from '../../models/toggleLikeSchema';
+} from 'src/models/toggleLikeSchema';
 import { RootState } from '../store';
 
 export const addFavorite = createAsyncThunk<
@@ -19,7 +19,7 @@ export const addFavorite = createAsyncThunk<
 >('favorites/add', async ({ subscription }, { getState, rejectWithValue }) => {
   const token = getState().token.access_token;
   const url = `${BASE_URL}subscriptions/favourites/add/`;
-  const body = { subscription };
+  const body = { subscription: subscription };
 
   try {
     return await postData<FavoriteSubscriptionModel, typeof body>(
@@ -45,7 +45,7 @@ export const removeFavorite = createAsyncThunk<
   async ({ subscription }, { getState, rejectWithValue }) => {
     const token = getState().token.access_token;
     const url = `${BASE_URL}subscriptions/favourites/delete/`;
-    const body = { subscription };
+    const body = { subscription: subscription };
     try {
       await deleteData<typeof body>(
         url,

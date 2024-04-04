@@ -1,5 +1,5 @@
 import OnboardingThreeContent from '../components/OnboardingThreeContent/OnboardingThreeContent';
-import { StyledSection } from '../styles/pageAndOnboardingStyles';
+import { StyledSection } from '../styles/reusableStyles';
 
 const OnboardingThree = () => (
   <StyledSection>

@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { StyledSection } from 'src/styles/pageAndOnboardingStyles';
+import { StyledSection } from 'src/styles/reusableStyles';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import MainPageTabs from '../MainPageTabs/MainPageTabs';

@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage';
 import CookiesPage from './pages/CookiesPage';
 import { setTokens } from './store/slices/tokenSlice';
 import SubscriptionPage from './pages/SubscriptionPage';
+import CalendarPage from './pages/CalendarPage';
 
 const StyledSection = styled.section`
   width: 100%;
@@ -42,6 +43,7 @@ const App = () => {
           path="/subscriptions/:subscription_id"
           element={<SubscriptionPage />}
         />
+        <Route path="/clients/:client_id/calendar" element={<CalendarPage />} />
       </Routes>
     </StyledSection>
   );

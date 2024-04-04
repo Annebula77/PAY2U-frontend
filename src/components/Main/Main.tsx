@@ -1,6 +1,6 @@
 import { type FC, ReactNode } from 'react';
 import styled from 'styled-components';
-import { resetBox } from '../../styles/mixIns';
+import { resetBox } from 'src/styles/mixIns';
 
 interface MainProps {
   children: ReactNode;

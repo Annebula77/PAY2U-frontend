@@ -6,7 +6,7 @@ import Slider from '../Slider/Slider';
 import CatalogueShield from '../CatalogueShield/CatalogShield';
 import { fetchCategoryList } from 'src/store/slices/categoriesSlice';
 import { fetchSubscriptions } from 'src/store/slices/allSubscriptionsSlice';
-import { getLowestPriceTariffAmount } from '../../utils/getLowestPriceTariffAmount';
+import { getLowestPriceTariffAmount } from 'src/utils/getLowestPriceTariffAmount';
 
 const StyledTabSection = styled.div`
   box-sizing: border-box;
