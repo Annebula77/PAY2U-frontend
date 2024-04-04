@@ -1,10 +1,4 @@
-import { type FC } from 'react';
-
-interface Props {
-  className?: string;
-}
-
-const SearchIcon: FC<Props> = ({ className }) => (
+const SearchIcon = () => (
   <svg
     width="24"
     height="24"
@@ -12,7 +6,6 @@ const SearchIcon: FC<Props> = ({ className }) => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    className={className}
     <path
       d="M21 21L15 15M3 10C3 10.9193 3.18106
      11.8295 3.53284 12.6788C3.88463 13.5281 4.40024 14.2997

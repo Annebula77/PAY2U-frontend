@@ -1,18 +1,10 @@
-import { type FC } from 'react';
-
-interface Props {
-  className?: string;
-  fill?: string;
-}
-
-const CloseIcon: FC<Props> = ({ className }) => (
+const CloseIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    className={className}
   >
     <path
       d="M17.7121 5.2978C17.6208 5.2064 17.5125 5.13387

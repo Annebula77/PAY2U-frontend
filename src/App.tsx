@@ -11,6 +11,7 @@ import CookiesPage from './pages/CookiesPage';
 import { setTokens } from './store/slices/tokenSlice';
 import SubscriptionPage from './pages/SubscriptionPage';
 import CalendarPage from './pages/CalendarPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 const StyledSection = styled.section`
   width: 100%;
@@ -44,6 +45,7 @@ const App = () => {
           element={<SubscriptionPage />}
         />
         <Route path="/clients/:client_id/calendar" element={<CalendarPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </StyledSection>
   );
