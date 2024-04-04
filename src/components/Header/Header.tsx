@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import { Typography } from '@mui/material';
 import BackArrowIcon from '../icons/BackArrowIcon';
 import SearchIcon from '../icons/SearchIcon';
@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import HowItWorksContent from '../HowItWorksContent/HowItWorksContent';
 import { fetchSubscriptions } from 'src/store/slices/allSubscriptionsSlice';
-import { fetchClientById } from 'src/store/slices/clientByIdSlice';
 import { fetchClientSubscriptions } from 'src/store/slices/clientSubscriptionsSlice';
 import { getNearestPaymentDate } from 'src/utils/getNearestPaymentDate';
 import { GradientWrapper, InvisibleButton } from 'src/styles/reusableStyles';
@@ -22,9 +21,12 @@ import {
   SearchContainer,
   SubsRow,
 } from './headerStyles';
+import { getClientIdFromToken } from 'src/utils/getClientIdFromToken';
+import { AddOneDayFormatted } from '../../utils/AddOneDayFormatted';
 
 const Header = () => {
   const dispatch = useAppDispatch();
+
   const { data: client } = useAppSelector(state => state.client);
   const { data: subscriptions } = useAppSelector(
     state => state.allSubscriptions
@@ -33,30 +35,30 @@ const Header = () => {
     state => state.clientSubscriptions
   );
 
+  const [showModal, setShowModal] = useState(false);
+
+
+  const clientId = getClientIdFromToken();
+  if (!clientId) {
+    return <div>Loading...</div>;
+  }
+
   useEffect(() => {
     const isActive = true;
-    // NOTE: хардкод, так как авторизация не реализовывалась.
-    dispatch(fetchClientById(1));
     dispatch(fetchSubscriptions({ recommended: true }));
-    dispatch(fetchClientSubscriptions({ clientId: 1, isActive }));
-  }, [dispatch]);
-  const [showModal, setShowModal] = useState(false);
+    dispatch(fetchClientSubscriptions({ clientId: clientId, isActive }));
+
+  }, [dispatch, clientId]);
+
+
+
 
   const nextSubscription = getNearestPaymentDate(
     clientSubscriptions?.results || []
   );
 
-  let formattedDate = '';
-  let amount = 0;
+  const amount = nextSubscription?.tariff.amount;
 
-  if (nextSubscription) {
-    const expirationDate = new Date(nextSubscription.expiration_date);
-    formattedDate = expirationDate.toLocaleString('ru-RU', {
-      day: 'numeric',
-      month: 'long',
-    });
-    amount = nextSubscription.tariff.amount;
-  }
 
   return (
     <GradientWrapper>
@@ -150,7 +152,7 @@ const Header = () => {
             )}
           </Link>
           <Link
-            to=""
+            to={`/clients/${clientId}/calendar`}
             style={{
               textDecoration: 'none',
               width: '100%',
@@ -160,10 +162,10 @@ const Header = () => {
           >
             {nextSubscription ? (
               <HasSubsShield
-                stats={amount}
+                stats={amount || 0}
                 name="Ближайшее списание"
                 showCurrencySymbol
-                date={formattedDate}
+                date={AddOneDayFormatted(nextSubscription.expiration_date)}
               />
             ) : (
               <NoSubsShield

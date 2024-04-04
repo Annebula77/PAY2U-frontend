@@ -13,6 +13,7 @@ import {
 export interface DetailedSubsShieldProps {
   img: string;
   name: string;
+  tariffName: string;
   paymentDate: string;
   price: number;
   cashbackAmount: number;
@@ -28,6 +29,7 @@ export interface DetailedSubsShieldProps {
 const DetailedSubsShield: FC<DetailedSubsShieldProps> = ({
   img,
   name,
+  tariffName,
   price,
   cashback,
   accountNumber,
@@ -61,13 +63,13 @@ const DetailedSubsShield: FC<DetailedSubsShieldProps> = ({
                   variant="h4"
                   color="text.primary"
                   align="left"
-                >{`От ${price} ₽`}</Typography>
+                >{`${price} ₽`}</Typography>
                 <Typography
                   className="textRegular"
                   color="text.secondary"
                   align="left"
                 >
-                  в месяц
+                  {`за ${tariffName}`}
                 </Typography>
               </UpperTextBox>
             </LogoContainer>

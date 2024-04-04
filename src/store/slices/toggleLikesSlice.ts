@@ -1,15 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import postData from 'src/utils/requests/postData';
 import deleteData from 'src/utils/requests/deleteData';
-import { BASE_URL } from '../../utils/variables';
+import { BASE_URL } from 'src/utils/variables';
 import {
   type FavoriteSubscriptionModel,
   favoriteSubscriptionSchema,
-} from '../../models/favoriteSubscriptionSchema';
+} from 'src/models/favoriteSubscriptionSchema';
 import {
   toggleLikeSchema,
   type ToggleLikeModel,
-} from '../../models/toggleLikeSchema';
+} from 'src/models/toggleLikeSchema';
 import { RootState } from '../store';
 
 export const addFavorite = createAsyncThunk<

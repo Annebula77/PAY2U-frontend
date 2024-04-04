@@ -1,5 +1,5 @@
 import { Card, Typography } from '@mui/material';
-import { useAppDispatch } from 'src/store/hooks';
+import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import { useNavigate } from 'react-router-dom';
 import Cake from 'src/assets/cake.png';
 import ArrowRight from '../icons/ArrowRight';
@@ -13,22 +13,41 @@ import {
   StyledParagraph,
   InvisibleButton,
 } from './titleShieldStyles';
+import { fetchClientById } from 'src/store/slices/clientByIdSlice';
+import { getClientIdFromToken } from 'src/utils/getClientIdFromToken';
+
 
 const TitleShield = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const { data: client } = useAppSelector(state => state.client);
 
   const handleLinkClick = async (evt: SyntheticEvent) => {
     evt.preventDefault();
     const id = 1;
     try {
       await dispatch(fetchToken(id)).unwrap();
-      console.log(fetchToken.fulfilled);
-      navigate('/onboarding1');
+      const clientId = getClientIdFromToken();
+      if (!clientId) {
+        return;
+      }
+      await dispatch(fetchClientById(clientId))
+      if (!client) {
+        return;
+      }
+      if (client.month_cashback === null) {
+        navigate('/onboarding1');
+        return;
+      } else { navigate('/main'); }
+
     } catch (error) {
       console.error('Ошибка при получении токена', error);
     }
   };
+
+
+
 
   return (
     <Card sx={{ width: '343px', height: '132px' }}>

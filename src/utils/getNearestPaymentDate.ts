@@ -18,7 +18,6 @@ export const getNearestPaymentDate = (
   const nearestSubscription = activeSubscriptions[0];
 
   const expirationDate = new Date(nearestSubscription.expiration_date);
-  expirationDate.setDate(expirationDate.getDate() + 1);
 
   if (isNaN(expirationDate.getTime())) {
     console.error('Невалидная дата:', nearestSubscription.expiration_date);

@@ -5,8 +5,8 @@ import { BASE_URL } from 'src/utils/variables';
 import {
   type FavoriteSubscriptionsResponseModel,
   favoriteSubscriptionsResponseSchema,
-} from '../../models/favoriteSubscriptionsResponseSchema';
-import { type FavoriteSubscriptionModel } from '../../models/favoriteSubscriptionSchema';
+} from 'src/models/favoriteSubscriptionsResponseSchema';
+import { type FavoriteSubscriptionModel } from 'src/models/favoriteSubscriptionSchema';
 
 export const fetchFavoriteSubscriptions = createAsyncThunk<
   FavoriteSubscriptionsResponseModel,

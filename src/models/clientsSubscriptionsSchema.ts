@@ -18,6 +18,8 @@ export const clientSubscriptionSchema = z.object({
   expiration_date: z.string(),
   is_active: z.boolean(),
   is_auto_pay: z.boolean(),
+  cashback_amount: z.number(),
+  deleted_at: z.string().nullable(),
 });
 
 export type ClientSubscriptionModal = z.infer<typeof clientSubscriptionSchema>;

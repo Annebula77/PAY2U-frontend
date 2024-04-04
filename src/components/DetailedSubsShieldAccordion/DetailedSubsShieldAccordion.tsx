@@ -10,7 +10,6 @@ import {
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { type DetailedSubsShieldProps } from '../DetailedSubsShield/DetailedSubsShield';
 import SuccessIcon from '../icons/SuccessIcon';
-import { ContainedButton } from '../buttons/ContainedButton/ContainedButton';
 import { OutlinedButton } from '../buttons/OutlinedButton/OutlinedButton';
 import IOSSwitch from '../IOSSwitch/IOSSwitch';
 import {
@@ -177,7 +176,7 @@ const DetailedSubsShieldAccordion: FC<PartialSubsShieldProps> = ({
                 ':hover': {
                   textDecoration: 'underline',
                 },
-                margin: 0,
+                marginBottom: '12px',
                 padding: 0,
               }}
             >
@@ -186,11 +185,6 @@ const DetailedSubsShieldAccordion: FC<PartialSubsShieldProps> = ({
           </SlotContainer>
         </DetailsContainer>
         <ButtonContainer>
-          <Link to={route} style={{ textDecoration: 'none', width: '100%' }}>
-            <ContainedButton variant="contained" sx={{ textTransform: 'none' }}>
-              Изменить тарифный план
-            </ContainedButton>
-          </Link>
           <Link to={route} style={{ textDecoration: 'none', width: '100%' }}>
             <OutlinedButton variant="outlined" sx={{ textTransform: 'none' }}>
               Отключить подписку
