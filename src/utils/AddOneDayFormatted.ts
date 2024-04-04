@@ -1,4 +1,4 @@
-import { addOneDay } from "./addOneDay";
+import { addOneDay } from './addOneDay';
 
 export const AddOneDayFormatted = (dateString: string): string => {
   const newDate = addOneDay(dateString);

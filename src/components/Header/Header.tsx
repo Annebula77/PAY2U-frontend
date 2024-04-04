@@ -37,28 +37,22 @@ const Header = () => {
 
   const [showModal, setShowModal] = useState(false);
 
-
   const clientId = getClientIdFromToken();
-  if (!clientId) {
-    return <div>Loading...</div>;
-  }
 
   useEffect(() => {
+    if (!clientId) {
+      return;
+    }
     const isActive = true;
     dispatch(fetchSubscriptions({ recommended: true }));
     dispatch(fetchClientSubscriptions({ clientId: clientId, isActive }));
-
   }, [dispatch, clientId]);
-
-
-
 
   const nextSubscription = getNearestPaymentDate(
     clientSubscriptions?.results || []
   );
 
   const amount = nextSubscription?.tariff.amount;
-
 
   return (
     <GradientWrapper>

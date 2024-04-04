@@ -12,8 +12,6 @@ import { setTokens } from './store/slices/tokenSlice';
 import SubscriptionPage from './pages/SubscriptionPage';
 import CalendarPage from './pages/CalendarPage';
 
-
-
 const StyledSection = styled.section`
   width: 100%;
   box-sizing: border-box;
@@ -30,9 +28,7 @@ const App = () => {
     if (access_token && refresh_token) {
       dispatch(setTokens({ access_token, refresh_token }));
     }
-
   }, [dispatch]);
-
 
   return (
     <StyledSection>

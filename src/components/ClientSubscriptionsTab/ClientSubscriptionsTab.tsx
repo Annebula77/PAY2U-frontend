@@ -8,13 +8,16 @@ import CalendarIcon from '../icons/CalendarIcon';
 import { Link } from 'react-router-dom';
 import { getClientIdFromToken } from '../../utils/getClientIdFromToken';
 import { useState } from 'react';
-import { ChipWrapper, IconWrapper, StyledTabSection } from './clientSubscriptionsTabStyles';
-
-
+import {
+  ChipWrapper,
+  IconWrapper,
+  StyledTabSection,
+} from './clientSubscriptionsTabStyles';
 
 const ClientSubscriptionsTab = () => {
-
-  const { data: clientSubscriptions } = useAppSelector(state => state.clientSubscriptions);
+  const { data: clientSubscriptions } = useAppSelector(
+    state => state.clientSubscriptions
+  );
   const { data: clientById } = useAppSelector(state => state.client);
 
   const clientId = getClientIdFromToken();
@@ -77,7 +80,10 @@ const ClientSubscriptionsTab = () => {
           name={sub.subscription.name}
           tariffName={sub.tariff.name}
           price={calculateSubscriptionCost(sub.tariff)}
-          cashbackAmount={calculateTariffCashback(sub.tariff, sub.cashback_amount)}
+          cashbackAmount={calculateTariffCashback(
+            sub.tariff,
+            sub.cashback_amount
+          )}
           cashback={sub.subscription.cashback.amount}
           // NOTE: добавить charge_account
           accountNumber="*** 3456"

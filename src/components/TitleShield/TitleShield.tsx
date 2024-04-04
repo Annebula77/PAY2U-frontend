@@ -16,7 +16,6 @@ import {
 import { fetchClientById } from 'src/store/slices/clientByIdSlice';
 import { getClientIdFromToken } from 'src/utils/getClientIdFromToken';
 
-
 const TitleShield = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -32,22 +31,20 @@ const TitleShield = () => {
       if (!clientId) {
         return;
       }
-      await dispatch(fetchClientById(clientId))
+      await dispatch(fetchClientById(clientId));
       if (!client) {
         return;
       }
       if (client.month_cashback === null) {
         navigate('/onboarding1');
         return;
-      } else { navigate('/main'); }
-
+      } else {
+        navigate('/main');
+      }
     } catch (error) {
       console.error('Ошибка при получении токена', error);
     }
   };
-
-
-
 
   return (
     <Card sx={{ width: '343px', height: '132px' }}>

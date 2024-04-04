@@ -1,15 +1,17 @@
 import { useState, type FC, type ReactNode, useEffect } from 'react';
 import HeartButton from '../icons/HeartIcon';
-import { CustomTooltipWrapper, TooltipIcon, TooltipText } from './customTooltipStyles';
+import {
+  CustomTooltipWrapper,
+  TooltipIcon,
+  TooltipText,
+} from './customTooltipStyles';
 
 interface TooltipProps {
   children: ReactNode;
   isLiked?: boolean;
 }
 
-
 const CustomTooltip: FC<TooltipProps> = ({ children, isLiked = false }) => {
-
   const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {

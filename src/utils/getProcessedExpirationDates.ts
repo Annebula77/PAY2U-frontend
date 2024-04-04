@@ -1,6 +1,6 @@
-import { compareAsc } from "date-fns";
-import { type ClientSubscriptionsModal } from "../models/clientsSubscriptionsSchema";
-import { addOneDay } from "./addOneDay";
+import { compareAsc } from 'date-fns';
+import { type ClientSubscriptionsModal } from '../models/clientsSubscriptionsSchema';
+import { addOneDay } from './addOneDay';
 
 // NOTE: Функция для обработки массива подписок и получения отсортированного массива дат с добавлением одного дня
 export const getProcessedExpirationDates = (

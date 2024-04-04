@@ -10,10 +10,7 @@ import SubscriptionAccordion from '../SubscriptionAccordion/SubscriptionAccordio
 import HeartButton from '../icons/HeartIcon';
 import CustomTooltip from '../CustomTooltip/CustomTooltip';
 import { RENDER_URL } from 'src/utils/variables';
-import {
-  addFavorite,
-  removeFavorite,
-} from 'src/store/slices/toggleLikesSlice';
+import { addFavorite, removeFavorite } from 'src/store/slices/toggleLikesSlice';
 
 export interface SubscriptionContentProps {
   subscription: SingleSubScriptionModel;

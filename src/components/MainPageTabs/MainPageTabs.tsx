@@ -4,8 +4,11 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import { TabContentOne, TabContentThree, TabContentTwo } from './tabContentWrappings';
-
+import {
+  TabContentOne,
+  TabContentThree,
+  TabContentTwo,
+} from './tabContentWrappings';
 
 const MainPageTabs = () => {
   const [value, setValue] = useState('1');

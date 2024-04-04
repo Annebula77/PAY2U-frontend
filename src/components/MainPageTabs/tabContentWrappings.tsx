@@ -5,20 +5,20 @@ import styled from 'styled-components';
 import { resetBox } from 'src/styles/mixIns';
 
 const TabWrapper = styled.div`
-${resetBox()};
+  ${resetBox()};
 `;
 
 const TabWrapperWithMargin = styled.div`
-margin: 0 0 0 -10px;
-padding: 0;
-box-sizing: border-box;
+  margin: 0 0 0 -10px;
+  padding: 0;
+  box-sizing: border-box;
 `;
 
 export const TabContentOne = () => (
   <TabWrapper>
     <CatalogueTab />
   </TabWrapper>
-)
+);
 
 export const TabContentThree = () => (
   <TabWrapperWithMargin>

@@ -14,10 +14,13 @@ import { calculateTariffCashback } from 'src/utils/calculateTariffCashback';
 import { calculatePaymentForCurrentMonth } from 'src/utils/calculatePaymentForCurrentMonth';
 import { getProcessedExpirationDates } from 'src/utils/getProcessedExpirationDates';
 import { AddOneDayFormatted } from 'src/utils/AddOneDayFormatted';
-import { CalendarWrapper, SearchContainer, Wrapper } from './calendarContentStyles';
+import {
+  CalendarWrapper,
+  SearchContainer,
+  Wrapper,
+} from './calendarContentStyles';
 
 const CalendarContent = () => {
-
   const { data: clientSubscriptions } = useAppSelector(
     state => state.clientSubscriptions
   );
@@ -31,9 +34,7 @@ const CalendarContent = () => {
     }
     const total = calculatePaymentForCurrentMonth(clientSubscriptions);
     setTotalPayment(total);
-
   }, [clientSubscriptions]);
-
 
   let processedDates: Date[] = [];
 
@@ -81,7 +82,10 @@ const CalendarContent = () => {
             name={sub.subscription.name}
             tariffName={sub.tariff.name}
             price={calculateSubscriptionCost(sub.tariff)}
-            cashbackAmount={calculateTariffCashback(sub.tariff, sub.cashback_amount)}
+            cashbackAmount={calculateTariffCashback(
+              sub.tariff,
+              sub.cashback_amount
+            )}
             cashback={sub.subscription.cashback.amount}
             // NOTE: добавить charge_account
             accountNumber="*** 3456"
