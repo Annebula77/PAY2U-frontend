@@ -15,14 +15,15 @@ import { fetchSubscriptions } from 'src/store/slices/allSubscriptionsSlice';
 import { fetchClientSubscriptions } from 'src/store/slices/clientSubscriptionsSlice';
 import { getNearestPaymentDate } from 'src/utils/getNearestPaymentDate';
 import { GradientWrapper, InvisibleButton } from 'src/styles/reusableStyles';
+import { getClientIdFromToken } from 'src/utils/getClientIdFromToken';
+import { AddOneDayFormatted } from '../../utils/AddOneDayFormatted';
+import { fetchClientById } from 'src/store/slices/clientByIdSlice';
 import {
   ControlsContainer,
   MySubsContainer,
   SearchContainer,
   SubsRow,
 } from './headerStyles';
-import { getClientIdFromToken } from 'src/utils/getClientIdFromToken';
-import { AddOneDayFormatted } from '../../utils/AddOneDayFormatted';
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -44,7 +45,8 @@ const Header = () => {
       return;
     }
     const isActive = true;
-    dispatch(fetchSubscriptions({ recommended: true }));
+    dispatch(fetchClientById(clientId));
+    dispatch(fetchSubscriptions({}));
     dispatch(fetchClientSubscriptions({ clientId: clientId, isActive }));
   }, [dispatch, clientId]);
 

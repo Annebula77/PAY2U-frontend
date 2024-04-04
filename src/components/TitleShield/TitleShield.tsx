@@ -1,5 +1,5 @@
 import { Card, Typography } from '@mui/material';
-import { useAppDispatch, useAppSelector } from 'src/store/hooks';
+import { useAppDispatch } from 'src/store/hooks';
 import { useNavigate } from 'react-router-dom';
 import Cake from 'src/assets/cake.png';
 import ArrowRight from '../icons/ArrowRight';
@@ -20,8 +20,6 @@ const TitleShield = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const { data: client } = useAppSelector(state => state.client);
-
   const handleLinkClick = async (evt: SyntheticEvent) => {
     evt.preventDefault();
     const id = 1;
@@ -29,20 +27,17 @@ const TitleShield = () => {
       await dispatch(fetchToken(id)).unwrap();
       const clientId = getClientIdFromToken();
       if (!clientId) {
+        console.log('Client ID is not found.');
         return;
       }
-      await dispatch(fetchClientById(clientId));
-      if (!client) {
-        return;
-      }
-      if (client.month_cashback === null) {
+      const clientResponse = await dispatch(fetchClientById(clientId)).unwrap();
+      if (clientResponse.month_cashback === null) {
         navigate('/onboarding1');
-        return;
       } else {
         navigate('/main');
       }
     } catch (error) {
-      console.error('Ошибка при получении токена', error);
+      console.error('Ошибка при получении токена или данных клиента', error);
     }
   };
 

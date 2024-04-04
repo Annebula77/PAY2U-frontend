@@ -1,11 +1,10 @@
 import { type FC } from 'react';
 
 interface Props {
-  className?: string;
   fill?: string;
 }
 
-const ForwardArrowIcon: FC<Props> = ({ className, fill }) => (
+const ForwardArrowIcon: FC<Props> = ({ fill }) => (
   <svg
     width="24"
     height="24"
@@ -13,7 +12,6 @@ const ForwardArrowIcon: FC<Props> = ({ className, fill }) => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    className={className}
     <path
       d="M15.5858 12L8.29289 4.70711C7.90237 4.31658 
     7.90237 3.68342 8.29289 3.29289C8.68342 2.90237 9.31658

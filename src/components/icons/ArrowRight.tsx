@@ -1,10 +1,4 @@
-import { type FC } from 'react';
-
-interface Props {
-  className?: string;
-}
-
-const ArrowRight: FC<Props> = ({ className }) => (
+const ArrowRight = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -12,7 +6,6 @@ const ArrowRight: FC<Props> = ({ className }) => (
     viewBox="0 0 16 16"
     fill="none"
   >
-    className={className}
     <circle opacity="0.1" cx="8" cy="8" r="8" fill="#EA417F" />
     <path
       fillRule="evenodd"
