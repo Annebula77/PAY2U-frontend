@@ -5,7 +5,7 @@ import { ScreenShot, TextDivLong } from 'src/styles/reusableStyles';
 
 const OnboardingThreeContent = () => (
   <>
-    <OnboardingBody toNext="/main" out="/">
+    <OnboardingBody toNext="/me" out="/">
       <ScreenShot src={onboarding3} alt="безопасность" />
       <TextDivLong>
         <Typography variant="h1" align="center">

@@ -23,7 +23,7 @@ const CookiesPage = () => {
     <StyledSection>
       <ControlsContainer>
         <Link
-          to="/main"
+          to="/me"
           style={{ textDecoration: 'none', margin: '0', padding: 0 }}
         >
           <BackArrowIcon />

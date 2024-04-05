@@ -16,7 +16,7 @@ export const tariffSchema = z.object({
 
 export type TariffModel = z.infer<typeof tariffSchema>;
 
-const subscriptionBenefitSchema = z.object({
+export const subscriptionBenefitSchema = z.object({
   id: z.number(),
   icon: z.string(),
   benefit: z.string(),

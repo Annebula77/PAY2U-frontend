@@ -61,7 +61,7 @@ const CatalogueTab = () => {
                   img={subscription.image_preview}
                   price={subscription.lowestPrice}
                   cashback={`${subscription.cashback.amount}`}
-                  route={`/subscriptions/${subscription.id}`}
+                  route={`/me/subscriptions/${subscription.id}`}
                   name={subscription.name}
                 />
               ))}

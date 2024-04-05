@@ -14,7 +14,6 @@ import {
   InvisibleButton,
 } from './titleShieldStyles';
 import { fetchClientById } from 'src/store/slices/clientByIdSlice';
-import { getClientIdFromToken } from 'src/utils/getClientIdFromToken';
 
 const TitleShield = () => {
   const dispatch = useAppDispatch();
@@ -25,16 +24,11 @@ const TitleShield = () => {
     const id = 1;
     try {
       await dispatch(fetchToken(id)).unwrap();
-      const clientId = getClientIdFromToken();
-      if (!clientId) {
-        console.log('Client ID is not found.');
-        return;
-      }
-      const clientResponse = await dispatch(fetchClientById(clientId)).unwrap();
+      const clientResponse = await dispatch(fetchClientById()).unwrap();
       if (clientResponse.month_cashback === null) {
         navigate('/onboarding1');
       } else {
-        navigate('/main');
+        navigate('/me');
       }
     } catch (error) {
       console.error('Ошибка при получении токена или данных клиента', error);

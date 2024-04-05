@@ -38,13 +38,13 @@ const App = () => {
         <Route path="/onboarding1" element={<OnboardingOne />} />
         <Route path="/onboarding2" element={<OnboardingTwo />} />
         <Route path="/onboarding3" element={<OnboardingThree />} />
-        <Route path="/main" element={<HomePage />} />
+        <Route path="/me" element={<HomePage />} />
         <Route path="/cookies" element={<CookiesPage />} />
         <Route
-          path="/subscriptions/:subscription_id"
+          path="/me/subscriptions/:subscription_id"
           element={<SubscriptionPage />}
         />
-        <Route path="/clients/:client_id/calendar" element={<CalendarPage />} />
+        <Route path="/me/calendar" element={<CalendarPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </StyledSection>

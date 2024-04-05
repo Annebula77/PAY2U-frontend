@@ -5,7 +5,7 @@ import {
   loginRequestSchema,
   loginResponseSchema,
 } from 'src/models/loginSchema';
-import { BASE_URL } from 'src/utils/variables';
+import { TOKEN_URL } from 'src/utils/variables';
 import postData from 'src/utils/requests/postData';
 
 export const fetchToken = createAsyncThunk(
@@ -13,7 +13,7 @@ export const fetchToken = createAsyncThunk(
   async (id: number, { rejectWithValue }) => {
     try {
       const data = await postData(
-        `${BASE_URL}login/get-token/`,
+        TOKEN_URL,
         loginResponseSchema,
         loginRequestSchema,
         { id },

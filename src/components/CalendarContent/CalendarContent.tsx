@@ -47,7 +47,7 @@ const CalendarContent = () => {
       <GradientWrapper>
         <ControlsContainer>
           <Link
-            to="/main"
+            to="/me"
             style={{ textDecoration: 'none', margin: '0', padding: 0 }}
           >
             <BackArrowIcon />
@@ -86,7 +86,8 @@ const CalendarContent = () => {
               sub.tariff,
               sub.cashback_amount
             )}
-            cashback={sub.subscription.cashback.amount}
+            // NOTE: изменить %
+            cashback={sub.cashback_amount}
             // NOTE: добавить charge_account
             accountNumber="*** 3456"
             tel={clientById?.phone ?? ''}
@@ -96,7 +97,7 @@ const CalendarContent = () => {
               )?.benefit || 'значение по умолчанию'
             }
             prolongation={sub.is_auto_pay}
-            route="/main"
+            route="/me"
             paymentDate={AddOneDayFormatted(sub.expiration_date)}
           />
         ))}

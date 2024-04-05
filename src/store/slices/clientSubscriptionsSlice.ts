@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import fetchData from 'src/utils/requests/fetchData';
-import { BASE_URL } from 'src/utils/variables';
+import { CLIENT_URL } from 'src/utils/variables';
 import {
   clientSubscriptionsSchema,
   type ClientSubscriptionsModal,
@@ -18,12 +18,12 @@ export const fetchClientSubscriptions = createAsyncThunk<
   { rejectValue: string; state: RootState }
 >(
   'subscriptions/fetchClient',
-  async ({ clientId, isActive }, { rejectWithValue, getState }) => {
+  async ({ isActive }, { rejectWithValue, getState }) => {
     const token = getState().token.access_token;
     const queryParams = new URLSearchParams();
     if (isActive !== undefined)
       queryParams.append('is_active', isActive.toString());
-    const url = `${BASE_URL}clients/${clientId}/subscriptions/?${queryParams.toString()}`;
+    const url = `${CLIENT_URL}subscriptions/?${queryParams.toString()}`;
     return fetchData(url, clientSubscriptionsSchema, rejectWithValue, token);
   }
 );
