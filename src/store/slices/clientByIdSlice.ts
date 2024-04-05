@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import fetchData from 'src/utils/requests/fetchData';
-import { BASE_URL } from 'src/utils/variables';
+import { CLIENT_URL } from 'src/utils/variables';
 import {
   type ClientByIdModel,
   clientByIdSchema,
@@ -9,16 +9,13 @@ import {
 
 export const fetchClientById = createAsyncThunk<
   ClientByIdModel,
-  number,
+  void,
   { rejectValue: string; state: RootState }
->(
-  'client/fetchClientById',
-  async (client_id, { rejectWithValue, getState }) => {
-    const token = getState().token.access_token;
-    const url = `${BASE_URL}/clients/${client_id}`;
-    return fetchData(url, clientByIdSchema, rejectWithValue, token);
-  }
-);
+>('client/fetchClientById', async (_, { rejectWithValue, getState }) => {
+  const token = getState().token.access_token;
+  const url = `${CLIENT_URL}me`;
+  return fetchData(url, clientByIdSchema, rejectWithValue, token);
+});
 
 interface ClientByIdProps {
   data: ClientByIdModel | null;

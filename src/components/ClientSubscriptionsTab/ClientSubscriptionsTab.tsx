@@ -6,7 +6,6 @@ import { AddOneDayFormatted } from '../../utils/AddOneDayFormatted';
 import { Chip } from '@mui/material';
 import CalendarIcon from '../icons/CalendarIcon';
 import { Link } from 'react-router-dom';
-import { getClientIdFromToken } from '../../utils/getClientIdFromToken';
 import { useState } from 'react';
 import {
   ChipWrapper,
@@ -19,8 +18,6 @@ const ClientSubscriptionsTab = () => {
     state => state.clientSubscriptions
   );
   const { data: clientById } = useAppSelector(state => state.client);
-
-  const clientId = getClientIdFromToken();
 
   const [filter, setFilter] = useState('all');
 
@@ -66,7 +63,7 @@ const ClientSubscriptionsTab = () => {
         />
         <IconWrapper>
           <Link
-            to={`/clients/${clientId}/calendar`}
+            to={`/me/calendar`}
             style={{ textDecoration: 'none', margin: '0', padding: 0 }}
           >
             <CalendarIcon />
@@ -84,7 +81,8 @@ const ClientSubscriptionsTab = () => {
             sub.tariff,
             sub.cashback_amount
           )}
-          cashback={sub.subscription.cashback.amount}
+          // NOTE: исправить на %
+          cashback={sub.cashback_amount}
           // NOTE: добавить charge_account
           accountNumber="*** 3456"
           tel={clientById?.phone ?? ''}
@@ -94,7 +92,7 @@ const ClientSubscriptionsTab = () => {
             )?.benefit || 'значение по умолчанию'
           }
           prolongation={sub.is_auto_pay}
-          route="/main"
+          route="/me"
           paymentDate={AddOneDayFormatted(sub.expiration_date)}
         />
       ))}

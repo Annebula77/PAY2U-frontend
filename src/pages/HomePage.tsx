@@ -13,7 +13,7 @@ const HomePage = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === '/main' && !consentGiven) {
+    if (location.pathname === '/me' && !consentGiven) {
       const timer = setTimeout(() => {
         setShowModal(true);
       }, 5000);

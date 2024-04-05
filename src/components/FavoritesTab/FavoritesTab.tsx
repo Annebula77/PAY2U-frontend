@@ -38,7 +38,7 @@ const FavoritesTab = () => {
           name={fav.subscription.name}
           price={getLowestPriceTariffAmount(fav.subscription.tariffs)}
           cashback={fav.subscription.cashback.amount}
-          route={`/subscriptions/${fav.subscription.id}`}
+          route={`/me/subscriptions/${fav.subscription.id}`}
         />
       ))}
     </StyledTabSection>

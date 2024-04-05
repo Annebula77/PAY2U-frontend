@@ -3,5 +3,5 @@ export const calculateSubscriptionCost = (tariff: {
   days_amount: number;
 }): number => {
   const dailyRate = tariff.amount / 30;
-  return dailyRate * tariff.days_amount;
+  return Math.round(dailyRate * tariff.days_amount);
 };

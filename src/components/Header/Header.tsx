@@ -45,8 +45,8 @@ const Header = () => {
       return;
     }
     const isActive = true;
-    dispatch(fetchClientById(clientId));
-    dispatch(fetchSubscriptions({}));
+    dispatch(fetchClientById());
+    dispatch(fetchSubscriptions({ recommended: true }));
     dispatch(fetchClientSubscriptions({ clientId: clientId, isActive }));
   }, [dispatch, clientId]);
 
@@ -91,7 +91,7 @@ const Header = () => {
               img={subscription.image_preview}
               title={subscription.name}
               cashback={`${subscription.cashback.amount}`}
-              route={`/subscriptions/${subscription.id}`}
+              route={`/me/subscriptions/${subscription.id}`}
             />
           ))}
         title="Рекомендации"
@@ -148,7 +148,7 @@ const Header = () => {
             )}
           </Link>
           <Link
-            to={`/clients/${clientId}/calendar`}
+            to={`/me/calendar`}
             style={{
               textDecoration: 'none',
               width: '100%',

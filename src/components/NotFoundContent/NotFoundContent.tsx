@@ -31,7 +31,7 @@ const NotFoundContent = () => {
     <>
       <ControlsContainer>
         <Link
-          to="/main"
+          to="/me"
           style={{
             textDecoration: 'none',
             margin: '0',
@@ -70,7 +70,7 @@ const NotFoundContent = () => {
         </Typography>
         <ContainedButton
           variant="contained"
-          onClick={() => navigate('/main')}
+          onClick={() => navigate('/me')}
           sx={{
             textTransform: 'none',
             padding: '10px 0',
