@@ -25,7 +25,7 @@ const TitleShield = () => {
     try {
       await dispatch(fetchToken(id)).unwrap();
       const clientResponse = await dispatch(fetchClientById()).unwrap();
-      if (clientResponse.month_cashback === null) {
+      if (clientResponse.month_cashback === 0) {
         navigate('/onboarding1');
       } else {
         navigate('/me');

@@ -12,10 +12,8 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import HowItWorksContent from '../HowItWorksContent/HowItWorksContent';
 import { fetchSubscriptions } from 'src/store/slices/allSubscriptionsSlice';
-import { fetchClientSubscriptions } from 'src/store/slices/clientSubscriptionsSlice';
 import { getNearestPaymentDate } from 'src/utils/getNearestPaymentDate';
 import { GradientWrapper, InvisibleButton } from 'src/styles/reusableStyles';
-import { getClientIdFromToken } from 'src/utils/getClientIdFromToken';
 import { AddOneDayFormatted } from '../../utils/AddOneDayFormatted';
 import { fetchClientById } from 'src/store/slices/clientByIdSlice';
 import {
@@ -38,17 +36,10 @@ const Header = () => {
 
   const [showModal, setShowModal] = useState(false);
 
-  const clientId = getClientIdFromToken();
-
   useEffect(() => {
-    if (!clientId) {
-      return;
-    }
-    const isActive = true;
     dispatch(fetchClientById());
     dispatch(fetchSubscriptions({ recommended: true }));
-    dispatch(fetchClientSubscriptions({ clientId: clientId, isActive }));
-  }, [dispatch, clientId]);
+  }, [dispatch]);
 
   const nextSubscription = getNearestPaymentDate(
     clientSubscriptions?.results || []

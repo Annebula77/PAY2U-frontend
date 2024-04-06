@@ -8,6 +8,11 @@ import clientByIdReducer from './slices/clientByIdSlice';
 import clientSubscriptionsReducer from './slices/clientSubscriptionsSlice';
 import favoriteSubscriptionsReducer from './slices/favoriteSubscriptionsSlice';
 import toggleLikesReducer from './slices/toggleLikesSlice';
+import formReducer from './slices/formSlice';
+import addSubscriptionReducer from './slices/addSubscriptionSlice';
+import deleteSubscriptionReducer from './slices/deleteSubscriptionSlice';
+import cashbackStatusReducer from './slices/cashbackStatusSlice';
+import prolongationReducer from './slices/prolongationSlice';
 
 export const store = configureStore({
   reducer: {
@@ -20,6 +25,11 @@ export const store = configureStore({
     clientSubscriptions: clientSubscriptionsReducer,
     favorites: favoriteSubscriptionsReducer,
     toggleLikes: toggleLikesReducer,
+    form: formReducer,
+    addForm: addSubscriptionReducer,
+    deleteSubscription: deleteSubscriptionReducer,
+    cashbackStatus: cashbackStatusReducer,
+    prolongation: prolongationReducer,
   },
 });
 

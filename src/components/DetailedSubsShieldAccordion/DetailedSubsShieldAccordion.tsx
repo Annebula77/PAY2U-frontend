@@ -30,6 +30,8 @@ type PartialSubsShieldProps = Pick<
   | 'paymentDate'
   | 'onChange'
   | 'cashbackAmount'
+  | 'onClick'
+  | 'isDisabled'
 >;
 
 const DetailedSubsShieldAccordion: FC<PartialSubsShieldProps> = ({
@@ -42,6 +44,8 @@ const DetailedSubsShieldAccordion: FC<PartialSubsShieldProps> = ({
   route,
   paymentDate,
   cashbackAmount,
+  onClick,
+  isDisabled,
 }) => {
   return (
     <Accordion
@@ -186,7 +190,12 @@ const DetailedSubsShieldAccordion: FC<PartialSubsShieldProps> = ({
         </DetailsContainer>
         <ButtonContainer>
           <Link to={route} style={{ textDecoration: 'none', width: '100%' }}>
-            <OutlinedButton variant="outlined" sx={{ textTransform: 'none' }}>
+            <OutlinedButton
+              variant="outlined"
+              disabled={isDisabled}
+              onClick={onClick}
+              sx={{ textTransform: 'none' }}
+            >
               Отключить подписку
             </OutlinedButton>
           </Link>

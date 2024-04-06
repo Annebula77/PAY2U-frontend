@@ -24,6 +24,8 @@ export interface DetailedSubsShieldProps {
   prolongation: boolean;
   route: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>, checked: boolean) => void;
+  onClick: () => void;
+  isDisabled: boolean;
 }
 
 const DetailedSubsShield: FC<DetailedSubsShieldProps> = ({
@@ -40,6 +42,8 @@ const DetailedSubsShield: FC<DetailedSubsShieldProps> = ({
   paymentDate,
   onChange,
   cashbackAmount,
+  onClick,
+  isDisabled,
 }) => {
   return (
     <Card sx={{ width: '343px', margin: '0' }}>
@@ -95,6 +99,8 @@ const DetailedSubsShield: FC<DetailedSubsShieldProps> = ({
           onChange={onChange}
           route={route}
           paymentDate={paymentDate}
+          onClick={onClick}
+          isDisabled={isDisabled}
         />
       </CardContent>
     </Card>

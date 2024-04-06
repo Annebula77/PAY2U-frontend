@@ -1,8 +1,8 @@
 import { parseISO, isSameMonth, endOfMonth } from 'date-fns';
-import { type ClientSubscriptionsModal } from '../models/clientsSubscriptionsSchema';
+import { type ClientSubscriptionsModel } from '../models/clientsSubscriptionsSchema';
 
 export const calculatePaymentForCurrentMonth = (
-  clientSubscriptions: ClientSubscriptionsModal
+  clientSubscriptions: ClientSubscriptionsModel
 ): number => {
   const today = new Date();
   const endOfCurrentMonth = endOfMonth(today);
