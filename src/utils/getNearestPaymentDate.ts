@@ -1,8 +1,8 @@
-import { type ResultSubscriptionModal } from '../models/clientsSubscriptionsSchema';
+import { type ResultSubscriptionModel } from '../models/clientsSubscriptionsSchema';
 
 export const getNearestPaymentDate = (
-  subscriptions: ResultSubscriptionModal[]
-): ResultSubscriptionModal | null => {
+  subscriptions: ResultSubscriptionModel[]
+): ResultSubscriptionModel | null => {
   const activeSubscriptions = subscriptions
     .filter(sub => sub.is_active)
     .sort(

@@ -1,13 +1,7 @@
 import styled from 'styled-components';
 import { Typography } from '@mui/material';
 import InfoIcon from '../icons/InfoIcon';
-
-const StyledSection = styled.section`
-  width: 375px;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 16px;
-`;
+import { ModalStyledSection } from '../../styles/reusableStyles';
 
 const TextContainer = styled.article`
   width: 100%;
@@ -29,7 +23,7 @@ const IconContainer = styled.div`
 `;
 
 const HowItWorksContent = () => (
-  <StyledSection>
+  <ModalStyledSection>
     <Typography
       variant="h1"
       align="left"
@@ -108,6 +102,6 @@ const HowItWorksContent = () => (
         сторонние сервисы
       </Typography>
     </TextContainer>
-  </StyledSection>
+  </ModalStyledSection>
 );
 export default HowItWorksContent;

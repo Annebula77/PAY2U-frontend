@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useAppSelector } from 'src/store/hooks';
+import { useAppSelector, useAppDispatch } from 'src/store/hooks';
 import { ControlsContainer } from 'src/components/Header/headerStyles';
 import { Typography } from '@mui/material';
 import SearchIcon from '../icons/SearchIcon';
@@ -19,12 +19,25 @@ import {
   SearchContainer,
   Wrapper,
 } from './calendarContentStyles';
+import { maskString } from '../../utils/maskString';
+import { deleteSubscription } from '../../store/slices/deleteSubscriptionSlice';
+import { toggleProlongation } from '../../store/slices/prolongationSlice';
+import { fetchClientSubscriptions } from '../../store/slices/clientSubscriptionsSlice';
+import { getClientIdFromToken } from '../../utils/getClientIdFromToken';
 
 const CalendarContent = () => {
+  const dispatch = useAppDispatch();
+
+  const clientId = getClientIdFromToken();
+
   const { data: clientSubscriptions } = useAppSelector(
     state => state.clientSubscriptions
   );
   const { data: clientById } = useAppSelector(state => state.client);
+
+  const subscriptionsToBeCharged = clientSubscriptions?.results.filter(
+    sub => sub.is_active === true
+  );
 
   const [totalPayment, setTotalPayment] = useState(0);
 
@@ -37,7 +50,6 @@ const CalendarContent = () => {
   }, [clientSubscriptions]);
 
   let processedDates: Date[] = [];
-
   if (clientSubscriptions) {
     processedDates = getProcessedExpirationDates(clientSubscriptions);
   }
@@ -75,7 +87,7 @@ const CalendarContent = () => {
         </CalendarWrapper>
       </GradientWrapper>
       <Wrapper>
-        {clientSubscriptions?.results.map(sub => (
+        {subscriptionsToBeCharged?.map(sub => (
           <DetailedSubsShield
             key={sub.subscription.id}
             img={sub.subscription.image_preview}
@@ -86,10 +98,10 @@ const CalendarContent = () => {
               sub.tariff,
               sub.cashback_amount
             )}
-            // NOTE: изменить %
-            cashback={sub.cashback_amount}
-            // NOTE: добавить charge_account
-            accountNumber="*** 3456"
+            cashback={sub.subscription.cashback.amount}
+            accountNumber={maskString(
+              clientById?.bank_accounts.at(0)?.number || ''
+            )}
             tel={clientById?.phone ?? ''}
             link={
               sub.subscription.subscription_benefits.find(benefit =>
@@ -97,8 +109,27 @@ const CalendarContent = () => {
               )?.benefit || 'значение по умолчанию'
             }
             prolongation={sub.is_auto_pay}
+            onChange={async event => {
+              const subscription_id = sub.id;
+              const is_auto_pay = event.target.checked;
+              // NOTE: очень временное решение, переделать
+              if (sub.deleted_at !== null) {
+                alert('Вы не можете продлять удаленную подписку');
+                return;
+              }
+              await dispatch(
+                toggleProlongation({ subscription_id, is_auto_pay })
+              );
+              if (clientId) {
+                await dispatch(fetchClientSubscriptions({ clientId }));
+              }
+            }}
             route="/me"
             paymentDate={AddOneDayFormatted(sub.expiration_date)}
+            onClick={() =>
+              dispatch(deleteSubscription({ subscription_id: sub.id }))
+            }
+            isDisabled={sub.deleted_at !== null}
           />
         ))}
       </Wrapper>

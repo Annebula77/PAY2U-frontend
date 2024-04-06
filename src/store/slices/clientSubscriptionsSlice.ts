@@ -4,7 +4,7 @@ import fetchData from 'src/utils/requests/fetchData';
 import { CLIENT_URL } from 'src/utils/variables';
 import {
   clientSubscriptionsSchema,
-  type ClientSubscriptionsModal,
+  type ClientSubscriptionsModel,
 } from 'src/models/clientsSubscriptionsSchema';
 
 interface FetchSubscriptionsParams {
@@ -13,7 +13,7 @@ interface FetchSubscriptionsParams {
 }
 
 export const fetchClientSubscriptions = createAsyncThunk<
-  ClientSubscriptionsModal,
+  ClientSubscriptionsModel,
   FetchSubscriptionsParams,
   { rejectValue: string; state: RootState }
 >(
@@ -29,7 +29,7 @@ export const fetchClientSubscriptions = createAsyncThunk<
 );
 
 interface ClientSubscriptionsProps {
-  data: ClientSubscriptionsModal | null;
+  data: ClientSubscriptionsModel | null;
   loading: boolean;
   error: string | null;
 }

@@ -66,6 +66,7 @@ export const SearchContainer = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
+
 //  невидимая кнопака
 export const InvisibleButton = styled.button`
   ${resetBox()};
@@ -73,4 +74,12 @@ export const InvisibleButton = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
+`;
+
+//  модальные окна
+export const ModalStyledSection = styled.section`
+  width: 375px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 16px;
 `;

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { categorySchema } from './categorySchema';
 
-const cashbackSchema = z.object({
+export const cashbackSchema = z.object({
   id: z.number(),
   amount: z.number(),
 });

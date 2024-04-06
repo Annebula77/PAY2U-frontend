@@ -14,9 +14,10 @@ import { addFavorite, removeFavorite } from 'src/store/slices/toggleLikesSlice';
 
 export interface SubscriptionContentProps {
   subscription: SingleSubScriptionModel;
+  onClose?: () => void;
 }
 
-const SubcategoryContainer = styled.section`
+const SubscriptionContainer = styled.section`
   width: 100%;
   box-sizing: border-box;
   margin: 12px 0 12px;
@@ -90,6 +91,7 @@ const StyledHeartButton = styled.button`
 
 const SubscriptionContent: FC<SubscriptionContentProps> = ({
   subscription,
+  onClose,
 }) => {
   const dispatch = useAppDispatch();
 
@@ -115,7 +117,7 @@ const SubscriptionContent: FC<SubscriptionContentProps> = ({
   };
 
   return (
-    <SubcategoryContainer>
+    <SubscriptionContainer>
       <ImageContainer>
         <StyledHeartButton onClick={handleFavoriteClick}>
           <CustomTooltip isLiked={isLiked}>
@@ -145,13 +147,11 @@ const SubscriptionContent: FC<SubscriptionContentProps> = ({
           />
         ))}
       </BenefitContainer>
-
       <ExpandableTextCard text={subscription.description} />
-
       <TariffContainer>
-        <SubscriptionAccordion subscription={subscription} />
+        <SubscriptionAccordion subscription={subscription} onClose={onClose} />
       </TariffContainer>
-    </SubcategoryContainer>
+    </SubscriptionContainer>
   );
 };
 

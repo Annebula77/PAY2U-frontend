@@ -2,6 +2,7 @@ import { z } from 'zod';
 import {
   tariffSchema,
   subscriptionBenefitSchema,
+  cashbackSchema,
 } from './singleSubscriptionSchema';
 import { categorySchema } from './categorySchema';
 
@@ -21,6 +22,8 @@ export const clientSubscriptionSchema = z.object({
   description: z.string(),
   is_recommended: z.boolean(),
   category: categorySchema,
+  cashback: cashbackSchema,
+  is_liked: z.boolean(),
   subscription_benefits: z.array(subscriptionBenefitSchema),
 });
 export type ClientSubscriptionModal = z.infer<typeof clientSubscriptionSchema>;
@@ -37,7 +40,7 @@ export const resultSubscriptionSchema = z.object({
   deleted_at: z.string().nullable(),
 });
 
-export type ResultSubscriptionModal = z.infer<typeof resultSubscriptionSchema>;
+export type ResultSubscriptionModel = z.infer<typeof resultSubscriptionSchema>;
 export const clientSubscriptionsSchema = z.object({
   count: z.number(),
   next: z.null().optional(),
@@ -45,6 +48,6 @@ export const clientSubscriptionsSchema = z.object({
   results: z.array(resultSubscriptionSchema),
 });
 
-export type ClientSubscriptionsModal = z.infer<
+export type ClientSubscriptionsModel = z.infer<
   typeof clientSubscriptionsSchema
 >;
