@@ -2,10 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
   addSubscriptionSchema,
   type AddSubscriptionModel,
-} from '../../models/addSubscriptionSchema';
+} from 'src/models/addSubscriptionSchema';
 import { type RootState } from '../store';
-import postData from '../../utils/requests/postData';
-import { CLIENT_URL } from '../../utils/variables';
+import postData from 'src/utils/requests/postData';
+import { CLIENT_URL } from 'src/utils/variables';
 
 export const addSubscription = createAsyncThunk<
   AddSubscriptionModel,

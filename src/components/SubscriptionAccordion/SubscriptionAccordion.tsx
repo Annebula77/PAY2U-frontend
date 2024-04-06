@@ -12,8 +12,8 @@ import styled from 'styled-components';
 import { resetBox } from 'src/styles/mixIns';
 import { GeneralModal } from '../GeneralModal/GeneralModal';
 import TariffAdditionModal from '../TariffAdditionModal/TariffAdditionModal';
-import { InvisibleButton } from '../../styles/reusableStyles';
-import { type TariffModel } from '../../models/singleSubscriptionSchema';
+import { InvisibleButton } from 'src/styles/reusableStyles';
+import { type TariffModel } from 'src/models/singleSubscriptionSchema';
 
 const TariffContainer = styled.div`
   ${resetBox()}

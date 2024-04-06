@@ -1,4 +1,4 @@
-import { type ResultSubscriptionModel } from '../models/clientsSubscriptionsSchema';
+import { type ResultSubscriptionModel } from 'src/models/clientsSubscriptionsSchema';
 
 export const getNearestPaymentDate = (
   subscriptions: ResultSubscriptionModel[]

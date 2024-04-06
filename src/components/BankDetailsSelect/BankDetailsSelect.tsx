@@ -7,7 +7,7 @@ import {
   type SvgIconProps,
   type SelectChangeEvent,
 } from '@mui/material';
-import { type AccountModel } from '../../models/clientByIdSchema';
+import { type AccountModel } from 'src/models/clientByIdSchema';
 import BankDetails from '../BankDetails/BankDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 

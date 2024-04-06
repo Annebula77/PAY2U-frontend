@@ -1,35 +1,15 @@
 import React, { useState } from 'react';
 import { Typography, IconButton, useTheme } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import styled from 'styled-components';
+import {
+  ShowMoreContainer,
+  ShowMoreText,
+  TextContainer,
+} from './expandableTextCardStyles';
 
 interface ExpandableTextCardProps {
   text: string;
 }
-
-const ShowMoreContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin: -16px 0 0;
-  padding: 0;
-  cursor: pointer;
-  user-select: none;
-  justify-content: flex-start;
-`;
-
-const ShowMoreText = styled(Typography)`
-  && {
-    color: ${({ theme }) => theme.palette.primary.main};
-  }
-`;
-const TextContainer = styled.section`
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0 16px 0;
-  display: flex;
-  flex-direction: column;
-`;
 
 const ExpandableTextCard: React.FC<ExpandableTextCardProps> = ({ text }) => {
   const [isExpanded, setIsExpanded] = useState(false);

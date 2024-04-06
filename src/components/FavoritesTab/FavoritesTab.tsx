@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import styled from 'styled-components';
 import FavoritesShield from '../FavoritesShield/FavoritesShield';
-import { getLowestPriceTariffAmount } from 'src/utils/getLowestPriceTariffAmount';
+import { getLowestPriceTariffAmount } from 'src/utils/costsCalculations/getLowestPriceTariffAmount';
 import { fetchFavoriteSubscriptions } from 'src/store/slices/favoriteSubscriptionsSlice';
 import NoFavoritesTab from '../NoFavoritesTab/NoFavoritesTab';
 

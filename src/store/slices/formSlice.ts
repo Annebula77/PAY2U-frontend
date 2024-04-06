@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { type AddSubscriptionModel } from '../../models/addSubscriptionSchema';
+import { type AddSubscriptionModel } from 'src/models/addSubscriptionSchema';
 
 const initialState: AddSubscriptionModel = {
   subscription: 0,

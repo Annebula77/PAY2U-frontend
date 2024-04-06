@@ -8,11 +8,8 @@ import BackArrowIcon from '../icons/BackArrowIcon';
 import { Typography } from '@mui/material';
 import { ContainedButton } from '../buttons/ContainedButton/ContainedButton';
 import FavoritesShield from '../FavoritesShield/FavoritesShield';
-import { getLowestPriceTariffAmount } from '../../utils/getLowestPriceTariffAmount';
-import {
-  ControlsContainer,
-  SearchContainer,
-} from '../../styles/reusableStyles';
+import { getLowestPriceTariffAmount } from 'src/utils/costsCalculations/getLowestPriceTariffAmount';
+import { ControlsContainer, SearchContainer } from 'src/styles/reusableStyles';
 import { MainWrapper, RecommendationsBox } from './notFoundContentStyles';
 
 const NotFoundContent = () => {

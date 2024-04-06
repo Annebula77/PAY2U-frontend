@@ -12,9 +12,9 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import HowItWorksContent from '../HowItWorksContent/HowItWorksContent';
 import { fetchSubscriptions } from 'src/store/slices/allSubscriptionsSlice';
-import { getNearestPaymentDate } from 'src/utils/getNearestPaymentDate';
+import { getNearestPaymentDate } from 'src/utils/dateManipulations/getNearestPaymentDate';
 import { GradientWrapper, InvisibleButton } from 'src/styles/reusableStyles';
-import { AddOneDayFormatted } from '../../utils/AddOneDayFormatted';
+import { AddOneDayFormatted } from 'src/utils/dateManipulations/AddOneDayFormatted';
 import { fetchClientById } from 'src/store/slices/clientByIdSlice';
 import {
   ControlsContainer,

@@ -1,5 +1,5 @@
 import { parseISO, isSameMonth, endOfMonth } from 'date-fns';
-import { type ClientSubscriptionsModel } from '../models/clientsSubscriptionsSchema';
+import { type ClientSubscriptionsModel } from 'src/models/clientsSubscriptionsSchema';
 
 export const calculatePaymentForCurrentMonth = (
   clientSubscriptions: ClientSubscriptionsModel

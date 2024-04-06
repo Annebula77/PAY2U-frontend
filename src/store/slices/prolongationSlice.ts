@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { type RootState } from '../store'; //
-import { CLIENT_URL } from '../../utils/variables';
-import patchData from '../../utils/requests/patchData';
+import { CLIENT_URL } from 'src/utils/variables';
+import patchData from 'src/utils/requests/patchData';
 import {
   type AutoPaysRequestModel,
   autoPaysRequestSchema,
-} from '../../models/updateAutoPaySchema';
+} from 'src/models/updateAutoPaySchema';
 
 export const toggleProlongation = createAsyncThunk<
   AutoPaysRequestModel,

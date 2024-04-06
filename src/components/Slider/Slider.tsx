@@ -1,9 +1,9 @@
 import { Typography } from '@mui/material';
 import { useRef, ReactNode } from 'react';
 import { register } from 'swiper/element/bundle';
-import styled from 'styled-components';
 import ForwardArrowIcon from '../icons/ForwardArrowIcon';
-import { resetBox } from 'src/styles/mixIns';
+import { NavContainer, NextButton, SwiperContainer } from './sliderStyles';
+
 // Регистрируем веб-компоненты Swiper
 register();
 
@@ -14,28 +14,6 @@ interface SliderProps {
   slidePerView: string;
   spaceBetween?: string;
 }
-
-const SwiperContainer = styled.div`
-  width: 100%;
-  ${resetBox()};
-`;
-
-const NavContainer = styled.div`
-  ${resetBox()};
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const NextButton = styled.button`
-  margin: 0 0 10px;
-  padding: 0;
-  box-sizing: border-box;
-  outline: none;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-`;
 
 const Slider: React.FC<SliderProps> = ({
   slides,

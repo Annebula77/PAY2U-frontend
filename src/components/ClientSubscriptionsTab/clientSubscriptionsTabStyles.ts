@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { resetBox } from '../../styles/mixIns';
+import { resetBox } from 'src/styles/mixIns';
 
 export const StyledTabSection = styled.div`
   ${resetBox()};
