@@ -1,6 +1,6 @@
 import { type FormEvent, useState, type FC } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ModalStyledSection } from '../../styles/reusableStyles';
+import { ModalStyledSection } from 'src/styles/reusableStyles';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import BankDetailsSelect from '../BankDetailsSelect/BankDetailsSelect';
 import {
@@ -16,17 +16,21 @@ import { ContainedButton } from '../buttons/ContainedButton/ContainedButton';
 import {
   type SingleSubScriptionModel,
   type TariffModel,
-} from '../../models/singleSubscriptionSchema';
-import { calculateSubscriptionCost } from '../../utils/calculateSubscriptionCost';
-import styled from 'styled-components';
+} from 'src/models/singleSubscriptionSchema';
+import { calculateSubscriptionCost } from 'src/utils/costsCalculations/calculateSubscriptionCost';
 import { UpperTextBox } from '../TariffShield/tariffShieldStyles';
-import { resetBox } from '../../styles/mixIns';
-import { setAccount, setAutoPay } from '../../store/slices/formSlice';
-import { addSubscription } from '../../store/slices/addSubscriptionSlice';
+import { setAccount, setAutoPay } from 'src/store/slices/formSlice';
+import { addSubscription } from 'src/store/slices/addSubscriptionSlice';
 import NotificationModal, {
   type NotificationModalProps,
 } from '../NotificationModal/NotificationModal';
 import { OutlinedButton } from '../buttons/OutlinedButton/OutlinedButton';
+import {
+  ButtonContainer,
+  FormWrapping,
+  NameContainer,
+  SwitchWrapping,
+} from './tariffAdditionModalStyles';
 
 interface TariffProps {
   tariff: TariffModel | null;
@@ -34,48 +38,6 @@ interface TariffProps {
   onClose: () => void;
 }
 
-export const NameContainer = styled.div`
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 33px 0 26px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-
-  && > :last-child {
-    margin-top: -12px;
-  }
-`;
-
-export const FormWrapping = styled.form`
-  ${resetBox()};
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  width: 100%;
-  gap: 12px;
-`;
-
-export const SwitchWrapping = styled.div`
-  ${resetBox()};
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const ButtonContainer = styled.div`
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0;
-  margin: 16px 0 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-`;
 const TariffAdditionModal: FC<TariffProps> = ({
   tariff,
   subscription,

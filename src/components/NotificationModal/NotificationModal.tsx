@@ -1,10 +1,15 @@
 import { type FC } from 'react';
 import { createPortal } from 'react-dom';
-import styled, { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 import SuccessIcon from '../icons/SuccessIcon';
 import ErrorRoundIcon from '../icons/ErrorRoundIcon';
 import { GeneralModal } from '../GeneralModal/GeneralModal';
 import { Typography } from '@mui/material';
+import {
+  IconContainer,
+  MessageContainer,
+  ModalContainer,
+} from './notificationModalStyles';
 
 export interface NotificationModalProps {
   type: 'success' | 'error' | 'info';
@@ -15,34 +20,6 @@ export interface NotificationModalProps {
   onClose: () => void;
   actions?: React.ReactNode;
 }
-
-const ModalContainer = styled.div`
-  box-sizing: border-box;
-  width: 100%;
-  margin: 0;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-`;
-
-const MessageContainer = styled.div`
-  box-sizing: border-box;
-  width: 70%;
-  margin: 0 0 12px;
-  padding: 16px;
-  border-radius: 8px;
-`;
-
-const IconContainer = styled.div`
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 16px;
-  margin: 0;
-`;
 
 const NotificationModal: FC<NotificationModalProps> = ({
   type,

@@ -9,27 +9,27 @@ import MonthlyPaymentOverview from '../MonthlyPaymentOverview/MonthlyPaymentOver
 import HighlightedCalendar from '../Calendar/Calendar';
 import DetailedSubsShield from '../DetailedSubsShield/DetailedSubsShield';
 import { useEffect, useState } from 'react';
-import { calculateSubscriptionCost } from 'src/utils/calculateSubscriptionCost';
-import { calculateTariffCashback } from 'src/utils/calculateTariffCashback';
-import { calculatePaymentForCurrentMonth } from 'src/utils/calculatePaymentForCurrentMonth';
-import { getProcessedExpirationDates } from 'src/utils/getProcessedExpirationDates';
-import { AddOneDayFormatted } from 'src/utils/AddOneDayFormatted';
+import { calculateSubscriptionCost } from 'src/utils/costsCalculations/calculateSubscriptionCost';
+import { calculateTariffCashback } from 'src/utils/costsCalculations/calculateTariffCashback';
+import { calculatePaymentForCurrentMonth } from 'src/utils/costsCalculations/calculatePaymentForCurrentMonth';
+import { getProcessedExpirationDates } from 'src/utils/dateManipulations/getProcessedExpirationDates';
+import { AddOneDayFormatted } from 'src/utils/dateManipulations/AddOneDayFormatted';
 import {
   CalendarWrapper,
   SearchContainer,
   Wrapper,
 } from './calendarContentStyles';
-import { maskString } from '../../utils/maskString';
-import { deleteSubscription } from '../../store/slices/deleteSubscriptionSlice';
+import { maskString } from 'src/utils/maskString';
+import { deleteSubscription } from 'src/store/slices/deleteSubscriptionSlice';
 import NotificationModal, {
   type NotificationModalProps,
 } from '../NotificationModal/NotificationModal';
 import {
   handleCheckSubscriptionDeleted,
   handleToggleProlongation,
-} from '../../utils/handleProlongationNotifications';
-import { addOneDay } from '../../utils/addOneDay';
-import { ButtonContainer } from '../TariffAdditionModal/TariffAdditionModal';
+} from 'src/utils/handleProlongationNotifications';
+import { addOneDay } from 'src/utils/dateManipulations/addOneDay';
+import { ButtonContainer } from '../TariffAdditionModal/tariffAdditionModalStyles';
 import { ContainedButton } from '../buttons/ContainedButton/ContainedButton';
 import { OutlinedButton } from '../buttons/OutlinedButton/OutlinedButton';
 

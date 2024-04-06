@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Typography } from '@mui/material';
 import InfoIcon from '../icons/InfoIcon';
-import { ModalStyledSection } from '../../styles/reusableStyles';
+import { ModalStyledSection } from 'src/styles/reusableStyles';
 
 const TextContainer = styled.article`
   width: 100%;

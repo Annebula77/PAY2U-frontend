@@ -3,13 +3,13 @@ import { type RootState } from '../store'; //
 import {
   type CashbackStatusResponseModel,
   cashbackStatusResponseSchema,
-} from '../../models/updateCashbackStatusResponseSchema';
+} from 'src/models/updateCashbackStatusResponseSchema';
 import {
   type StatusRequestBodyModel,
   statusRequestBodySchema,
-} from '../../models/updateCashbackStatusSchema';
-import { CLIENT_URL } from '../../utils/variables';
-import patchData from '../../utils/requests/patchData';
+} from 'src/models/updateCashbackStatusSchema';
+import { CLIENT_URL } from 'src/utils/variables';
+import patchData from 'src/utils/requests/patchData';
 
 export const cashbackStatus = createAsyncThunk<
   CashbackStatusResponseModel,

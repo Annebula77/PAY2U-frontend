@@ -6,7 +6,7 @@ import {
   StyledDiv,
   UpperTextBox,
 } from './tariffShieldStyles';
-import { calculateSubscriptionCost } from '../../utils/calculateSubscriptionCost';
+import { calculateSubscriptionCost } from 'src/utils/costsCalculations/calculateSubscriptionCost';
 
 interface TariffShieldProps {
   name: string;

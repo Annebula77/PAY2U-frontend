@@ -1,4 +1,4 @@
-import { type TariffModel } from '../models/singleSubscriptionSchema';
+import { type TariffModel } from 'src/models/singleSubscriptionSchema';
 
 export const getLowestPriceTariffAmount = (tariffs: TariffModel[]) => {
   if (tariffs.length === 0) return 0;

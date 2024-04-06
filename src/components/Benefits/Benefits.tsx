@@ -1,27 +1,11 @@
 import { type FC } from 'react';
 import { Typography } from '@mui/material';
-import { resetBox } from 'src/styles/mixIns';
-import styled from 'styled-components';
+import { BenefitContainer, Icon } from './benefitsStyles';
 
 interface BenefitProps {
   icon: string;
   benefit: string;
 }
-
-const BenefitContainer = styled.div`
-  ${resetBox()};
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-`;
-const Icon = styled.img`
-  ${resetBox()};
-  display: inline-block;
-  width: 28px;
-  height: 28px;
-  margin-right: 10px;
-`;
 
 const Benefit: FC<BenefitProps> = ({ icon, benefit }) => {
   const urlRegex = /(https:\/\/[^\s]+)/g;

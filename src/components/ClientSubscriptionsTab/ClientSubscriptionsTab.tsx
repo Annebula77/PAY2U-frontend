@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from 'src/store/hooks';
 import DetailedSubsShield from '../DetailedSubsShield/DetailedSubsShield';
-import { calculateSubscriptionCost } from 'src/utils/calculateSubscriptionCost';
-import { calculateTariffCashback } from 'src/utils/calculateTariffCashback';
-import { AddOneDayFormatted } from '../../utils/AddOneDayFormatted';
+import { calculateSubscriptionCost } from 'src/utils/costsCalculations/calculateSubscriptionCost';
+import { calculateTariffCashback } from 'src/utils/costsCalculations/calculateTariffCashback';
+import { AddOneDayFormatted } from 'src/utils/dateManipulations/AddOneDayFormatted';
 import { Chip } from '@mui/material';
 import CalendarIcon from '../icons/CalendarIcon';
 import {
@@ -12,21 +12,21 @@ import {
   IconWrapper,
   StyledTabSection,
 } from './clientSubscriptionsTabStyles';
-import { maskString } from '../../utils/maskString';
-import { deleteSubscription } from '../../store/slices/deleteSubscriptionSlice';
-import { fetchClientSubscriptions } from '../../store/slices/clientSubscriptionsSlice';
-import { getClientIdFromToken } from '../../utils/getClientIdFromToken';
+import { maskString } from 'src/utils/maskString';
+import { deleteSubscription } from 'src/store/slices/deleteSubscriptionSlice';
+import { fetchClientSubscriptions } from 'src/store/slices/clientSubscriptionsSlice';
+import { getClientIdFromToken } from 'src/utils/getClientIdFromToken';
 import NotificationModal, {
   type NotificationModalProps,
 } from '../NotificationModal/NotificationModal';
-import { ButtonContainer } from '../TariffAdditionModal/TariffAdditionModal';
+import { ButtonContainer } from '../TariffAdditionModal/tariffAdditionModalStyles';
 import { ContainedButton } from '../buttons/ContainedButton/ContainedButton';
 import { OutlinedButton } from '../buttons/OutlinedButton/OutlinedButton';
-import { addOneDay } from '../../utils/addOneDay';
+import { addOneDay } from 'src/utils/dateManipulations/addOneDay';
 import {
   handleCheckSubscriptionDeleted,
   handleToggleProlongation,
-} from '../../utils/handleProlongationNotifications';
+} from 'src/utils/handleProlongationNotifications';
 
 const ClientSubscriptionsTab = () => {
   const dispatch = useAppDispatch();
