@@ -26,7 +26,7 @@ const BankDetailsSelect: FC<BankDetailsSelectProps> = ({
     <ExpandMoreIcon {...props} style={{ color: 'rgba(66, 119, 202, 1)' }} />
   );
   return (
-    <FormControl variant="filled" fullWidth>
+    <FormControl variant="filled" fullWidth required>
       <InputLabel
         id="account-label"
         shrink={true}
@@ -43,6 +43,7 @@ const BankDetailsSelect: FC<BankDetailsSelectProps> = ({
         onChange={onChange}
         IconComponent={BlueExpandMoreIcon}
         displayEmpty
+        required
         sx={{
           '& .MuiSelect-select': {
             backgroundColor: 'rgba(255, 255, 255, 1)',
