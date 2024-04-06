@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from 'src/store/hooks';
 import { ControlsContainer } from 'src/components/Header/headerStyles';
 import { Typography } from '@mui/material';
@@ -21,23 +21,27 @@ import {
 } from './calendarContentStyles';
 import { maskString } from '../../utils/maskString';
 import { deleteSubscription } from '../../store/slices/deleteSubscriptionSlice';
-import { toggleProlongation } from '../../store/slices/prolongationSlice';
-import { fetchClientSubscriptions } from '../../store/slices/clientSubscriptionsSlice';
-import { getClientIdFromToken } from '../../utils/getClientIdFromToken';
+import NotificationModal, {
+  type NotificationModalProps,
+} from '../NotificationModal/NotificationModal';
+import {
+  handleCheckSubscriptionDeleted,
+  handleToggleProlongation,
+} from '../../utils/handleProlongationNotifications';
+import { addOneDay } from '../../utils/addOneDay';
+import { ButtonContainer } from '../TariffAdditionModal/TariffAdditionModal';
+import { ContainedButton } from '../buttons/ContainedButton/ContainedButton';
+import { OutlinedButton } from '../buttons/OutlinedButton/OutlinedButton';
 
 const CalendarContent = () => {
   const dispatch = useAppDispatch();
 
-  const clientId = getClientIdFromToken();
+  const navigate = useNavigate();
 
   const { data: clientSubscriptions } = useAppSelector(
     state => state.clientSubscriptions
   );
   const { data: clientById } = useAppSelector(state => state.client);
-
-  const subscriptionsToBeCharged = clientSubscriptions?.results.filter(
-    sub => sub.is_active === true
-  );
 
   const [totalPayment, setTotalPayment] = useState(0);
 
@@ -53,6 +57,9 @@ const CalendarContent = () => {
   if (clientSubscriptions) {
     processedDates = getProcessedExpirationDates(clientSubscriptions);
   }
+
+  const [notificationModalProps, setNotificationModalProps] =
+    useState<NotificationModalProps | null>(null);
 
   return (
     <>
@@ -87,9 +94,9 @@ const CalendarContent = () => {
         </CalendarWrapper>
       </GradientWrapper>
       <Wrapper>
-        {subscriptionsToBeCharged?.map(sub => (
+        {clientSubscriptions?.results.map((sub, index: number) => (
           <DetailedSubsShield
-            key={sub.subscription.id}
+            key={index}
             img={sub.subscription.image_preview}
             name={sub.subscription.name}
             tariffName={sub.tariff.name}
@@ -110,28 +117,82 @@ const CalendarContent = () => {
             }
             prolongation={sub.is_auto_pay}
             onChange={async event => {
-              const subscription_id = sub.id;
               const is_auto_pay = event.target.checked;
-              // NOTE: очень временное решение, переделать
-              if (sub.deleted_at !== null) {
-                alert('Вы не можете продлять удаленную подписку');
+              if (
+                !handleCheckSubscriptionDeleted(
+                  sub.deleted_at,
+                  setNotificationModalProps
+                )
+              ) {
                 return;
               }
-              await dispatch(
-                toggleProlongation({ subscription_id, is_auto_pay })
+              await handleToggleProlongation(
+                sub.id,
+                is_auto_pay,
+                setNotificationModalProps,
+                dispatch
               );
-              if (clientId) {
-                await dispatch(fetchClientSubscriptions({ clientId }));
-              }
             }}
             route="/me"
             paymentDate={AddOneDayFormatted(sub.expiration_date)}
-            onClick={() =>
-              dispatch(deleteSubscription({ subscription_id: sub.id }))
-            }
+            onClick={async () => {
+              const newDate = addOneDay(sub.expiration_date);
+              const formattedDate = newDate.toLocaleString('ru-RU', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+              });
+              setNotificationModalProps({
+                type: 'info',
+                title: 'Отключить подписку Okko?',
+                message: `Подписка на сервис Okko перестанет действовать c ${formattedDate}`,
+                onClose: () => setNotificationModalProps(null),
+                actions: (
+                  <ButtonContainer>
+                    <ContainedButton
+                      variant="contained"
+                      sx={{
+                        textTransform: 'none',
+                      }}
+                      onClick={() => {
+                        setNotificationModalProps(null);
+                      }}
+                    >
+                      Назад
+                    </ContainedButton>
+                    <OutlinedButton
+                      variant="outlined"
+                      sx={{
+                        textTransform: 'none',
+                      }}
+                      onClick={async () => {
+                        await dispatch(
+                          deleteSubscription({
+                            subscription_id: sub.subscription.id,
+                          })
+                        );
+                        await handleToggleProlongation(
+                          sub.id,
+                          !sub.is_auto_pay,
+                          setNotificationModalProps,
+                          dispatch
+                        );
+                        setNotificationModalProps(null);
+                        navigate('/me');
+                      }}
+                    >
+                      Отключить
+                    </OutlinedButton>
+                  </ButtonContainer>
+                ),
+              });
+            }}
             isDisabled={sub.deleted_at !== null}
           />
         ))}
+        {notificationModalProps && (
+          <NotificationModal {...notificationModalProps} />
+        )}
       </Wrapper>
     </>
   );
