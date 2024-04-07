@@ -107,9 +107,7 @@ const CalendarContent = () => {
             )}
             cashback={sub.subscription.cashback.amount}
             accountNumber={maskString(
-
               clientById?.bank_accounts[0]?.number || ''
-
             )}
             tel={clientById?.phone ?? ''}
             link={
