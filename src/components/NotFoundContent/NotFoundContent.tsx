@@ -16,12 +16,12 @@ const NotFoundContent = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const { data: subscriptions } = useAppSelector(
-    state => state.allSubscriptions
+  const recommendedSubscriptions = useAppSelector(
+    state => state.allSubscriptions.recommendedData
   );
 
   useEffect(() => {
-    dispatch(fetchSubscriptions({}));
+    dispatch(fetchSubscriptions({ recommended: true }));
   }, [dispatch]);
 
   return (
@@ -87,16 +87,18 @@ const NotFoundContent = () => {
           >
             Возможно вас заинтересует
           </Typography>
-          {subscriptions?.map(sub => (
-            <FavoritesShield
-              key={sub.id}
-              img={sub.image_preview}
-              name={sub.name}
-              price={getLowestPriceTariffAmount(sub.tariffs)}
-              cashback={sub.cashback.amount}
-              route={`/subscriptions/${sub.id}`}
-            />
-          )) ?? []}
+          {recommendedSubscriptions
+            ?.slice(0, 5)
+            .map(sub => (
+              <FavoritesShield
+                key={sub.id}
+                img={sub.image_preview}
+                name={sub.name}
+                price={getLowestPriceTariffAmount(sub.tariffs)}
+                cashback={sub.cashback.amount}
+                route={`/subscriptions/${sub.id}`}
+              />
+            )) ?? []}
         </RecommendationsBox>
       </MainWrapper>
     </>

@@ -1,10 +1,15 @@
 import { type FC, useEffect, useState } from 'react';
 import { type SingleSubScriptionModel } from 'src/models/singleSubscriptionSchema';
 import { useAppDispatch } from 'src/store/hooks';
-import { Typography } from '@mui/material';
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Typography,
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Benefit from '../Benefits/Benefits';
 import ExpandableTextCard from 'src/components/ExpandableTextCard/ExpandableTextCard';
-import SubscriptionAccordion from '../SubscriptionAccordion/SubscriptionAccordion';
 import HeartButton from '../icons/HeartIcon';
 import CustomTooltip from '../CustomTooltip/CustomTooltip';
 import { addFavorite, removeFavorite } from 'src/store/slices/toggleLikesSlice';
@@ -18,6 +23,7 @@ import {
   SubcategoryContainer,
   TariffContainer,
 } from './subscriptionContentStyles';
+import SubscriptionTariffs from '../SubscriptionTariffs/SubscriptionTariffs';
 
 export interface SubscriptionContentProps {
   subscription: SingleSubScriptionModel;
@@ -86,7 +92,28 @@ const SubscriptionContent: FC<SubscriptionContentProps> = ({
       <ExpandableTextCard text={subscription.description} />
 
       <TariffContainer>
-        <SubscriptionAccordion subscription={subscription} />
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon sx={{ color: 'primary.main' }} />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography variant="h3" color="textPrimary" align="left">
+              Условия
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails sx={{ gap: '12px' }}>
+            <Typography
+              className="textRegular"
+              color="textPrimary"
+              align="left"
+              sx={{ marginBottom: '16px' }}
+            >
+              {subscription.conditions}
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+        <SubscriptionTariffs subscription={subscription} />
       </TariffContainer>
     </SubcategoryContainer>
   );
