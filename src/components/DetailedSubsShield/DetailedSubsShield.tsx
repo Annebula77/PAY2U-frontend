@@ -22,7 +22,6 @@ export interface DetailedSubsShieldProps {
   tel: string;
   link: string;
   prolongation: boolean;
-  route: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>, checked: boolean) => void;
   onClick: () => void;
   isDisabled: boolean;
@@ -38,7 +37,6 @@ const DetailedSubsShield: FC<DetailedSubsShieldProps> = ({
   tel,
   link,
   prolongation,
-  route,
   paymentDate,
   onChange,
   cashbackAmount,
@@ -97,7 +95,6 @@ const DetailedSubsShield: FC<DetailedSubsShieldProps> = ({
           link={link}
           prolongation={prolongation}
           onChange={onChange}
-          route={route}
           paymentDate={paymentDate}
           onClick={onClick}
           isDisabled={isDisabled}
