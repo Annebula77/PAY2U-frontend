@@ -20,6 +20,7 @@ export const clientSubscriptionSchema = z.object({
   image_preview: z.string(),
   image_detail: z.string(),
   description: z.string(),
+  conditions: z.string(),
   is_recommended: z.boolean(),
   category: categorySchema,
   cashback: cashbackSchema,

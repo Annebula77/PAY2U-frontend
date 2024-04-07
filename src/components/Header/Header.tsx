@@ -27,8 +27,8 @@ const Header = () => {
   const dispatch = useAppDispatch();
 
   const { data: client } = useAppSelector(state => state.client);
-  const { data: subscriptions } = useAppSelector(
-    state => state.allSubscriptions
+  const recommendedSubscriptions = useAppSelector(
+    state => state.allSubscriptions.recommendedData
   );
   const { data: clientSubscriptions } = useAppSelector(
     state => state.clientSubscriptions
@@ -74,17 +74,15 @@ const Header = () => {
         </SearchContainer>
       </ControlsContainer>
       <Slider
-        slides={subscriptions
-          .filter(subscription => subscription.is_recommended)
-          .map(subscription => (
-            <RecommendedShield
-              key={subscription.id}
-              img={subscription.image_preview}
-              title={subscription.name}
-              cashback={`${subscription.cashback.amount}`}
-              route={`/me/subscriptions/${subscription.id}`}
-            />
-          ))}
+        slides={recommendedSubscriptions.map(subscription => (
+          <RecommendedShield
+            key={subscription.id}
+            img={subscription.image_preview}
+            title={subscription.name}
+            cashback={`${subscription.cashback.amount}`}
+            route={`/me/subscriptions/${subscription.id}`}
+          />
+        ))}
         title="Рекомендации"
         slidePerView="3.5"
       />
@@ -116,7 +114,7 @@ const Header = () => {
             )}
           </Link>
           <Link
-            to=""
+            to="/me/cashback"
             style={{
               textDecoration: 'none',
               width: '48.5%',

@@ -13,6 +13,7 @@ import addSubscriptionReducer from './slices/addSubscriptionSlice';
 import deleteSubscriptionReducer from './slices/deleteSubscriptionSlice';
 import cashbackStatusReducer from './slices/cashbackStatusSlice';
 import prolongationReducer from './slices/prolongationSlice';
+import cashbackHistoryReducer from './slices/cashbackHistorySlice';
 
 export const store = configureStore({
   reducer: {
@@ -29,6 +30,7 @@ export const store = configureStore({
     addForm: addSubscriptionReducer,
     deleteSubscription: deleteSubscriptionReducer,
     cashbackStatus: cashbackStatusReducer,
+    cashbackHistory: cashbackHistoryReducer,
     prolongation: prolongationReducer,
   },
 });

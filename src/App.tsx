@@ -12,6 +12,7 @@ import { setTokens } from './store/slices/tokenSlice';
 import SubscriptionPage from './pages/SubscriptionPage';
 import CalendarPage from './pages/CalendarPage';
 import NotFoundPage from './pages/NotFoundPage';
+import CashbackPage from './pages/CashbackPage';
 
 const StyledSection = styled.section`
   width: 100%;
@@ -45,6 +46,7 @@ const App = () => {
           element={<SubscriptionPage />}
         />
         <Route path="/me/calendar" element={<CalendarPage />} />
+        <Route path="/me/cashback" element={<CashbackPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </StyledSection>
