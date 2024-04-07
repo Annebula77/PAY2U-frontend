@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import fetchData from 'src/utils/requests/fetchData';
-import { BASE_URL } from 'src/utils/variables';
 import {
   type FavoriteSubscriptionsResponseModel,
   favoriteSubscriptionsResponseSchema,
 } from 'src/models/favoriteSubscriptionsResponseSchema';
 import { type FavoriteSubscriptionModel } from 'src/models/favoriteSubscriptionSchema';
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export const fetchFavoriteSubscriptions = createAsyncThunk<
   FavoriteSubscriptionsResponseModel,

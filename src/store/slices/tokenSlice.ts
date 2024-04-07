@@ -5,8 +5,9 @@ import {
   loginRequestSchema,
   loginResponseSchema,
 } from 'src/models/loginSchema';
-import { TOKEN_URL } from 'src/utils/variables';
 import postData from 'src/utils/requests/postData';
+
+const TOKEN_URL = import.meta.env.VITE_TOKEN_URL;
 
 export const fetchToken = createAsyncThunk(
   'token/fetchToken',

@@ -8,8 +8,9 @@ import {
   type StatusRequestBodyModel,
   statusRequestBodySchema,
 } from 'src/models/updateCashbackStatusSchema';
-import { CLIENT_URL } from 'src/utils/variables';
 import patchData from 'src/utils/requests/patchData';
+
+const CLIENT_URL = import.meta.env.VITE_CLIENT_URL;
 
 export const cashbackStatus = createAsyncThunk<
   CashbackStatusResponseModel,

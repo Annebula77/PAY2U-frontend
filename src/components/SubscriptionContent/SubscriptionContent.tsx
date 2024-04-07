@@ -7,7 +7,6 @@ import ExpandableTextCard from 'src/components/ExpandableTextCard/ExpandableText
 import SubscriptionAccordion from '../SubscriptionAccordion/SubscriptionAccordion';
 import HeartButton from '../icons/HeartIcon';
 import CustomTooltip from '../CustomTooltip/CustomTooltip';
-import { RENDER_URL } from 'src/utils/variables';
 import { addFavorite, removeFavorite } from 'src/store/slices/toggleLikesSlice';
 import {
   BenefitContainer,
@@ -23,6 +22,8 @@ import {
 export interface SubscriptionContentProps {
   subscription: SingleSubScriptionModel;
 }
+
+const RENDER_URL = import.meta.env.VITE_RENDER_URL;
 
 const SubscriptionContent: FC<SubscriptionContentProps> = ({
   subscription,

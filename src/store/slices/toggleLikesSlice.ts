@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import postData from 'src/utils/requests/postData';
 import deleteData from 'src/utils/requests/deleteData';
-import { BASE_URL } from 'src/utils/variables';
 import {
   type FavoriteSubscriptionModel,
   favoriteSubscriptionSchema,
@@ -11,6 +10,8 @@ import {
   type ToggleLikeModel,
 } from 'src/models/toggleLikeSchema';
 import { RootState } from '../store';
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export const addFavorite = createAsyncThunk<
   FavoriteSubscriptionModel,

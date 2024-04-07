@@ -5,7 +5,8 @@ import {
 } from 'src/models/addSubscriptionSchema';
 import { type RootState } from '../store';
 import postData from 'src/utils/requests/postData';
-import { CLIENT_URL } from 'src/utils/variables';
+
+const CLIENT_URL = import.meta.env.VITE_CLIENT_URL;
 
 export const addSubscription = createAsyncThunk<
   AddSubscriptionModel,
