@@ -6,7 +6,19 @@
 
 # PAY2U Frontend Group 6
 
-## Technologies and Solutions Usedвщ
+## Overview
+
+Our product revolutionizes the way users interact with subscription-based services by offering a centralized platform for easy and secure management of all subscriptions. It ensures simplicity, enhances security, and adds unmatched convenience to the subscription management process.
+
+## Key Features
+
+- **Centralized Subscription Management**: Manage all your subscriptions in one place. Forget about the hassle of binding and rebinding your credit card across various platforms. With our solution, you ensure greater safety and simplicity. Activate or deactivate any subscription with a single click, all from one unified interface.
+
+- **Continuous Cashback Rewards**: For those who regularly utilize subscription services, our product offers a continuous cashback feature. Connect your accounts once and start earning rewards on every transaction you make.
+
+- **Cost Comparison and Content Curation**: Make informed decisions by comparing costs across a range of services. Our platform presents options that cater to your preferences, allowing you to access content that aligns with your interests and budget. Choose wisely and save by selecting services that truly cater to your needs.
+
+## Technologies and Solutions Used
 
 - **Main Language**: TypeScript
 - **UI Library**: React
@@ -115,7 +127,14 @@ Adhering to these guidelines ensures code quality and consistency across our pro
 - TypeScript: `^5.2.2`
 - Vite: `^5.1.4`
 
-## Author👤 **Гоар Варданян** => -GitHub: [@Annebula77](https://github.com/Annebula77)
+## Author 👩
+
+- Gohar Vardanyan - [![GitHub][github-shield]][github-url]
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[github-shield]: https://img.shields.io/badge/GitHub--brightgreen?style=social&logo=Github
+[github-url]: https://github.com/Annebula77
+
 
 # React + TypeScript + Vite
 
