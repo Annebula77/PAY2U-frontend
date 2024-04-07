@@ -5,8 +5,9 @@ import {
   allSubscriptionsResponseSchema,
   type AllSubscriptionsResponseModel,
 } from 'src/models/allSubscriptionsSchema';
-import { BASE_URL } from 'src/utils/variables';
 import { type SingleSubScriptionModel } from 'src/models/singleSubscriptionSchema';
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 interface FetchSubscriptionsParams {
   recommended?: boolean;

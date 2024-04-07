@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import fetchData from 'src/utils/requests/fetchData';
-import { CLIENT_URL } from 'src/utils/variables';
 import {
   type ClientByIdModel,
   clientByIdSchema,
 } from 'src/models/clientByIdSchema';
+
+const CLIENT_URL = import.meta.env.VITE_CLIENT_URL;
 
 export const fetchClientById = createAsyncThunk<
   ClientByIdModel,

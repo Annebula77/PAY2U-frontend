@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import fetchData from 'src/utils/requests/fetchData';
-import { BASE_URL } from 'src/utils/variables';
 import {
   categoryListSchema,
   type CategoryListModel,
   type CategoryModel,
 } from 'src/models/categorySchema';
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export const fetchCategoryList = createAsyncThunk<
   CategoryListModel,

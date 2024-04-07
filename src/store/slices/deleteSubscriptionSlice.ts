@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import deleteData from 'src/utils/requests/deleteData';
-import { CLIENT_URL } from 'src/utils/variables';
 import { RootState } from '../store';
 import { type DeleteSubscriptionModel } from 'src/models/deleteSubscriptionSchema';
+
+const CLIENT_URL = import.meta.env.VITE_CLIENT_URL;
 
 export const deleteSubscription = createAsyncThunk<
   void,

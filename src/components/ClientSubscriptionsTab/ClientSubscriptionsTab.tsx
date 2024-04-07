@@ -102,9 +102,7 @@ const ClientSubscriptionsTab = () => {
             sub.cashback_amount
           )}
           cashback={sub.subscription.cashback.amount}
-          accountNumber={maskString(
-            clientById?.bank_accounts.at(0)?.number || ''
-          )}
+          accountNumber={maskString(clientById?.bank_accounts[0].number || '')}
           tel={clientById?.phone ?? ''}
           link={
             sub.subscription.subscription_benefits.find(benefit =>
