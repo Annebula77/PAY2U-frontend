@@ -8,15 +8,16 @@ import { AppDispatch } from '../store/store';
 
 export const handleCheckSubscriptionDeleted = (
   deletedAt: string | null,
+  isAutoPay: boolean,
   setNotificationModalProps: React.Dispatch<
     React.SetStateAction<NotificationModalProps | null>
   >
 ) => {
-  if (deletedAt !== null) {
+  if (deletedAt !== null && isAutoPay === true) {
     setNotificationModalProps({
       type: 'error',
       title: 'Автопродление невозможно!',
-      message: 'Вы не можете установить автоплатеж на удаленную подписку.',
+      message: 'Вы не можете установить автоплатеж на остановленную подписку.',
       onClose: () => setNotificationModalProps(null),
       actions: (
         <ContainedButton

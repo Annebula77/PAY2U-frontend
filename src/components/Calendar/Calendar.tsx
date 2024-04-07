@@ -93,7 +93,7 @@ const StyledCalendar = styled(Calendar)`
       }
 
       .react-calendar__tile--now {
-        background-color: rgb(230, 230, 230);
+        background-color: rgb(255, 255, 255);
         color: rgba(40, 43, 46, 1);
       }
 

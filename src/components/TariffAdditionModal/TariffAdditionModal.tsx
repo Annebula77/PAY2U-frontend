@@ -68,7 +68,7 @@ const TariffAdditionModal: FC<TariffProps> = ({
         amount: tariff?.amount ?? 0,
         days_amount: tariff?.days_amount ?? 0,
       }
-    )} ₽`;
+    )} ₽. У вас уже есть такой тариф`;
 
     const link =
       subscription.subscription_benefits.find(benefit =>
@@ -125,10 +125,10 @@ const TariffAdditionModal: FC<TariffProps> = ({
     } catch (error) {
       setNotificationModalProps({
         type: 'error',
-        title: 'Оплата не прошла',
+        title: 'Операция невозможна',
         message: message,
         infoMessage:
-          'Банковская операция не обработана, пожалуйста, повторите попытку',
+          'Банковская операция не обработана, пожалуйста проверьте информацию и повторите попытку',
         onClose: () => setNotificationModalProps(null),
         actions: (
           <ButtonContainer>

@@ -1,5 +1,4 @@
 import { type FC } from 'react';
-import { Link } from 'react-router-dom';
 import {
   Accordion,
   AccordionSummary,
@@ -26,7 +25,6 @@ type PartialSubsShieldProps = Pick<
   | 'tel'
   | 'link'
   | 'prolongation'
-  | 'route'
   | 'paymentDate'
   | 'onChange'
   | 'cashbackAmount'
@@ -41,7 +39,6 @@ const DetailedSubsShieldAccordion: FC<PartialSubsShieldProps> = ({
   link,
   prolongation,
   onChange,
-  route,
   paymentDate,
   cashbackAmount,
   onClick,
@@ -189,16 +186,14 @@ const DetailedSubsShieldAccordion: FC<PartialSubsShieldProps> = ({
           </SlotContainer>
         </DetailsContainer>
         <ButtonContainer>
-          <Link to={route} style={{ textDecoration: 'none', width: '100%' }}>
-            <OutlinedButton
-              variant="outlined"
-              disabled={isDisabled}
-              onClick={onClick}
-              sx={{ textTransform: 'none' }}
-            >
-              Отключить подписку
-            </OutlinedButton>
-          </Link>
+          <OutlinedButton
+            variant="outlined"
+            disabled={isDisabled}
+            onClick={onClick}
+            sx={{ textTransform: 'none' }}
+          >
+            Отключить подписку
+          </OutlinedButton>
         </ButtonContainer>
       </AccordionDetails>
     </Accordion>

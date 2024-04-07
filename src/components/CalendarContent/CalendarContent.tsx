@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from 'src/store/hooks';
 import { ControlsContainer } from 'src/components/Header/headerStyles';
 import { Typography } from '@mui/material';
@@ -36,15 +36,13 @@ import { OutlinedButton } from '../buttons/OutlinedButton/OutlinedButton';
 const CalendarContent = () => {
   const dispatch = useAppDispatch();
 
-  const navigate = useNavigate();
-
-  const { data: clientSubscriptions } = useAppSelector(
-    state => state.clientSubscriptions
-  );
   const { data: clientById } = useAppSelector(state => state.client);
 
   const [totalPayment, setTotalPayment] = useState(0);
 
+  const { data: clientSubscriptions } = useAppSelector(
+    state => state.clientSubscriptions
+  );
   useEffect(() => {
     if (!clientSubscriptions) {
       return;
@@ -121,6 +119,7 @@ const CalendarContent = () => {
               if (
                 !handleCheckSubscriptionDeleted(
                   sub.deleted_at,
+                  is_auto_pay,
                   setNotificationModalProps
                 )
               ) {
@@ -133,7 +132,6 @@ const CalendarContent = () => {
                 dispatch
               );
             }}
-            route="/me"
             paymentDate={AddOneDayFormatted(sub.expiration_date)}
             onClick={async () => {
               const newDate = addOneDay(sub.expiration_date);
@@ -178,7 +176,6 @@ const CalendarContent = () => {
                           dispatch
                         );
                         setNotificationModalProps(null);
-                        navigate('/me');
                       }}
                     >
                       Отключить

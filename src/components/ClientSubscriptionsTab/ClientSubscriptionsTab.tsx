@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from 'src/store/hooks';
 import DetailedSubsShield from '../DetailedSubsShield/DetailedSubsShield';
 import { calculateSubscriptionCost } from 'src/utils/costsCalculations/calculateSubscriptionCost';
@@ -33,7 +33,6 @@ const ClientSubscriptionsTab = () => {
   const dispatch = useAppDispatch();
 
   const clientId = getClientIdFromToken();
-  const navigate = useNavigate();
 
   const { data: clientSubscriptions } = useAppSelector(
     state => state.clientSubscriptions
@@ -108,7 +107,7 @@ const ClientSubscriptionsTab = () => {
             )}
             cashback={sub.subscription.cashback.amount}
             accountNumber={maskString(
-              clientById?.bank_accounts.at(0)?.number || ''
+              clientById?.bank_accounts[0]?.number || ''
             )}
             tel={clientById?.phone ?? ''}
             link={
@@ -119,10 +118,10 @@ const ClientSubscriptionsTab = () => {
             prolongation={sub.is_auto_pay}
             onChange={async event => {
               const is_auto_pay = event.target.checked;
-
               if (
                 !handleCheckSubscriptionDeleted(
                   sub.deleted_at,
+                  is_auto_pay,
                   setNotificationModalProps
                 )
               ) {
@@ -135,7 +134,6 @@ const ClientSubscriptionsTab = () => {
                 dispatch
               );
             }}
-            route="/me"
             paymentDate={AddOneDayFormatted(sub.expiration_date)}
             onClick={async () => {
               const newDate = addOneDay(sub.expiration_date);
@@ -178,7 +176,6 @@ const ClientSubscriptionsTab = () => {
                           dispatch
                         );
                         setNotificationModalProps(null);
-                        navigate('/me');
                       }}
                     >
                       Отключить

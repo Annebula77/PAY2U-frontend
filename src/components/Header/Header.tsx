@@ -22,9 +22,13 @@ import {
   SearchContainer,
   SubsRow,
 } from './headerStyles';
+import { getClientIdFromToken } from '../../utils/getClientIdFromToken';
+import { fetchClientSubscriptions } from '../../store/slices/clientSubscriptionsSlice';
 
 const Header = () => {
   const dispatch = useAppDispatch();
+
+  const clientId = getClientIdFromToken();
 
   const { data: client } = useAppSelector(state => state.client);
   const recommendedSubscriptions = useAppSelector(
@@ -37,9 +41,13 @@ const Header = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    if (!clientId) {
+      return;
+    }
+    dispatch(fetchClientSubscriptions({ clientId }));
     dispatch(fetchClientById());
     dispatch(fetchSubscriptions({ recommended: true }));
-  }, [dispatch]);
+  }, [dispatch, clientId]);
 
   const nextSubscription = getNearestPaymentDate(
     clientSubscriptions?.results || []
