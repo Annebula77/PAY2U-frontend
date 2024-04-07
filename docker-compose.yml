@@ -8,6 +8,8 @@ services:
       dockerfile: ./production.Dockerfile
     networks:
       - default
+    env_file:
+      - ./.env
 
 networks:
   default:
