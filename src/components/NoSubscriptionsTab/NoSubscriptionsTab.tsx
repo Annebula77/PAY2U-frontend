@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from 'src/store/hooks';
 import styled from 'styled-components';
 import Waiting from 'src/assets/Waiting.png';
-import { fetchSubscriptions } from '../../store/slices/allSubscriptionsSlice';
+import { fetchSubscriptions } from 'src/store/slices/allSubscriptionsSlice';
 import FavoritesShield from '../FavoritesShield/FavoritesShield';
-import { getLowestPriceTariffAmount } from '../../utils/costsCalculations/getLowestPriceTariffAmount';
+import { getLowestPriceTariffAmount } from 'src/utils/costsCalculations/getLowestPriceTariffAmount';
 import { ShieldContainer } from '../NoCashbackContent/noCashbackContentStyles';
 import { Typography } from '@mui/material';
 
@@ -29,7 +29,6 @@ const ImageContainer = styled.div`
 `;
 
 const NoSubscriptionsTab = () => {
-
   const dispatch = useAppDispatch();
 
   const recommendedSubscriptions = useAppSelector(
@@ -40,14 +39,13 @@ const NoSubscriptionsTab = () => {
     dispatch(fetchSubscriptions({ recommended: true }));
   }, [dispatch]);
 
-
   return (
     <StyledTabSection>
       <ImageContainer>
         <img src={Waiting} alt="нет подписок" />
       </ImageContainer>
       <Typography
-        variant='h4'
+        variant="h4"
         color="text.primary"
         align="center"
         sx={{

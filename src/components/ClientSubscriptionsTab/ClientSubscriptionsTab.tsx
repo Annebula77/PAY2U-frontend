@@ -52,7 +52,6 @@ const ClientSubscriptionsTab = () => {
     dispatch(fetchClientSubscriptions({ clientId, isActive }));
   }, [dispatch, clientId, filter]);
 
-
   return (
     <StyledTabSection>
       <ChipWrapper>
@@ -93,8 +92,10 @@ const ClientSubscriptionsTab = () => {
           </Link>
         </IconWrapper>
       </ChipWrapper>
-      {!clientById?.subscriptions_count ? (<NoSubscriptionsTab />) :
-        (clientSubscriptions?.results.map((sub, index: number) => (
+      {!clientById?.subscriptions_count ? (
+        <NoSubscriptionsTab />
+      ) : (
+        clientSubscriptions?.results.map((sub, index: number) => (
           <DetailedSubsShield
             key={index}
             img={sub.subscription.image_preview}
@@ -188,7 +189,8 @@ const ClientSubscriptionsTab = () => {
             }}
             isDisabled={sub.deleted_at !== null}
           />
-        )))}
+        ))
+      )}
 
       {notificationModalProps && (
         <NotificationModal {...notificationModalProps} />

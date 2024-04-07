@@ -6,7 +6,7 @@ import {
   StyledDiv,
   UpperTextBox,
 } from './cashbackShieldStyles';
-import { CashbackStatus } from '../../types/CashbackStatusEnum';
+import { CashbackStatus } from 'src/types/CashbackStatusEnum';
 
 const RENDER_URL = import.meta.env.VITE_RENDER_URL;
 

@@ -5,7 +5,7 @@ import {
   type PaginatedCashbackHistoryOutputModel,
   paginatedCashbackHistoryOutputSchema,
   type CashbackHistoryOutputModel,
-} from '../../models/cashbackHistorySchema';
+} from 'src/models/cashbackHistorySchema';
 
 const CLIENT_URL = import.meta.env.VITE_CLIENT_URL;
 

@@ -87,16 +87,18 @@ const NotFoundContent = () => {
           >
             Возможно вас заинтересует
           </Typography>
-          {recommendedSubscriptions?.slice(0, 5).map(sub => (
-            <FavoritesShield
-              key={sub.id}
-              img={sub.image_preview}
-              name={sub.name}
-              price={getLowestPriceTariffAmount(sub.tariffs)}
-              cashback={sub.cashback.amount}
-              route={`/subscriptions/${sub.id}`}
-            />
-          )) ?? []}
+          {recommendedSubscriptions
+            ?.slice(0, 5)
+            .map(sub => (
+              <FavoritesShield
+                key={sub.id}
+                img={sub.image_preview}
+                name={sub.name}
+                price={getLowestPriceTariffAmount(sub.tariffs)}
+                cashback={sub.cashback.amount}
+                route={`/subscriptions/${sub.id}`}
+              />
+            )) ?? []}
         </RecommendationsBox>
       </MainWrapper>
     </>
