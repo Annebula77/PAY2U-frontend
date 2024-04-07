@@ -1,14 +1,14 @@
 import { useAppSelector, useAppDispatch } from 'src/store/hooks';
-import { getMonthInGenitive } from '../../utils/dateManipulations/monthInGenitive';
+import { getMonthInGenitive } from 'src/utils/dateManipulations/monthInGenitive';
 import CakeImage from 'src/assets/cake.png';
 import { Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { ContainedButton } from '../buttons/ContainedButton/ContainedButton';
 import { useEffect } from 'react';
-import { fetchClientById } from '../../store/slices/clientByIdSlice';
-import { fetchSubscriptions } from '../../store/slices/allSubscriptionsSlice';
+import { fetchClientById } from 'src/store/slices/clientByIdSlice';
+import { fetchSubscriptions } from 'src/store/slices/allSubscriptionsSlice';
 import FavoritesShield from '../FavoritesShield/FavoritesShield';
-import { getLowestPriceTariffAmount } from '../../utils/costsCalculations/getLowestPriceTariffAmount';
+import { getLowestPriceTariffAmount } from 'src/utils/costsCalculations/getLowestPriceTariffAmount';
 import {
   CashbackInfoContainer,
   Logo,
