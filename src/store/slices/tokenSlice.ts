@@ -7,14 +7,14 @@ import {
 } from 'src/models/loginSchema';
 import postData from 'src/utils/requests/postData';
 
-const TOKEN_URL = import.meta.env.VITE_TOKEN_URL;
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export const fetchToken = createAsyncThunk(
   'token/fetchToken',
   async (id: number, { rejectWithValue }) => {
     try {
       const data = await postData(
-        TOKEN_URL,
+        VITE_BASE_URL + 'login/get-token/',
         loginResponseSchema,
         loginRequestSchema,
         { id },
