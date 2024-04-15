@@ -2,9 +2,7 @@ name: "Release to production"
 on:
   push:
     branches:
-      - develop-ci-cd
-#  release:
-#    types: [ published ]
+      - main
 
 jobs:
   Docker:
