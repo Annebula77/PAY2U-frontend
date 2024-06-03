@@ -13,6 +13,7 @@ import SubscriptionPage from './pages/SubscriptionPage';
 import CalendarPage from './pages/CalendarPage';
 import NotFoundPage from './pages/NotFoundPage';
 import CashbackPage from './pages/CashbackPage';
+import ScrollToTopOutlet from './components/scrollToTopOutlet/ScrollToTopOutlet ';
 
 const StyledSection = styled.section`
   width: 100%;
@@ -35,19 +36,21 @@ const App = () => {
   return (
     <StyledSection>
       <Routes>
-        <Route path="/" element={<ShieldInApp />} />
-        <Route path="/onboarding1" element={<OnboardingOne />} />
-        <Route path="/onboarding2" element={<OnboardingTwo />} />
-        <Route path="/onboarding3" element={<OnboardingThree />} />
-        <Route path="/me" element={<HomePage />} />
-        <Route path="/cookies" element={<CookiesPage />} />
-        <Route
-          path="/me/subscriptions/:subscription_id"
-          element={<SubscriptionPage />}
-        />
-        <Route path="/me/calendar" element={<CalendarPage />} />
-        <Route path="/me/cashback" element={<CashbackPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route element={<ScrollToTopOutlet />}>
+          <Route path="/" element={<ShieldInApp />} />
+          <Route path="/onboarding1" element={<OnboardingOne />} />
+          <Route path="/onboarding2" element={<OnboardingTwo />} />
+          <Route path="/onboarding3" element={<OnboardingThree />} />
+          <Route path="/me" element={<HomePage />} />
+          <Route path="/cookies" element={<CookiesPage />} />
+          <Route
+            path="/me/subscriptions/:subscription_id"
+            element={<SubscriptionPage />}
+          />
+          <Route path="/me/calendar" element={<CalendarPage />} />
+          <Route path="/me/cashback" element={<CashbackPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
       </Routes>
     </StyledSection>
   );
