@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
@@ -9,17 +9,20 @@ import {
   TabContentThree,
   TabContentTwo,
 } from './tabContentWrappings';
+import { setActiveTab } from '../../store/slices/activeTabSlice';
 
 const MainPageTabs = () => {
-  const [value, setValue] = useState('1');
+  const dispatch = useAppDispatch();
+
+  const activeTab = useAppSelector(state => state.tabs.activeTab);
 
   const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
+    dispatch(setActiveTab(newValue));
   };
 
   return (
     <Box sx={{ width: '100%' }}>
-      <TabContext value={value}>
+      <TabContext value={activeTab}>
         <Box>
           <TabList
             onChange={handleChange}

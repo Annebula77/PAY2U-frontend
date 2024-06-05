@@ -24,6 +24,7 @@ import {
 } from './headerStyles';
 import { getClientIdFromToken } from '../../utils/getClientIdFromToken';
 import { fetchClientSubscriptions } from '../../store/slices/clientSubscriptionsSlice';
+import { setActiveTab, setFilter } from '../../store/slices/activeTabSlice';
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -39,6 +40,11 @@ const Header = () => {
   );
 
   const [showModal, setShowModal] = useState(false);
+
+  const handleActiveSubscriptionClick = () => {
+    dispatch(setActiveTab('2'));
+    dispatch(setFilter('active'));
+  }
 
   useEffect(() => {
     if (!clientId) {
@@ -107,6 +113,7 @@ const Header = () => {
               margin: 0,
               padding: 0,
             }}
+            onClick={handleActiveSubscriptionClick}
           >
             {client?.subscriptions_count ? (
               <HasSubsShield
