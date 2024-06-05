@@ -28,6 +28,7 @@ import {
   handleToggleProlongation,
 } from 'src/utils/handleProlongationNotifications';
 import NoSubscriptionsTab from '../NoSubscriptionsTab/NoSubscriptionsTab';
+import { setFilter } from '../../store/slices/activeTabSlice';
 
 const ClientSubscriptionsTab = () => {
   const dispatch = useAppDispatch();
@@ -39,7 +40,7 @@ const ClientSubscriptionsTab = () => {
   );
   const { data: clientById } = useAppSelector(state => state.client);
 
-  const [filter, setFilter] = useState('all');
+  const filter = useAppSelector(state => state.tabs.filter);
 
   const [notificationModalProps, setNotificationModalProps] =
     useState<NotificationModalProps | null>(null);
@@ -59,7 +60,7 @@ const ClientSubscriptionsTab = () => {
           clickable
           label="Активные"
           variant="outlined"
-          onClick={() => setFilter('active')}
+          onClick={() => dispatch(setFilter(filter === 'active' ? 'all' : 'active'))}
           sx={{
             fontSize: '16px',
             fontStyle: 'normal',
@@ -73,7 +74,7 @@ const ClientSubscriptionsTab = () => {
           label="Неактивные"
           clickable
           variant="outlined"
-          onClick={() => setFilter('disabled')}
+          onClick={() => dispatch(setFilter(filter === 'disabled' ? 'all' : 'disabled'))}
           sx={{
             fontSize: '16px',
             fontStyle: 'normal',
